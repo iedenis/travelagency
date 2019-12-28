@@ -16,6 +16,12 @@ width: 90px;
 const Spacer = styled.div`
 flex:1;
 `
+const SytledToolbar = styled(Toolbar)`
+width:90%;
+margin-left:auto;
+ margin-right:auto; 
+ /*border: 1px solid;*/
+`
 const NavBar = () => {
     return (
         <StyledAppBar >
@@ -23,16 +29,16 @@ const NavBar = () => {
                 < Spacer />
                 <NavMenu></NavMenu>*/}
 
-            <Toolbar>
+            <SytledToolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu">
                 </IconButton>
                 <Typography variant="h6" >
                     We4Travel
                 </Typography>
-                <Spacer></Spacer>
+                <Spacer />
                 <NavMenu />
-            </Toolbar>
-        </StyledAppBar>
+            </SytledToolbar>
+        </StyledAppBar >
     )
 }
 
