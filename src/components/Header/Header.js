@@ -1,10 +1,10 @@
 import React from 'react'
 import NavBar from './NavBar/NavBar'
-import NavBarContacts from './Contacts'
+import TopToolBar from './TopToolBar'
 const Header = () => {
     return (
         <div>
-            <NavBarContacts />
+            <TopToolBar />
             <NavBar />
         </div>
     )
