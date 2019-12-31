@@ -4,7 +4,7 @@ import TopToolBar from './TopToolBar'
 import LeftDrawer from './LeftDrawer'
 const Header = () => {
     const menuItems = ['Home', 'About', 'Contacts', 'Blog']
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
     const toggleDrawer = open => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import styled from 'styled-components'
-import Drawer  from '@material-ui/core/Drawer';
+import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -12,8 +12,6 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Paper, SwipeableDrawer } from '@material-ui/core';
-import { yellow } from '@material-ui/core/colors';
-import color from '@material-ui/core/colors/amber';
 
 const useStyles = makeStyles({
     list: {
@@ -27,8 +25,8 @@ const useStyles = makeStyles({
 
 export default function TemporaryDrawer({ toggleDrawer, isOpen, menuItems }) {
     const StyledDrawer = styled(SwipeableDrawer)`
-.MuiDrawer-paper{
-    background-color: ${useTheme().palette.primary.main};
+        .MuiDrawer-paper{
+             background-color: ${useTheme().palette.primary.main};
 }
 `
     const classes = useStyles();
@@ -53,9 +51,14 @@ export default function TemporaryDrawer({ toggleDrawer, isOpen, menuItems }) {
 
     return (
         <div>
-            <StyledDrawer open={isOpen} onClose={toggleDrawer(false)}>
+            <SwipeableDrawer
+                open={isOpen}
+                onClose={toggleDrawer(false)}
+                anchor='left'
+                
+            >
                 {sideList()}
-            </StyledDrawer>
+            </SwipeableDrawer>
         </div>
     );
 }
