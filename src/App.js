@@ -14,8 +14,8 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Header />
-       {/** <SideDrawer />*/} 
-        <Container maxWidth='lg' style={{ height: '100vh', marginTop: '84px', border: '1px solid' }}>
+        {/** <SideDrawer />*/}
+        <Container maxWidth='lg' style={{ marginTop: '84px', border: '1px solid' }}>
 
           <Switch>
             <Route exact path='/' component={Main}></Route>

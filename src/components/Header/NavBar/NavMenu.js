@@ -15,14 +15,14 @@ color:inherit;
 margin: 0 10px;
 text-decoration:none;
 `
-const NavMenu = () => {
+const NavMenu = ({ menuItems }) => {
     return (
 
         <Menu >
-            <StyledLink to='/'>Home</StyledLink>
-            <StyledLink to='/about'>About</StyledLink>
-            <StyledLink to='/contacts'>Contacts</StyledLink>
-            <StyledLink to='/blog'>Blog</StyledLink>
+            <StyledLink to='/'>{menuItems[0]}</StyledLink>
+            <StyledLink to='/about'>{menuItems[1]}</StyledLink>
+            <StyledLink to='/contacts'>{menuItems[2]}</StyledLink>
+            <StyledLink to='/blog'>{menuItems[3]}</StyledLink>
         </Menu>
     )
 }

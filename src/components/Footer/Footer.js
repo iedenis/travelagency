@@ -3,7 +3,8 @@ import styled from 'styled-components'
 const Footer = () => {
     const StyledFooter = styled.div`
     bottom: 0px;
-    border: 1px solid;      
+    min-width:100vw;
+    position:absolute;     
     `
     return (
         <StyledFooter>

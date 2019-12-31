@@ -1,8 +1,9 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Typography, Button, Hidden } from '@material-ui/core'
 import styled from 'styled-components'
 import logo from '../../../images/logo.png'
 import NavMenu from './NavMenu'
+import MenuIcon from '@material-ui/icons/Menu';
 
 const StyledAppBar = styled(AppBar)`
 margin-top: 20px;
@@ -22,7 +23,9 @@ margin-left:auto;
  margin-right:auto; 
  /*border: 1px solid;*/
 `
-const NavBar = () => {
+
+
+const NavBar = ({ toggleDrawer, menuItems }) => {
     return (
         <StyledAppBar >
             { /* <Logo src={logo}></Logo > 
@@ -30,13 +33,18 @@ const NavBar = () => {
                 <NavMenu></NavMenu>*/}
 
             <SytledToolbar>
-                <IconButton edge="start" color="inherit" aria-label="menu">
-                </IconButton>
+                <Hidden smUp>
+                    <IconButton onClick={toggleDrawer(true)} edge="start" color="inherit">
+                        <MenuIcon />
+                    </IconButton>
+                </Hidden>
+
+                {/*<IconButton edge="start" color="inherit" aria-label="menu">*/}
                 <Typography variant="h6" >
                     We4Travel
                 </Typography>
                 <Spacer />
-                <NavMenu />
+                <NavMenu menuItems={menuItems} />
             </SytledToolbar>
         </StyledAppBar >
     )
