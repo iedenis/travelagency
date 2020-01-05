@@ -23,12 +23,15 @@ const useStyles = makeStyles({
 });
 
 
-export default function TemporaryDrawer({ toggleDrawer, isOpen, menuItems }) {
+export default function TemporaryDrawer({ toggleDrawer, isOpen, menuItems, onOpen }) {
     const StyledDrawer = styled(SwipeableDrawer)`
         .MuiDrawer-paper{
              background-color: ${useTheme().palette.primary.main};
 }
 `
+    const handleOpen = () => {
+        console.log("OPEN");
+    }
     const classes = useStyles();
 
     const sideList = () => (
@@ -55,7 +58,8 @@ export default function TemporaryDrawer({ toggleDrawer, isOpen, menuItems }) {
                 open={isOpen}
                 onClose={toggleDrawer(false)}
                 anchor='left'
-                
+                onOpen={toggleDrawer(true)}
+
             >
                 {sideList()}
             </SwipeableDrawer>

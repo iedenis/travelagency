@@ -6,7 +6,6 @@ import NavMenu from './NavMenu'
 import MenuIcon from '@material-ui/icons/Menu';
 
 const StyledAppBar = styled(AppBar)`
-margin-top: 20px;
 display:flex;
 
 `
@@ -18,6 +17,7 @@ const Spacer = styled.div`
 flex:1;
 `
 const SytledToolbar = styled(Toolbar)`
+max-width:1280px;
 width:90%;
 margin-left:auto;
  margin-right:auto; 
@@ -27,7 +27,7 @@ margin-left:auto;
 
 const NavBar = ({ toggleDrawer, menuItems }) => {
     return (
-        <StyledAppBar >
+        <StyledAppBar position='relative' >
             { /* <Logo src={logo}></Logo > 
                 < Spacer />
                 <NavMenu></NavMenu>*/}
@@ -44,7 +44,9 @@ const NavBar = ({ toggleDrawer, menuItems }) => {
                     We4Travel
                 </Typography>
                 <Spacer />
-                <NavMenu menuItems={menuItems} />
+                <Hidden xsDown>
+                    <NavMenu menuItems={menuItems} />
+                </Hidden>
             </SytledToolbar>
         </StyledAppBar >
     )

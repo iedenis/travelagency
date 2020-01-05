@@ -5,23 +5,35 @@ import Header from './components/Header/Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { useTheme } from '@material-ui/core/styles'
 import Main from './components/Content/Main/Main';
-import { Container } from '@material-ui/core';
+import { Container, Grid, Hidden } from '@material-ui/core';
 //import SideDrawer from './components/Header/LeftDrawer'
 import Footer from './components/Footer/Footer';
-import About from './components/Content/About/About';
+import About from './components/Routes/About/About';
+import styled from 'styled-components'
+import MainSection from './Layouts/MainSection';
+import background from './images/background.png'
+
 const App = () => {
+  const StyledContainer = styled(Container)`
+  @media screen and (max-width: ${useTheme().breakpoints.values.sm}px) {
+    &.MuiContainer-root{
+     padding:0px
+   }
+}
+`
   return (
     <div className="App">
       <BrowserRouter>
         <Header />
         {/** <SideDrawer />*/}
-        <Container maxWidth='lg' style={{ marginTop: '84px', border: '1px solid' }}>
-
-          <Switch>
-            <Route exact path='/' component={Main}></Route>
-            <Route exact path='/about' component={About} />
-          </Switch>
-        </Container>
+        <StyledContainer maxWidth="lg" style={{ backgroundImage: `url(${background})` }}>
+          <MainSection >
+            <Switch>
+              <Route exact path='/' component={Main}></Route>
+              <Route exact path='/about' component={About} />
+            </Switch>
+          </MainSection>
+        </StyledContainer>
 
       </BrowserRouter>
       <Footer />
