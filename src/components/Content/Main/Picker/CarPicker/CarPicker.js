@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, TextField, MenuItem, Checkbox, FormControlLabel } from '@material-ui/core'
 import styled from 'styled-components'
-import DatePicker from '../DatePicker'
+import CarDatePicker from '../CarDatePicker'
 
 const Form = styled.form`
 width:70%;
@@ -18,6 +18,9 @@ const handleChange = () => {
 }
 const handleCheckChange = () => {
     console.log("CHECKED");
+}
+const handleDateAndTime = () => {
+    console.log("Handle date");
 }
 const CarPicker = () => {
     return (
@@ -53,18 +56,14 @@ const CarPicker = () => {
                     label="Drop-off at different location"
                 />
             </Grid>
-            <Grid item sm={8}>
-                <DatePicker />
-            </Grid>
-            <Grid item sm={4}>
-                Time
-            </Grid>
-            <Grid item sm={8}>
-                Return date
-            </Grid>
-            <Grid item sm={4}>
-                Time
-            </Grid>
+            <CarDatePicker 
+                isPickupDate={true}
+                handleDateAndTime={handleDateAndTime}
+            />
+            <CarDatePicker
+                isPickupDate={false}
+                handleDateAndTime={handleDateAndTime}
+            />
 
         </Grid>
     )
