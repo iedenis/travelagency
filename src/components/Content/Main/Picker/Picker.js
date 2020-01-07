@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import styled from 'styled-components'
@@ -39,11 +39,9 @@ const Picker = () => {
     }
 `
     const StyledBox = styled(Box)`
-        height: 200px;
+        height:300px ;
 `
-
     function TabPanel(props) {
-
         const { children, value, index, ...other } = props;
 
         return (

@@ -15,9 +15,11 @@ import background from './images/background.png'
 
 const App = () => {
   const StyledContainer = styled(Container)`
+  background-image:url(${background});
   @media screen and (max-width: ${useTheme().breakpoints.values.sm}px) {
     &.MuiContainer-root{
-     padding:0px
+     padding:0px;
+     background-image: none;
    }
 }
 `
@@ -26,7 +28,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         {/** <SideDrawer />*/}
-        <StyledContainer maxWidth="lg" style={{ backgroundImage: `url(${background})` }}>
+        <StyledContainer maxWidth="lg"  >
           <MainSection >
             <Switch>
               <Route exact path='/' component={Main}></Route>
