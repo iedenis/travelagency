@@ -6,7 +6,7 @@ import { Typography, Box } from '@material-ui/core'
 import CarPicker from './CarPicker/CarPicker'
 const Picker = () => {
     const StyledTab = styled(Tab)`
-    border: 1px solid;
+    /* border: 1px solid; */
     &.MuiTab-fullWidth{
         background:#f7f7f7;
         border: 1px solid #e9e9e9;

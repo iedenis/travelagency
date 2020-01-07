@@ -28,8 +28,8 @@ const CarPicker = () => {
     return (
         <Form noValidate autoComplete="off">
 
-            <Grid container style={{ border: '1px solid' }}>
-                <Grid item xs={12} style={{ border: '1px solid' }}>
+            <Grid container >
+                <Grid item xs={12} >
                     <AirportSelect isPickupDate={true} handleAirportSelected={handleAirportSelected} />
                 </Grid>
                 <Grid item xs={12}>

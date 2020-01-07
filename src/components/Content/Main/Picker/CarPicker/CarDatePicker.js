@@ -6,21 +6,22 @@ import { Grid } from '@material-ui/core';
 const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const handleDateChange = (date) => {
-    console.log(date)
-    // setSelectedDate(date);
+    setSelectedDate(date);
     // setDates({
-      
+
     // })
   }
+  console.log(new Date().setDate((selectedDate.getDate() + 3)));
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
       <Grid item sm={8}>
         <DatePicker
-          value={isPickupDate ? selectedDate : selectedDate.setDate(selectedDate.getDate() + 3)}
+          value={selectedDate}
           format="dd/MM/yyyy"
           label={isPickupDate ? "Pick-up date" : "Drop-off date"}
           onChange={handleDateChange}
+          disablePast={true}
         />
 
       </Grid>
