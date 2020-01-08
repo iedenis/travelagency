@@ -10,7 +10,7 @@ import { Container, Grid, Hidden } from '@material-ui/core';
 import Footer from './components/Footer/Footer';
 import About from './components/Routes/About/About';
 import styled from 'styled-components'
-import MainSection from './Layouts/MainSection';
+import MainSection from './components/Layouts/MainSection';
 import background from './images/background.png'
 
 const App = () => {

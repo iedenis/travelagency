@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 //import background from '../images/background.png'
 import { useTheme, Grid } from '@material-ui/core'
-import Picker from '../components/Content/Main/Picker/Picker'
+import Picker from '../Content/Main/Picker/Picker'
 
 const MainSection = () => {
     const StyledSection = styled.section`
