@@ -1,21 +1,55 @@
 import React from 'react'
 import { useTheme } from "@material-ui/core/styles"
 import styled from 'styled-components'
+import { Button, Toolbar } from '@material-ui/core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-const StyledDiv = styled.div`
-position: relative;
-min-width:100vw;
+const SignInButton = styled(Button)`
+height: 15px;
+.MuiButton-label{
+    font-size: 0.5rem;
+}
+&.MuiButton-root{
+    padding: 0;
+}
+`
+const StyledToolbar = styled(Toolbar)`
 top:0;
-height: 20px;
+height: 30px;
 background-color: ${props => props.color};
-color: white
+justify-content: flex-end;
+&.MuiToolbar-regular{
+    max-height:30px;
+}
+@media (min-width: 600px){
+    &.MuiToolbar-regular {
+    min-height: 30px;
+    }
+}
+@media (max-width: 600px){
+    &.MuiToolbar-regular {
+    min-height: 30px;
+    }
+}
+
 `
 
 const TopToolBar = (props) => {
     return (
-        <StyledDiv color={useTheme().palette.primary.dark}>
-            toolbar here
-        </StyledDiv>
+        // <StyledDiv color={useTheme().palette.primary.dark}>
+        <StyledToolbar color={useTheme().palette.primary.dark}>
+
+            <Toolbar>
+                <SignInButton variant='contained' color='secondary' >
+                    <FontAwesomeIcon style={{ paddingRight: '0.3rem' }} icon={faUser} />
+                    Sign in
+                </SignInButton>
+
+            </Toolbar>
+        </StyledToolbar>
+
+        // </StyledDiv>
 
     )
 }
