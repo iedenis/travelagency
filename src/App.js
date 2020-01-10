@@ -27,20 +27,25 @@ const App = () => {
 `
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header />
-        {/** <SideDrawer />*/}
-        <StyledContainer maxWidth="xl"  >
-          <MainSection >
-            <Switch>
-              <Route exact path='/' component={Main}></Route>
-              <Route exact path='/about' component={About} />
-            </Switch>
-          </MainSection>
-        </StyledContainer>
+      <div style={{ height: '100%' }}>
 
-      </BrowserRouter>
+        <BrowserRouter>
+          <Header />
+          {/** <SideDrawer />*/}
+          <StyledContainer maxWidth="xl"  >
+            <MainSection >
+              <Switch>
+                <Route exact path='/' component={Main}></Route>
+                <Route exact path='/about' component={About} />
+              </Switch>
+            </MainSection>
+          </StyledContainer>
+
+        </BrowserRouter>
+      </div>
+
       <Footer />
+
     </div>
   );
 }

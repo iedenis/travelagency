@@ -1,13 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTheme, Grid } from '@material-ui/core'
+import BottomContactsBar from './BottomContactsBar'
 const Footer = () => {
     const StyledFooter = styled.div`
-    bottom: 0px;
-    position:absolute;     
+    position:absolute;  
+    background-color: ${useTheme().palette.primary.main};
+    width: 100%;
+    overflow: hidden;
     `
+    
     return (
         <StyledFooter>
-            FOOTER
+            <Grid container >
+                {/* <Grid item style={{ borderBottom: '1px solid' }}>
+                    HELLO
+                </Grid> */}
+                    <BottomContactsBar />
+
+            </Grid>
         </StyledFooter>
     )
 }

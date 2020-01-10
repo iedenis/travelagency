@@ -11,7 +11,7 @@ display:flex;
 `
 const Logo = styled.img`
 position: relative;
-width: 90px;
+width: 120px;
 `
 const Spacer = styled.div`
 flex:1;
@@ -28,10 +28,6 @@ margin-left:auto;
 const NavBar = ({ toggleDrawer, menuItems }) => {
     return (
         <StyledAppBar position='relative' >
-            { /* <Logo src={logo}></Logo > 
-                < Spacer />
-                <NavMenu></NavMenu>*/}
-
             <SytledToolbar>
                 <Hidden smUp>
                     <IconButton onClick={toggleDrawer(true)} edge="start" color="inherit">
@@ -40,9 +36,10 @@ const NavBar = ({ toggleDrawer, menuItems }) => {
                 </Hidden>
 
                 {/*<IconButton edge="start" color="inherit" aria-label="menu">*/}
-                <Typography variant="h6" >
+                <Logo src={logo}></Logo >
+                {/* <Typography variant="h6" >
                     We4Travel
-                </Typography>
+                </Typography> */}
                 <Spacer />
                 <Hidden xsDown>
                     <NavMenu menuItems={menuItems} />

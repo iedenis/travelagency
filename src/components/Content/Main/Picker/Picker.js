@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import styled from 'styled-components'
-import { Typography, Box } from '@material-ui/core'
+import { Typography, Box, Button } from '@material-ui/core'
 import CarPicker from './CarPicker/CarPicker'
 const Picker = () => {
     const StyledTab = styled(Tab)`
@@ -39,7 +39,7 @@ const Picker = () => {
     }
 `
     const StyledBox = styled(Box)`
-        height:300px ;
+        height:240 ;
 `
     function TabPanel(props) {
         const { children, value, index, ...other } = props;
@@ -77,6 +77,7 @@ const Picker = () => {
 
             <TabPanel value={tabIndex} index={0}>
                 <CarPicker />
+
             </TabPanel>
             <TabPanel value={tabIndex} index={1}>
                 Hotels
