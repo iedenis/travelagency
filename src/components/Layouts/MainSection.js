@@ -9,7 +9,7 @@ const MainSection = () => {
      -webkit-transform transform: translateZ(-1px) scale(2);  */
 
     /* padding-top: 70px; */
-     height: 666px;
+     height: 100vh;
      width: 100%; 
      @media screen and (max-width: ${useTheme().breakpoints.values.sm}px) {
        padding-top: 0px;
