@@ -2,6 +2,7 @@ import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
+import SecondSection from './components/Content/SecondSection/SecondSection'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { useTheme } from '@material-ui/core/styles'
 import Main from './components/Content/Main/Main';
@@ -15,7 +16,6 @@ import background from './images/background.png'
 
 const App = () => {
   const StyledContainer = styled(Container)`
-  background-image:url(${background});
   background-size:cover;
   background-repeat: no-repeat;
   @media screen and (max-width: ${useTheme().breakpoints.values.sm}px) {
@@ -27,22 +27,34 @@ const App = () => {
 `
   return (
     <div className="App">
-      <div style={{ height: '100%' }}>
 
-        <BrowserRouter>
+      <BrowserRouter>
+
+        <div className='back' style={{
+          backgroundImage: `url(${background})`,
+          backgroundSize:'cover',
+          transform: 'translateZ(-1px) scale(2)',
+          WebkitTransform: 'translateZ(-1px) scale(2)'
+        }}>
           <Header />
-          {/** <SideDrawer />*/}
-          <StyledContainer maxWidth="xl"  >
-            <MainSection >
+
+          <MainSection >
+            <StyledContainer maxWidth="xl"  >
+
               <Switch>
                 <Route exact path='/' component={Main}></Route>
                 <Route exact path='/about' component={About} />
               </Switch>
-            </MainSection>
-          </StyledContainer>
+            </StyledContainer>
 
-        </BrowserRouter>
-      </div>
+          </MainSection>
+        </div>
+        <SecondSection>
+        </SecondSection>
+      </BrowserRouter>
+
+
+      {/* </div> */}
 
       <Footer />
 

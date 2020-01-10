@@ -6,6 +6,7 @@ import { Typography, Box, Button } from '@material-ui/core'
 import CarPicker from './CarPicker/CarPicker'
 const Picker = () => {
     const StyledTab = styled(Tab)`
+
     /* border: 1px solid; */
     &.MuiTab-fullWidth{
         background:#f7f7f7;
@@ -41,10 +42,17 @@ const Picker = () => {
     const StyledBox = styled(Box)`
         height:240 ;
 `
+const StyledDiv=styled.div`
+      transform: translateZ(-1px);
+     -webkit-transform transform: translateZ(-1px) scale(2);
+
+`
     function TabPanel(props) {
         const { children, value, index, ...other } = props;
 
         return (
+            // <StyledDiv>
+
             <Typography
                 component="div"
                 role="tabpanel"
@@ -55,6 +63,8 @@ const Picker = () => {
             >
                 {value === index && <StyledBox style={{ background: '#ffffff' }} p={3}>{children}</StyledBox>}
             </Typography>
+            // </StyledDiv>
+
         );
     }
 
