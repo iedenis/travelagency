@@ -25,30 +25,41 @@ const App = () => {
    }
 }
 `
+  const ParallaxBack = styled.div`
+@media screen and (min-width: 600px) {
+  background-image: url(${background});
+  background-size: cover;
+}
+`
   return (
     <div className="App">
 
       <BrowserRouter>
 
-        <div className='back' style={{
+        {/*Parallax*/}
+        {/* <div className='back' style={{
           backgroundImage: `url(${background})`,
-          backgroundSize:'cover',
-          transform: 'translateZ(-1px) scale(2)',
-          WebkitTransform: 'translateZ(-1px) scale(2)'
-        }}>
+          backgroundSize: 'cover',
+          // transform: 'translateZ(-1px) scale(2)',
+          // WebkitTransform: 'translateZ(-1px) scale(2)',
+          // MozTransform:'translateZ(0)'
+        }}> */}
+        <ParallaxBack>
+
+
           <Header />
 
           <MainSection >
-            <StyledContainer maxWidth="xl"  >
 
-              <Switch>
-                <Route exact path='/' component={Main}></Route>
-                <Route exact path='/about' component={About} />
-              </Switch>
-            </StyledContainer>
+            <Switch>
+              <Route exact path='/' component={Main}></Route>
+              <Route exact path='/about' component={About} />
+            </Switch>
 
           </MainSection>
-        </div>
+          {/* </div> */}
+        </ParallaxBack>
+
         <SecondSection>
         </SecondSection>
       </BrowserRouter>
@@ -60,6 +71,8 @@ const App = () => {
 
     </div>
   );
+
+
 }
 
 export default App;

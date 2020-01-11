@@ -2,9 +2,18 @@ import React, { useState } from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import styled from 'styled-components'
-import { Typography, Box, Button } from '@material-ui/core'
+import { Typography, Box, Button, useTheme } from '@material-ui/core'
 import CarPicker from './CarPicker/CarPicker'
 const Picker = () => {
+
+    const PickerWrapper = styled.div`
+    max-width: 490px;
+@media  (max-width: ${useTheme().breakpoints.values.sm}) {
+    width:100%;
+}
+`
+
+
     const StyledTab = styled(Tab)`
 
     /* border: 1px solid; */
@@ -26,7 +35,7 @@ const Picker = () => {
         background-color: #f7f7f7;
         opacity: 1;
         border: 1px solid #e9e9e9 &:not(:first-of-type): {
-        marginLeft: -1
+        margin-left: -1
       };
         .MuiTabs-indicator{
           display:none;
@@ -42,17 +51,10 @@ const Picker = () => {
     const StyledBox = styled(Box)`
         height:240 ;
 `
-const StyledDiv=styled.div`
-      transform: translateZ(-1px);
-     -webkit-transform transform: translateZ(-1px) scale(2);
-
-`
     function TabPanel(props) {
         const { children, value, index, ...other } = props;
 
         return (
-            // <StyledDiv>
-
             <Typography
                 component="div"
                 role="tabpanel"
@@ -63,15 +65,14 @@ const StyledDiv=styled.div`
             >
                 {value === index && <StyledBox style={{ background: '#ffffff' }} p={3}>{children}</StyledBox>}
             </Typography>
-            // </StyledDiv>
-
         );
+
     }
 
 
     const [tabIndex, setTabIndex] = React.useState(0);
     return (
-        <>
+        <PickerWrapper >
             <StyledTabs
                 variant="fullWidth"
                 value={tabIndex}
@@ -95,7 +96,7 @@ const StyledDiv=styled.div`
             <TabPanel value={tabIndex} index={2}>
                 Other
             </TabPanel>
-        </>
+        </PickerWrapper>
 
     );
 };

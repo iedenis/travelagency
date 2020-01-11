@@ -9,9 +9,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch;
   -webkit-perspective: 1px;
-  perspective: 1px;
+  -moz-perspective: 1px;
+  perspective: 1px; */
 }
 
 code {
