@@ -4,7 +4,8 @@ import { useTheme, Grid } from '@material-ui/core'
 import BottomContactsBar from './BottomContactsBar'
 const Footer = () => {
     const StyledFooter = styled.div`
-    /* position:absolute;   */
+    /* position:absolute;  */
+    bottom:0; 
     background-color: ${useTheme().palette.primary.main};
     width: 100%;
     overflow: hidden;

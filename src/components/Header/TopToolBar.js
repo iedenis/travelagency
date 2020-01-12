@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from "@material-ui/core/styles"
 import styled from 'styled-components'
-import { Button, Toolbar } from '@material-ui/core'
+import { Button, Toolbar, Container } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
@@ -32,7 +32,10 @@ justify-content: flex-end;
     min-height: 30px;
     }
 }
-
+`
+const StyledContainer= styled(Container)`
+display:flex;
+justify-content: flex-end;
 `
 
 const TopToolBar = (props) => {
@@ -40,13 +43,14 @@ const TopToolBar = (props) => {
         // <StyledDiv color={useTheme().palette.primary.dark}>
         <StyledToolbar color={useTheme().palette.primary.dark}>
 
-            <Toolbar>
-                <SignInButton variant='contained' color='secondary' >
-                    <FontAwesomeIcon style={{ paddingRight: '0.3rem' }} icon={faUser} />
-                    Sign in
+                <StyledContainer>
+                    <SignInButton variant='contained' color='secondary' >
+                        <FontAwesomeIcon style={{ paddingRight: '0.3rem' }} icon={faUser} />
+                        Sign in
                 </SignInButton>
+                </StyledContainer>
 
-            </Toolbar>
+
         </StyledToolbar>
 
         // </StyledDiv>

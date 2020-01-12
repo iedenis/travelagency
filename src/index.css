@@ -3,6 +3,7 @@ html{
 }
 
 body {
+  /* transform: scale(1.25); */
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;

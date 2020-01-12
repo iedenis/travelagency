@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Button, Hidden } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Typography, Button, Hidden, Container } from '@material-ui/core'
 import styled from 'styled-components'
 import logo from '../../../images/logo.png'
 import NavMenu from './NavMenu'
@@ -17,34 +17,34 @@ const Spacer = styled.div`
 flex:1;
 `
 const SytledToolbar = styled(Toolbar)`
-max-width:1280px;
-width:90%;
-margin-left:auto;
- margin-right:auto; 
- /*border: 1px solid;*/
+    margin-left:auto;
+    margin-right:auto; 
 `
 
 
 const NavBar = ({ toggleDrawer, menuItems }) => {
     return (
         <StyledAppBar position='relative' >
-            <SytledToolbar>
-                <Hidden smUp>
-                    <IconButton onClick={toggleDrawer(true)} edge="start" color="inherit">
-                        <MenuIcon />
-                    </IconButton>
-                </Hidden>
+            <Container>
 
-                {/*<IconButton edge="start" color="inherit" aria-label="menu">*/}
-                <Logo src={logo}></Logo >
-                {/* <Typography variant="h6" >
+                <SytledToolbar>
+                    <Hidden smUp>
+                        <IconButton onClick={toggleDrawer(true)} edge="start" color="inherit">
+                            <MenuIcon />
+                        </IconButton>
+                    </Hidden>
+
+                    {/*<IconButton edge="start" color="inherit" aria-label="menu">*/}
+                    <Logo src={logo}></Logo >
+                    {/* <Typography variant="h6" >
                     We4Travel
                 </Typography> */}
-                <Spacer />
-                <Hidden xsDown>
-                    <NavMenu menuItems={menuItems} />
-                </Hidden>
-            </SytledToolbar>
+                    <Spacer />
+                    <Hidden xsDown>
+                        <NavMenu menuItems={menuItems} />
+                    </Hidden>
+                </SytledToolbar>
+            </Container>
         </StyledAppBar >
     )
 }

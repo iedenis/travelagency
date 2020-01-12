@@ -8,12 +8,10 @@ const Picker = () => {
 
     const PickerWrapper = styled.div`
     max-width: 490px;
-@media  (max-width: ${useTheme().breakpoints.values.sm}) {
+    @media  (max-width: ${useTheme().breakpoints.values.sm}) {
     width:100%;
 }
 `
-
-
     const StyledTab = styled(Tab)`
 
     /* border: 1px solid; */
