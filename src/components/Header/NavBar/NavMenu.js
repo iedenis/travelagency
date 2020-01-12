@@ -21,7 +21,7 @@ const NavMenu = ({ menuItems }) => {
         <Menu >
             <StyledLink to='/'>{menuItems[0]}</StyledLink>
             <StyledLink to='/about'>{menuItems[1]}</StyledLink>
-            <StyledLink to='/contacts'>{menuItems[2]}</StyledLink>
+            <StyledLink to='/contact'>{menuItems[2]}</StyledLink>
             <StyledLink to='/blog'>{menuItems[3]}</StyledLink>
         </Menu>
     )

@@ -17,6 +17,7 @@ const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
 
       <Grid item sm={8}>
         <DatePicker
+          autoOk
           value={selectedDate}
           format="dd/MM/yyyy"
           label={isPickupDate ? "Pick-up date" : "Drop-off date"}
@@ -28,7 +29,7 @@ const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
       <Grid item sm={4}>
         <TimePicker
           label="Time"
-          clearable
+          // clearable
           ampm={false}
           value={selectedDate}
           onChange={handleDateChange}

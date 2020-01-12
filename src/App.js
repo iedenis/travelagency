@@ -5,7 +5,7 @@ import SecondSection from './components/Content/SecondSection/SecondSection'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { useTheme } from '@material-ui/core/styles'
 import Main from './components/Content/Main/Main';
-import { Container } from '@material-ui/core';
+import { Container, Paper } from '@material-ui/core';
 //import SideDrawer from './components/Header/LeftDrawer'
 import Footer from './components/Footer/Footer';
 import About from './components/Routes/About/About';
@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import MainSection from './components/Layouts/MainSection';
 import background from './images/background.png'
 import ContactSection from './components/Content/ContactSection/ContactSection';
-
+import Contact from './components/Routes/Contact/Contact'
 const App = () => {
   const StyledContainer = styled(Container)`
   background-size:cover;
@@ -22,6 +22,7 @@ const App = () => {
     &.MuiContainer-root{
      padding:0px;
      background-image: none;
+     background-color: rgb(250, 250, 250);
    }
 }
 `
@@ -54,25 +55,26 @@ const App = () => {
             <Switch>
               <Route exact path='/' component={Main}></Route>
               <Route exact path='/about' component={About} />
+              <Route exact path='/contact' component={Contact}/>
             </Switch>
-
+  
           </MainSection>
-          {/* </div> */}
+            {/* </div> */}
         </ParallaxBack>
-        <ContactSection />
-        <SecondSection />
+          <ContactSection />
+          <SecondSection />
 
       </BrowserRouter>
 
 
-      {/* </div> */}
+        {/* </div> */}
 
-      <Footer />
+        <Footer />
 
     </div>
-  );
-
-
-}
-
-export default App;
+      );
+    
+    
+    }
+    
+    export default App;

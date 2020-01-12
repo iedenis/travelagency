@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTheme, Button, Container, Typography } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 const ContactSection = () => {
     const Section = styled.section`
     display:flex;
@@ -27,9 +28,9 @@ justify-content: space-around;
                         If you have any question please contact us
                     </Text>
                 </Typography>
-
-                <ContactButton variant='contained' color='secondary' >Feel free to contact us</ContactButton>
-
+                <Link to='/contact' style={{ textDecoration: 'none' }}>
+                    <ContactButton variant='contained' color='secondary' >Feel free to contact us</ContactButton>
+                </Link>
             </StyledContainer>
 
 
