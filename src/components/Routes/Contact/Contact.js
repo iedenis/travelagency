@@ -1,11 +1,13 @@
 import React from 'react'
-import { Paper } from '@material-ui/core'
+import { Paper, styled } from '@material-ui/core'
 
 const Contact = () => {
+    const Wrapper = styled(Paper)`
+    `
     return (
-        <Paper>
+        <Wrapper>
             Here will be contact form
-        </Paper>
+        </Wrapper>
     )
 }
 

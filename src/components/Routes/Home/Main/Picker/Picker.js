@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import styled from 'styled-components'
-import { Typography, Box, Button, useTheme } from '@material-ui/core'
+import { Typography, Box, useTheme } from '@material-ui/core'
 import CarPicker from './CarPicker/CarPicker'
 const Picker = () => {
 
     const PickerWrapper = styled.div`
-    max-width: 490px;
+    @media screen and (min-width: ${useTheme().breakpoints.values.sm}px) {
+        max-width: 490px; 
+    }
     @media  (max-width: ${useTheme().breakpoints.values.sm}) {
-    width:100%;
+    min-width:100%;
 }
 `
     const StyledTab = styled(Tab)`

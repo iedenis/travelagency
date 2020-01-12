@@ -1,7 +1,7 @@
 import React from 'react'
 import { AppBar, Toolbar, IconButton, Typography, Button, Hidden, Container } from '@material-ui/core'
 import styled from 'styled-components'
-import logo from '../../../images/logo.png'
+import logo from '../../../../images/logo.png'
 import NavMenu from './NavMenu'
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'

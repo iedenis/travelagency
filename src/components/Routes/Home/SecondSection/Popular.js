@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Typography,Grid } from '@material-ui/core'
-import italyImage from '../../../images/italy.jpeg'
-import germanyImage from '../../../images/photo-1534313314376-a72289b6181e'
-import russiaImage from '../../../images/russia.jpeg'
-import israelImage from '../../../images/israel.jpeg'
-import switzerlandImage from '../../../images/switzerland.jpeg'
-import spainImage from '../../../images/spainImage.jpeg'
+import italyImage from '../../../../images/italy.jpeg'
+import germanyImage from '../../../../images/photo-1534313314376-a72289b6181e'
+import russiaImage from '../../../../images/russia.jpeg'
+import israelImage from '../../../../images/israel.jpeg'
+import switzerlandImage from '../../../../images/switzerland.jpeg'
+import spainImage from '../../../../images/spainImage.jpeg'
 
 import CityCard from './CityCard'
 const Popular = () => {

@@ -36,7 +36,9 @@ const BottomContactsBar = () => {
                 alignItems='center'
                 justify='center'
             >
-                <Hidden lgDown><Grid item style={{ border: '1px solid' }} xl={2} lg={2} /></Hidden>
+                <Hidden lgDown><Grid item
+                //  style={{ border: '1px solid' }} 
+                 xl={2} lg={2} /></Hidden>
 
                 <SocialBar item xs={12} sm={6} md={6} lg={6} xl={6}  >
                     <Typography
@@ -61,7 +63,10 @@ const BottomContactsBar = () => {
                         © 2019 www.we4travel.com
                        </Typography>
                 </TradeMark>
-                <Hidden lgDown><Grid item xl={2} lg={2} style={{ border: '1px solid' }}></Grid></Hidden>
+                <Hidden lgDown><Grid item xl={2} lg={2} 
+                // style={{ border: '1px solid' }}
+                >
+                    </Grid></Hidden>
 
             </Grid>
         </Toolbar >

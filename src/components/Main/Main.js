@@ -1,5 +1,5 @@
 import React from 'react'
-import Picker from '../Content/Main/Picker'
+import Picker from '../Home/Main/Picker'
 
 const Main = () => {
     return (

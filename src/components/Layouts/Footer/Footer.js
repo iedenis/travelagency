@@ -5,7 +5,8 @@ import BottomContactsBar from './BottomContactsBar'
 const Footer = () => {
     const StyledFooter = styled.div`
     /* position:absolute;  */
-    bottom:0; 
+    /* bottom:0;  */
+    margin-top:auto;
     background-color: ${useTheme().palette.primary.main};
     width: 100%;
     overflow: hidden;

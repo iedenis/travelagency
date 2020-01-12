@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, TextField, MenuItem, Checkbox, FormControlLabel, Button } from '@material-ui/core'
+import { Grid, Checkbox, FormControlLabel, Button } from '@material-ui/core'
 import styled from 'styled-components'
 import CarDatePicker from './CarDatePicker'
 import AirportSelect from './AirportSelect'
@@ -61,7 +61,7 @@ const CarPicker = () => {
 
             </Grid>
             <Grid container justify='flex-end'>
-                <Grid style={{marginTop:'20px'}} item>
+                <Grid style={{ marginTop: '20px' }} item>
                     <Button variant='contained' color='secondary'>Search</Button>
                 </Grid>
             </Grid>
