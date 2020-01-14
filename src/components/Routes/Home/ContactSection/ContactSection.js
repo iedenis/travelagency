@@ -7,8 +7,8 @@ const ContactSection = () => {
     display:flex;
     align-items: center;
     height: 150px;
-        width:100%;
-        background-color: ${useTheme().palette.primary.main};
+    width:100%;
+    background-color: ${useTheme().palette.primary.main};
 `
     const ContactButton = styled(Button)`
 

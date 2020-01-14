@@ -40,18 +40,14 @@ const App = () => {
           // WebkitTransform: 'translateZ(-1px) scale(2)',
           // MozTransform:'translateZ(0)'
         }}> */}
-        <ParallaxBack>
+        {/* <ParallaxBack> */}
           <Header />
           <Switch>
             <Route exact path='/' component={Main}></Route>
             <Route exact path='/about' component={About} />
             <Route exact path='/contact' component={Contact} />
           </Switch>
-          {/* <MainSection >
-
-          </MainSection> */}
-          {/* </div> */}
-        </ParallaxBack>
+        {/* </ParallaxBack> */}
       </BrowserRouter>
 
 
