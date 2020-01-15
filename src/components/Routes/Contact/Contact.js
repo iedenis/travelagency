@@ -11,10 +11,10 @@ const Contact = () => {
   `
 
     return (
-        <Container  style={{ height:'WebkitCalc(~"100% - 10px")',backgroundColor: '#fafafa' }}>
+        <Container style={{ flex: 1, backgroundColor: '#fafafa', border: '1px solid' }}>
             <Typography variant='h4'>Contact us</Typography>
 
-            <Grid container justify='space-around' alignItems="flex-end">
+            <Grid container >
                 <Grid item xs={12} sm={6} lg>
                     <ContactForm />
                 </Grid>

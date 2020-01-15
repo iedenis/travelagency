@@ -5,7 +5,12 @@ import LeftDrawer from './LeftDrawer'
 import { Hidden } from '@material-ui/core'
 
 const Header = () => {
-    const menuItems = ['Home', 'About', 'Contacts', 'Blog']
+    const menuItems = [
+        { navItemText: 'Home', link: '/' },
+        { navItemText: 'About', link: '/about' },
+        { navItemText: 'Contact', link: '/contact' },
+        { navItemText: 'Blog', link: '/blog' }
+    ]
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     const toggleDrawer = open => event => {
@@ -20,7 +25,7 @@ const Header = () => {
     return (
         <div>
             <TopToolBar />
-            <NavBar menuItems={menuItems} toggleDrawer={toggleDrawer} /> 
+            <NavBar menuItems={menuItems} toggleDrawer={toggleDrawer} />
             <Hidden smUp>
                 <LeftDrawer menuItems={menuItems} isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} onOpen={handleOpen} />
             </Hidden>
