@@ -9,6 +9,7 @@ import About from './components/Routes/About/About';
 import styled from 'styled-components'
 import background from './images/background.png'
 import Contact from './components/Routes/Contact/Contact'
+import Blog from './components/Routes/Blog/Blog';
 const App = () => {
   //   const StyledContainer = styled(Container)`
   //   background-size:cover;
@@ -46,6 +47,8 @@ const App = () => {
             <Route exact path='/' component={Main}></Route>
             <Route exact path='/about' component={About} />
             <Route exact path='/contact' component={Contact} />
+            <Route exact path='/blog' component={Blog} />
+
           </Switch>
         {/* </ParallaxBack> */}
       </BrowserRouter>

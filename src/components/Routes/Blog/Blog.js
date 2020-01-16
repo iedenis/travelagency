@@ -1,11 +1,11 @@
 import React from 'react'
 
-const About = () => {
+const Blog = () => {
     return (
         <div style={{flex:1}}>
-            ABOUT
+            BLOG
         </div>
     )
 }
 
-export default About
+export default Blog
