@@ -3,7 +3,8 @@ import { Grid, Checkbox, FormControlLabel, Button } from '@material-ui/core'
 import styled from 'styled-components'
 import CarDatePicker from './CarDatePicker'
 import AirportSelect from './AirportSelect'
-
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const today = new Date();
 const Form = styled.form`
 /* width:80%; */
@@ -28,7 +29,7 @@ const CarPicker = () => {
     return (
         <Form noValidate autoComplete="off">
 
-            <Grid container >
+            <Grid container direction='column' spacing={2}>
                 <Grid item xs={12} >
                     <AirportSelect isPickupDate={true} handleAirportSelected={handleAirportSelected} />
                 </Grid>
@@ -36,9 +37,7 @@ const CarPicker = () => {
                     <FormControlLabel
                         control={
                             <Checkbox
-                                // checked={state.checkedB}
                                 onChange={handleCheckChange}
-                                // value="checkedB"
                                 color="primary"
                             />
                         }
@@ -49,17 +48,29 @@ const CarPicker = () => {
                     }
 
                 </Grid>
-                <CarDatePicker
-                    setDates={setDates}
-                    isPickupDate={true}
-                    handleDateAndTime={handleDateAndTime}
-                />
-                <CarDatePicker
-                    isPickupDate={false}
-                    handleDateAndTime={handleDateAndTime}
-                />
+                <Grid container spacing={2} >
+                    <CarDatePicker
+                        setDates={setDates}
+                        isPickupDate={true}
+                        handleDateAndTime={handleDateAndTime}
+                    />
+                </Grid>
+                <Grid container >
+                    <CarDatePicker
+                        isPickupDate={false}
+                        handleDateAndTime={handleDateAndTime}
+                    />
+                </Grid>
+
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No credit card fees</div>
+                    <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No amendment fees</div>
+                    <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> 24/7 phone support</div>
+                </div>
+
 
             </Grid>
+
             <Grid container justify='flex-end'>
                 <Grid style={{ marginTop: '20px' }} item>
                     <Button variant='contained' color='secondary'>Search</Button>

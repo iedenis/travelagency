@@ -88,7 +88,7 @@ const Picker = () => {
 
             <TabPanel value={tabIndex} index={0}>
                 <CarPicker />
-
+                
             </TabPanel>
             <TabPanel value={tabIndex} index={1}>
                 Hotels
