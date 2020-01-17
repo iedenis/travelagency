@@ -7,10 +7,11 @@ import CarPicker from './CarPicker/CarPicker'
 const Picker = () => {
 
     const PickerWrapper = styled.div`
+    /* margin-top: 50px; */
     @media screen and (min-width: ${useTheme().breakpoints.values.sm}px) {
         max-width: 490px; 
     }
-    @media  (max-width: ${useTheme().breakpoints.values.sm}) {
+    @media  (max-width: ${useTheme().breakpoints.values.sm}px) {
     min-width:100%;
 }
 `

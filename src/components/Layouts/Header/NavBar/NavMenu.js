@@ -1,17 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Button, List, ListItem, ListItemText, Typography, useTheme } from '@material-ui/core'
-import Contact from '../../../Routes/Contact/Contact'
+import { List, ListItem, ListItemText, Typography, useTheme } from '@material-ui/core'
 
-const Menu = styled.ul`
-/* max-width: 1280px; */
-display:flex;
-
-li{
-    list-style: none;
-}
-`
 const NavigationMenu = styled(List)`
 display:flex;
 flex-direction: row;

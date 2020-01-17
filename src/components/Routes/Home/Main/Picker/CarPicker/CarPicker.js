@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
-import { Grid, Checkbox, FormControlLabel, Button } from '@material-ui/core'
+import { Grid, Checkbox, FormControlLabel, Button, useTheme } from '@material-ui/core'
 import styled from 'styled-components'
 import CarDatePicker from './CarDatePicker'
 import AirportSelect from './AirportSelect'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const today = new Date();
+
+const SearchButton = styled(Button)`
+@media screen and (max-width: 600px) {
+    width:100%;
+}
+`
 const Form = styled.form`
-/* width:80%; */
 `
 const handleAirportSelected = () => {
     console.log('selected');
@@ -15,7 +20,9 @@ const handleAirportSelected = () => {
 const handleDateAndTime = () => {
     console.log("Handle date");
 }
+
 const CarPicker = () => {
+
     const [dates, setDates] = useState({
         pickUpDate: today,
         dropOffDate: new Date().setDate(today.getDate() + 3),
@@ -24,6 +31,10 @@ const CarPicker = () => {
 
     const handleCheckChange = (event) => {
         setIsDifferentLocation(event.target.checked)
+    }
+
+    const validateForm = () => {
+        console.log('validating the form');
     }
 
     return (
@@ -71,9 +82,9 @@ const CarPicker = () => {
 
             </Grid>
 
-            <Grid container justify='flex-end'>
+            <Grid container justify='center'>
                 <Grid style={{ marginTop: '20px' }} item>
-                    <Button variant='contained' color='secondary'>Search</Button>
+                    <SearchButton onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton>
                 </Grid>
             </Grid>
 

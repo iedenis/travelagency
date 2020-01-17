@@ -1,9 +1,9 @@
 import React from 'react'
-
+import CarCard from '../../Layouts/CarCard/CarCard'
 const Blog = () => {
     return (
-        <div style={{flex:1}}>
-            BLOG
+        <div style={{ flex: 1 }}>
+            <CarCard></CarCard>
         </div>
     )
 }
