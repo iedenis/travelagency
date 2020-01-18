@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 import Header from './components/Layouts/Header/Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Main from './components/Routes/Home/Main/Main';
-//import SideDrawer from './components/Header/LeftDrawer'
+import Main from './components/Routes/Home/MainSection/Main';
 import Footer from './components/Layouts/Footer/Footer';
 import About from './components/Routes/About/About';
 import styled from 'styled-components'
 import background from './images/background.png'
 import Contact from './components/Routes/Contact/Contact'
 import Blog from './components/Routes/Blog/Blog';
+import SearchResults from './components/Routes/SearchResults/SearchResults'
 const App = () => {
   //   const StyledContainer = styled(Container)`
   //   background-size:cover;
@@ -42,26 +42,26 @@ const App = () => {
           // MozTransform:'translateZ(0)'
         }}> */}
         {/* <ParallaxBack> */}
-          <Header />
-          <Switch>
-            <Route exact path='/' component={Main}></Route>
-            <Route exact path='/about' component={About} />
-            <Route exact path='/contact' component={Contact} />
-            <Route exact path='/blog' component={Blog} />
-
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Main}></Route>
+          <Route exact path='/about' component={About} />
+          <Route exact path='/contact' component={Contact} />
+          <Route exact path='/blog' component={Blog} />
+          <Route exact path='/results' component={SearchResults}/>
           </Switch>
         {/* </ParallaxBack> */}
       </BrowserRouter>
 
 
-      {/* </div> */}
+        {/* </div> */}
 
-      <Footer />
+        <Footer />
 
     </div>
-  );
-
-
-}
-
-export default App;
+      );
+    
+    
+    }
+    
+    export default App;

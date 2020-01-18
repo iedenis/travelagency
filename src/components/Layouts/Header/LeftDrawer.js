@@ -17,7 +17,7 @@ const useStyles = makeStyles({
         width: 'auto',
     },
     root: {
-        backgroundColor: 'blue'
+        backgroundColor: 'yellow'
     }
 });
 
@@ -25,6 +25,11 @@ const StyledDrawer = styled(SwipeableDrawer)`
 
 .MuiPaper-root{
     background-color: ${props => props.color};
+}
+.Mui-Selected{
+   
+        /* background-color:${props=>props.buttonColor} */
+
 }
   
 `
@@ -39,31 +44,14 @@ export default function TemporaryDrawer({ toggleDrawer, isOpen, menuItems, onOpe
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <List style={{ color: 'white' }} >
+            <List style={{ color: 'black' }} >
                 {menuItems.map((menuItem, index) => (
                     <ListItem button key={menuItem.navItemText} component={Link} to={menuItem.link}>
                         <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                         <ListItemText primary={menuItem.navItemText} />
                     </ListItem>
                 ))}
-                {/* <ListItem button component={Link} to='/'>
-                    <ListItemIcon><MailIcon></MailIcon></ListItemIcon>
-                    <ListItemText primary='Home' />
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon><MailIcon></MailIcon></ListItemIcon>
-                    <ListItemText primary='About' />
-                </ListItem>
-
-                <ListItem button>
-                    <ListItemIcon><MailIcon></MailIcon></ListItemIcon>
-                    <ListItemText primary='Contacts' />
-                </ListItem>
-
-                <ListItem button>
-                    <ListItemIcon><MailIcon></MailIcon></ListItemIcon>
-                    <ListItemText primary='Blog' />
-                </ListItem> */}
+               
             </List >
         </div >
     );
@@ -71,7 +59,8 @@ export default function TemporaryDrawer({ toggleDrawer, isOpen, menuItems, onOpe
     return (
         <div>
             <StyledDrawer
-                color={useTheme().palette.primary.main}
+                            // color={useTheme().palette.primary.main}
+                color={'#fafafa '}
                 open={isOpen}
                 onClose={toggleDrawer(false)}
                 anchor='left'

@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTheme, Grid, Container, Hidden } from '@material-ui/core'
-import Picker from './Main/Picker/Picker'
+import Picker from './MainSection/Picker/Picker'
 import backgroundImage from '../../../images/background.png'
-import Companies from './Main/Companies'
-import PromoSlider from './Main/PromoSlider'
+import Companies from './MainSection/Companies'
+import PromoSlider from './MainSection/PromoSlider'
 
 const MainSection = () => {
     const StyledSection = styled.section`

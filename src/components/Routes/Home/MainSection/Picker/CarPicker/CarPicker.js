@@ -5,6 +5,7 @@ import CarDatePicker from './CarDatePicker'
 import AirportSelect from './AirportSelect'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 const today = new Date();
 
 const SearchButton = styled(Button)`
@@ -84,7 +85,7 @@ const CarPicker = () => {
 
             <Grid container justify='center'>
                 <Grid style={{ marginTop: '20px' }} item>
-                    <SearchButton onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton>
+                    <Link to='/results'><SearchButton onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton></Link>
                 </Grid>
             </Grid>
 
