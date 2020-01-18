@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme, Grid, Container } from '@material-ui/core'
+import { useTheme, Grid, Container, Hidden } from '@material-ui/core'
 import Picker from './Main/Picker/Picker'
 import backgroundImage from '../../../images/background.png'
 import Companies from './Main/Companies'
+import PromoSlider from './Main/PromoSlider'
 
 const MainSection = () => {
     const StyledSection = styled.section`
@@ -12,7 +13,7 @@ background: linear-gradient(90deg, rgba(185,43,39,1) 0%, rgba(21,101,192,1) 45%)
 /* background: rgb(137,247,254);
 background: linear-gradient(90deg, rgba(137,247,254,1) 0%, rgba(102,166,255,1) 45%); */
      background-image: url(${backgroundImage}); 
-    background-size: cover;
+     background-size: cover;
     /* padding-top: 50px; */
     height: calc(100vh - 94px);
     width: 100%; 
@@ -26,7 +27,7 @@ background: linear-gradient(90deg, rgba(137,247,254,1) 0%, rgba(102,166,255,1) 4
 }
 `
     const StyledContainer = styled(Container)`
-    /* border: 1px solid; */
+     /* border: 5px solid;  */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -40,8 +41,20 @@ background: linear-gradient(90deg, rgba(137,247,254,1) 0%, rgba(102,166,255,1) 4
     return (
         <StyledSection>
             <StyledContainer>
-                <Grid item xs={12} sm={12} lg={5} md={6} xl={5}  >
-                    <Picker />
+                <Grid container >
+                    <Grid container style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+
+                        <Grid item xs={12} sm={12} lg={5} md={6} xl={5}  >
+                            <Picker />
+                        </Grid>
+                        <Hidden mdDown>
+                            <Grid style={{marginLeft:'auto'}}  item xs={12} sm={12} lg={5} md={6} xl={5}  >
+                                <PromoSlider />
+                            </Grid>
+                        </Hidden>
+
+                    </Grid>
+
                 </Grid>
                 <Grid item>
                     <Companies />

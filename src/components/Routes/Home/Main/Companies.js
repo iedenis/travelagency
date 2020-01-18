@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Typography, Divider, Hidden } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import avisLogo from '../../../../images/companies/avis.gif'
 import alamoLogo from '../../../../images/companies/alamo.gif'
 import budgetLogo from '../../../../images/companies/budget.gif'
@@ -38,7 +38,7 @@ const Companies = () => {
             </Hidden>
             <Heading variant='h5'>Companies we work with</Heading> */}
 
-            <Grid container >
+            <Grid container style={{display:'flex', justifyContent:'space-between'}}>
                 {companiesLogo.map(logo => {
                     return <Logo item key={logo}><img src={logo} alt={logo}></img></Logo>
                 })}

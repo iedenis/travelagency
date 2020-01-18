@@ -4,7 +4,6 @@ import { Grid, Toolbar, Typography, Hidden } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTelegram, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { useTheme } from '@material-ui/core'
 const BottomContactsBar = () => {
 
     const SocialBar = styled(Grid)`
