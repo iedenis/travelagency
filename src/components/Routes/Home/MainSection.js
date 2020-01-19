@@ -1,18 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTheme, Grid, Container, Hidden } from '@material-ui/core'
-import Picker from './MainSection/Picker/Picker'
+import Picker from '../../Layouts/Picker/Picker'
 import backgroundImage from '../../../images/background.png'
 import Companies from './MainSection/Companies'
 import PromoSlider from './MainSection/PromoSlider'
-
+import background_2 from '../../../images/assets/background_2.jpg'
 const MainSection = () => {
     const StyledSection = styled.section`
 /* background: rgb(185,43,39);
 background: linear-gradient(90deg, rgba(185,43,39,1) 0%, rgba(21,101,192,1) 45%); */
 /* background: rgb(137,247,254);
 background: linear-gradient(90deg, rgba(137,247,254,1) 0%, rgba(102,166,255,1) 45%); */
-     background-image: url(${backgroundImage}); 
+background-image: url(${background_2});
+     /* background-image: url(${backgroundImage});  */
      background-size: cover;
     /* padding-top: 50px; */
     height: calc(100vh - 94px);
@@ -22,7 +23,6 @@ background: linear-gradient(90deg, rgba(137,247,254,1) 0%, rgba(102,166,255,1) 4
        margin-top:0px;
        height: calc(100vh - 86px);
        background-image: none;
-
    }
 }
 `
@@ -48,7 +48,7 @@ background: linear-gradient(90deg, rgba(137,247,254,1) 0%, rgba(102,166,255,1) 4
                             <Picker />
                         </Grid>
                         <Hidden mdDown>
-                            <Grid style={{marginLeft:'auto'}}  item xs={12} sm={12} lg={5} md={6} xl={5}  >
+                            <Grid style={{ marginLeft: 'auto' }} item xs={12} sm={12} lg={5} md={6} xl={5}  >
                                 <PromoSlider />
                             </Grid>
                         </Hidden>

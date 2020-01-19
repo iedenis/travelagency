@@ -2,12 +2,11 @@ import React from 'react'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import styled from 'styled-components'
-import { Typography, Box, useTheme } from '@material-ui/core'
+import { Typography, Box, useTheme, Paper } from '@material-ui/core'
 import CarPicker from './CarPicker/CarPicker'
 const Picker = () => {
 
-    const PickerWrapper = styled.div`
-    /* margin-top: 50px; */
+    const PickerWrapper = styled(Paper)`
     @media screen and (min-width: ${useTheme().breakpoints.values.sm}px) {
         max-width: 490px; 
     }
@@ -89,16 +88,16 @@ const Picker = () => {
 
             <TabPanel value={tabIndex} index={0}>
                 <CarPicker />
-                
             </TabPanel>
+
             <TabPanel value={tabIndex} index={1}>
                 Hotels
             </TabPanel>
+
             <TabPanel value={tabIndex} index={2}>
                 Other
             </TabPanel>
         </PickerWrapper>
-
     );
 };
 
