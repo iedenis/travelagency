@@ -11,11 +11,11 @@ const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
 
     // })
   }
-  console.log(new Date().setDate((selectedDate.getDate() + 3)));
+  // console.log(new Date().setDate((selectedDate.getDate() + 3)));
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
-      <Grid item sm={8}>
+      <Grid item sm={8} xs={7}>
         <DatePicker
           autoOk
           value={selectedDate}
@@ -26,7 +26,7 @@ const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
         />
 
       </Grid>
-      <Grid item sm={4}>
+      <Grid item sm={4} xs={5}>
         <TimePicker
           label="Time"
           // clearable
@@ -35,6 +35,7 @@ const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
           onChange={handleDateChange}
         />
       </Grid>
+
     </MuiPickersUtilsProvider>
   );
 }

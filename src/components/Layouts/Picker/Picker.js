@@ -8,7 +8,7 @@ const Picker = () => {
 
     const PickerWrapper = styled(Paper)`
     @media screen and (min-width: ${useTheme().breakpoints.values.sm}px) {
-        max-width: 490px; 
+        max-width: 500px; 
     }
     @media  (max-width: ${useTheme().breakpoints.values.sm}px) {
     min-width:100%;

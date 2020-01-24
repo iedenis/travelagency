@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 const today = new Date();
 
 const SearchButton = styled(Button)`
+width: 100%;
 @media screen and (max-width: 600px) {
     width:100%;
 }
@@ -41,11 +42,18 @@ const CarPicker = () => {
     return (
         <Form noValidate autoComplete="off">
 
-            <Grid container direction='column' spacing={2}>
-                <Grid item xs={12} >
+            <Grid container
+                direction='column'
+                spacing={2}
+
+            >
+                <Grid item xs={12}
+
+                >
                     <AirportSelect isPickupDate={true} handleAirportSelected={handleAirportSelected} />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid
+                    item xs={12}>
                     <FormControlLabel
                         control={
                             <Checkbox
@@ -60,14 +68,19 @@ const CarPicker = () => {
                     }
 
                 </Grid>
-                <Grid container spacing={2} >
+                <Grid container
+                    // style={{ border: '1px solid' }}
+
+                    spacing={2} >
                     <CarDatePicker
                         setDates={setDates}
                         isPickupDate={true}
                         handleDateAndTime={handleDateAndTime}
                     />
                 </Grid>
-                <Grid container >
+                <Grid container
+                    spacing={2}
+                >
                     <CarDatePicker
                         isPickupDate={false}
                         handleDateAndTime={handleDateAndTime}
@@ -84,8 +97,8 @@ const CarPicker = () => {
             </Grid>
 
             <Grid container justify='center'>
-                <Grid style={{ marginTop: '20px' }} item>
-                    <Link to='/results'><SearchButton onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton></Link>
+                <Grid xs={12} sm={8} lg={6} style={{ marginTop: '20px' }} item>
+                    <Link style={{ textDecoration: 'none' }} to='/results'><SearchButton onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton></Link>
                 </Grid>
             </Grid>
 
