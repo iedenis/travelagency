@@ -10,6 +10,7 @@ import background from './images/background.png'
 import Contact from './components/Routes/Contact/Contact'
 import Blog from './components/Routes/Blog/Blog';
 import SearchResults from './components/Routes/SearchResults/SearchResults'
+import BackToTopButton from './components/Layouts/BackToTopButton/BackToTopButton';
 const App = () => {
   //   const StyledContainer = styled(Container)`
   //   background-size:cover;
@@ -48,20 +49,21 @@ const App = () => {
           <Route exact path='/about' component={About} />
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/blog' component={Blog} />
-          <Route exact path='/results' component={SearchResults}/>
-          </Switch>
+          <Route exact path='/results' component={SearchResults} />
+        </Switch>
         {/* </ParallaxBack> */}
+        <BackToTopButton />
       </BrowserRouter>
 
 
-        {/* </div> */}
+      {/* </div> */}
 
-        <Footer />
+      <Footer />
 
     </div>
-      );
-    
-    
-    }
-    
-    export default App;
+  );
+
+
+}
+
+export default App;

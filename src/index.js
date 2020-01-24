@@ -16,14 +16,16 @@ const theme = createMuiTheme({
         },
         secondary: {
             main: '#F92222'
-        }
+        },
+        MuiButtonBase: {
+            disableRipple: true
+        },
+
     }
 });
 
 console.log(theme)
 ReactDOM.render(
-   
-
     <MuiThemeProvider theme={theme}>
         <App />
     </MuiThemeProvider>

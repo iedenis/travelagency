@@ -1,6 +1,9 @@
 html {
   height: 100%;
-  overflow: hidden;
+}
+
+.mui-fixed {
+  position: fixed;
 }
 
 body>#root {

@@ -1,0 +1,11 @@
+.MuiButtonBase-root {
+    background-color: #F92222;
+}
+
+.MuiButton-root:hover {
+    background-color: #F92222 !important;
+}
+
+ul>li:hover {
+    background-color: #F92222 !important;
+}

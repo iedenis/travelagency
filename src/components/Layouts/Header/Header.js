@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import NavBar from './NavBar/NavBar'
-import TopToolBar from './TopToolBar'
 import LeftDrawer from './LeftDrawer'
 import { Hidden } from '@material-ui/core'
 
 const Header = () => {
     const menuItems = [
-        { navItemText: 'Home', link: '/' },
-        { navItemText: 'About', link: '/about' },
-        { navItemText: 'Contact', link: '/contact' },
+        { navItemText: 'Language', link: '/' },
+        { navItemText: 'Currency', link: '/' },
+        { navItemText: 'Sign-in', link: '/sign-in' },
         { navItemText: 'Blog', link: '/blog' }
     ]
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -24,7 +23,7 @@ const Header = () => {
     }
     return (
         <div>
-            <TopToolBar />
+            {/* <TopToolBar /> */}
             <NavBar menuItems={menuItems} toggleDrawer={toggleDrawer} />
             <Hidden smUp>
                 <LeftDrawer menuItems={menuItems} isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} onOpen={handleOpen} />

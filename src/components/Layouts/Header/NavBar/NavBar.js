@@ -2,7 +2,7 @@ import React from 'react'
 import { AppBar, Toolbar, IconButton, Typography, Button, Hidden, Container } from '@material-ui/core'
 import styled from 'styled-components'
 import logo from '../../../../images/logo.png'
-import NavMenu from './NavMenu'
+import NavMenu from './NavMenu/NavMenu'
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
 
@@ -33,7 +33,7 @@ const NavBar = ({ toggleDrawer, menuItems }) => {
                             <MenuIcon />
                         </IconButton>
                     </Hidden>
-                    <Hidden smUp><div style={{ flex: 1 }}></div></Hidden>
+                    {/* <Hidden smUp><div style={{ flex: 1 }}></div></Hidden> */}
                     <Link to='/'>
                         <Logo src={logo}></Logo >
                     </Link>
@@ -41,7 +41,7 @@ const NavBar = ({ toggleDrawer, menuItems }) => {
                     <Hidden xsDown>
                         <NavMenu menuItems={menuItems} />
                     </Hidden>
-                    <Hidden smUp><div className="right" style={{ flex: 1 }}></div></Hidden>
+                    {/* <Hidden smUp><div className="right" style={{ flex: 1 }}></div></Hidden> */}
                 </SytledToolbar>
             </Container>
         </StyledAppBar >
