@@ -21,7 +21,7 @@ background-image: url(${background_2});
      @media screen and (max-width: ${useTheme().breakpoints.values.sm}px) {
        padding-top: 0px;
        margin-top:0px;
-       height: calc(100vh - 86px);
+       height: calc(100vh - 55px);
        background-image: none;
    }
 }
@@ -35,6 +35,7 @@ background-image: url(${background_2});
         @media screen and (max-width: 600px) {
             &.MuiContainer-root{
                  padding: 0px;
+                 justify-content:space-between;
             }
 }
 `

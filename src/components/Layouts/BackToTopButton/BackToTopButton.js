@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Fab from '@material-ui/core/Fab'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
-// import "./styles.css";
-
-const DISTANCE = 50;
+const DISTANCE = 100;
 
 const BackToTopButton = () => {
     const [crossed, setCrossed] = useState(false);
@@ -14,8 +15,6 @@ const BackToTopButton = () => {
         return () => window.removeEventListener("scroll", handler);
     }, []);
 
-    console.log(document.getElementById('content'));
-
     function onClick() {
         window.scrollTo({
             top: 0,
@@ -24,13 +23,21 @@ const BackToTopButton = () => {
     }
 
     if (!crossed) {
-        console.log(window.scrollY)
-        console.log('NULL');
         return null;
     } else {
-        console.log("HERE");
         return (
-            <button style={{ border: '5px solid' }} onClick={onClick}>Jump to top</button>
+            <Fab onClick={onClick}
+                style={{
+                    position: 'fixed',
+                    bottom: '5px',
+                    right: '10px',
+                    zIndex: 1
+                }}
+                color="secondary" aria-label="edit">
+                <FontAwesomeIcon
+
+                    icon={faArrowUp} />
+            </Fab>
         );
 
     }
