@@ -1,10 +1,23 @@
 import React, { useState } from 'react'
 import { Grow, Paper, ClickAwayListener, MenuList, Button, Popper, MenuItem } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faEuroSign, faDollarSign, faRubleSign, faShekelSign } from '@fortawesome/free-solid-svg-icons'
+import LanguageIcon from '@material-ui/icons/Language';
+import russianFlag from '../../../../../images/assets/flags/russia.svg'
+import usaFlag from '../../../../../images/assets/flags/usa.svg'
+import israelFlag from '../../../../../images/assets/flags/israel.svg'
 
-const NavMenuItem = ({ navItemText, link, subMenu }) => {
+const Flag = (chosenLanguage) => {
+    const flag = (chosenLanguage.item === 'Русский') ? russianFlag : (chosenLanguage.item === 'English' ? usaFlag : israelFlag)
+    return <img src={flag} alt='flag'
+        style={{ width: '20px' }}
+    ></img>
+}
+const NavMenuItem = ({ navItemText, link, subMenu, type }) => {
     const [open, setOpen] = useState(false);
+    const currencyIcons = [faDollarSign, faEuroSign, faRubleSign, faShekelSign]
+    const [currency, setCurrency] = useState(<FontAwesomeIcon style={{ fontSize: '20px' }} icon={faEuroSign} />)
+    const [language, setLanguage] = useState(<LanguageIcon />)
     // const [anchorEl, setAnchorEl] = useState(null);
 
     const anchorRef = React.useRef(null);
@@ -16,8 +29,14 @@ const NavMenuItem = ({ navItemText, link, subMenu }) => {
     const handleToggle = () => {
         setOpen(prevOpen => !prevOpen);
     };
-    const handleClose = event => {
-        // console.log(anchorRef.current)
+
+    const handleClose = (event, type, item) => {
+        switch (type) {
+            case 'currency': setCurrency(<FontAwesomeIcon style={{ fontSize: '20px' }} icon={currencyIcons[subMenu.indexOf(item)]}></FontAwesomeIcon>); break;
+            case 'language': setLanguage(<Flag item={item} />); break;
+            default: break;
+        }
+
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
@@ -31,9 +50,10 @@ const NavMenuItem = ({ navItemText, link, subMenu }) => {
             setOpen(false);
         }
     }
-    
+
     return (
         <React.Fragment>
+
             <Button
                 color='inherit'
                 ref={anchorRef}
@@ -41,10 +61,12 @@ const NavMenuItem = ({ navItemText, link, subMenu }) => {
                 aria-haspopup="true"
                 onClick={handleToggle}
             >
-                {navItemText}
-                {subMenu !== undefined ? <FontAwesomeIcon style={{marginLeft: '5px'}} icon={faChevronDown} /> : null}
+                {(type === 'currency' || type === 'language') ? (type === 'currency' ? currency : language) : (navItemText)}
+
+                {/* {subMenu !== undefined ? <FontAwesomeIcon style={{marginLeft: '5px'}} icon={faChevronDown} /> : null} */}
 
             </Button>
+
             {subMenu !== undefined ? <Popper
 
                 open={open}
@@ -68,7 +90,7 @@ const NavMenuItem = ({ navItemText, link, subMenu }) => {
                                     id="menu-list-grow"
                                     onKeyDown={handleListKeyDown}
                                 >
-                                    {subMenu.map((item, idx) => <MenuItem key={idx} onClick={handleClose}>{item}</MenuItem>)}
+                                    {subMenu.map((item, idx) => <MenuItem key={idx} onClick={e => handleClose(e, type, item)}>{item}</MenuItem>)}
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>
