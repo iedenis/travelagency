@@ -1,17 +1,22 @@
-import React from 'react'
-import { Grid, Typography, IconButton, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Collapse } from '@material-ui/core'
+import React, { useState, useEffect } from 'react'
+import { Grid, Typography, IconButton, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Collapse, Button, Popper, ClickAwayListener } from '@material-ui/core'
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import styled from 'styled-components';
-import suszuki_alto from '../../../images/cars/suzuki_alto.png'
+
+
 const StyledCard = styled(Card)`
-width:100%;
+max-width: 800px;
+border: 1px solid;
 `
 const CarImage = styled(CardMedia)`
 /* width: 50px;
 height: 50px; */
+.MuiCardMedia-root{
+    display:flex;
+}
 &.MuiCardMedia-media{
     width: 300px;
     height: 200px;
@@ -20,20 +25,53 @@ height: 50px; */
     object-fit: fill;
 }
 `
+const CarFeatures = styled.div`
 
-const CarCard = () => {
+`
+
+const CarCard = ({ car, carClass }) => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [expanded, setExpanded] = useState(false);
+    const [open, setOpen] = useState(Boolean(anchorEl));
+
+    useEffect(() => {
+        console.log(open);
+    }, [open])
+
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
+
+    const handleClick = event => {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
+    };
+
+    const handleClickAway = () => {
+        setOpen(false)
+    };
+    const id = open ? 'simple-popper' : undefined;
+
 
     return (
-        <StyledCard
-        // className={classes.card}
-        >
+        <StyledCard>
             <CardHeader
                 avatar={
-                    <Avatar aria-label="recipe"
-                    // className={classes.avatar}
+                    <Avatar
+                        aria-label="car-model"
+                        onClick={handleClick}
+                        aria-describedby={id}
                     >
-                        M
-            </Avatar>
+                        {carClass}
+                        <ClickAwayListener onClickAway={handleClickAway}>
+
+                            <Popper
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}>
+                                <div>Class mini is a mini class</div>
+                            </Popper>
+                        </ClickAwayListener>
+                    </Avatar>
                 }
                 action={
                     <IconButton aria-label="settings">
@@ -43,12 +81,22 @@ const CarCard = () => {
                 title="Suzuki Alto"
                 subheader="In high demand: 16 booked in the last day"
             />
-            <CarImage
-                //   className={classes.media}
-                component='img'
-                image={suszuki_alto}
-                title="Paella dish"
-            />
+            <div style={{ display: 'flex' }}>
+
+                <CarImage
+                    component='img'
+                    image={car}
+                    title={car}
+                />
+                <CarFeatures>
+                   features
+                </CarFeatures>
+
+            </div>
+
+            <div style={{ display: 'flex' }}>
+            </div>
+
             <div>Features</div>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -57,22 +105,30 @@ const CarCard = () => {
           </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
-                <IconButton
-                    // className={clsx(classes.expand, {
-                    //   [classes.expandOpen]: expanded,
-                    // })}
-                    // onClick={handleExpandClick}
-                    // aria-expanded={expanded}
-                    aria-label="show more"
-                >
-                    <ExpandMoreIcon />
-                </IconButton>
+                <div style={{ display: 'flex' }}>
+
+                    <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                    <IconButton
+                        // className={clsx(classes.expand, {
+                        //   [classes.expandOpen]: expanded,
+                        // })}
+                        onClick={handleExpandClick}
+                        // aria-expanded={expanded}
+                        aria-label="show more"
+                    >
+                        <ExpandMoreIcon />
+                    </IconButton>
+                </div>
+                <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
+
+                    <Button style={{ width: '200px' }} variant='contained' color='secondary'>Book</Button>
+                </div>
+
             </CardActions>
             <Collapse
                 //  in={expanded} 
