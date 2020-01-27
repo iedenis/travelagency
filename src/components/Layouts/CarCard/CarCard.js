@@ -38,7 +38,7 @@ const CarCard = ({
     typeOfGearBox,
     image }) => {
     const [anchorEl, setAnchorEl] = useState(null);
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
     const [open, setOpen] = useState(Boolean(anchorEl));
 
     useEffect(() => {
