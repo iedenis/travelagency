@@ -12,6 +12,7 @@ import Blog from './components/Routes/Blog/Blog';
 import SearchResults from './components/Routes/SearchResults/SearchResults'
 import BackToTopButton from './components/Layouts/BackToTopButton/BackToTopButton';
 import SignIn from './components/Routes/SignIn/SignIn';
+import Order from './components/Routes/SearchResults/Order';
 const App = () => {
   //   const StyledContainer = styled(Container)`
   //   background-size:cover;
@@ -50,7 +51,7 @@ const App = () => {
           <Route exact path='/about' component={About} />
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/blog' component={Blog} />
-          <Route exact path='/results' component={SearchResults} />
+          <Route exact path='/results' component={Order} />
           <Route exact path='/sign-in' component={SignIn}/>
         </Switch>
         {/* </ParallaxBack> */}

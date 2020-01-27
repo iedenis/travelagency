@@ -3,7 +3,7 @@ import CarCard from '../../Layouts/CarCard/CarCard'
 import { Container, Paper, Grid, Divider, useMediaQuery, useTheme } from '@material-ui/core'
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
-import Order from './Order'
+// import Order from './Order'
 import carModels from '../../Layouts/CarCard/carModels/carModels'
 
 const searchResult = [
@@ -39,33 +39,10 @@ const searchResult = [
     }
 ]
 
-const LeftPane = styled(Paper)`
-    max-width: 490px;
-`
 const Results = () => {
-    const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
-
-    const StyledContainer = styled(Container)`
-    padding-top: 50px;
-    backgroundColor: '#f9f9f9' ;
-    margin-top: ${props => props.ismobile ? '0px' : '50px'};
-`
-
+ 
     return (
-        <div style={{ display: 'flex', flex: 1 }}>
-
-            <StyledContainer ismobile={isMobile.toString()}>
-                <Grid container spacing={1} style={{ border: '1px solid' }}>
-
-                    <Grid item lg={5} md={4} >
-                        <LeftPane >
-                            <Picker searchType='cars' />
-                            <Divider />
-                            <Order />
-                        </LeftPane>
-                    </Grid>
-
-                    <Grid item lg={7} md={7}>
+        <React.Fragment>
                         {
                             searchResult.map((car, idx) => {
                                 return <CarCard key={idx}
@@ -81,14 +58,8 @@ const Results = () => {
                             })
                         }
 
-                    </Grid>
-
-                </Grid>
-                {/* <Grid container style={{ border: '1px solid', maxWidth: '780px' }}>
-                </Grid> */}
-            </StyledContainer >
-        </div>
-
+                </React.Fragment>
+               
     )
 }
 
