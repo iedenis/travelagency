@@ -4,9 +4,41 @@ import { Container, Paper, Grid, Divider, useMediaQuery, useTheme } from '@mater
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
 import Order from './Order'
-import Punto from '../.././../images/cars/punto.jpg'
-import suszuki_alto from '../../../images/cars/suzuki_alto.png'
-import Focus from '../../../images/cars/focus.jpg'
+import carModels from '../../Layouts/CarCard/carModels/carModels'
+
+const searchResult = [
+    {
+        carClass: 'Economy',
+        carModel: 'Fiat Punto',
+        numberOfSeats: 5,
+        numberOfLargeBags: 1,
+        numberOfSmallBags: 1,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Manual',
+        image: carModels[1],
+    },
+    {
+        carClass: 'Mini',
+        carModel: 'Hyundai i10',
+        numberOfSeats: 4,
+        numberOfLargeBags: 0,
+        numberOfSmallBags: 2,
+        numberOfDoors: 2,
+        typeOfGearBox: 'Manual',
+        image: carModels[3]
+    },
+    {
+        carClass: 'Economy',
+        carModel: 'Hyundai I20',
+        numberOfSeats: 5,
+        numberOfLargeBags: 1,
+        numberOfSmallBags: 1,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Automatic',
+        image: carModels[4]
+    }
+]
+
 const LeftPane = styled(Paper)`
     max-width: 490px;
 `
@@ -24,7 +56,7 @@ const Results = () => {
 
             <StyledContainer ismobile={isMobile.toString()}>
                 <Grid container spacing={1} style={{ border: '1px solid' }}>
-                        
+
                     <Grid item lg={5} md={4} >
                         <LeftPane >
                             <Picker searchType='cars' />
@@ -34,9 +66,20 @@ const Results = () => {
                     </Grid>
 
                     <Grid item lg={7} md={7}>
-                        <CarCard car={Punto} carClass = 'M' />
-                        <CarCard car ={suszuki_alto} carClass = 'M'/>
-                        <CarCard car={Punto} carClass = 'C' />
+                        {
+                            searchResult.map((car, idx) => {
+                                return <CarCard key={idx}
+                                    carClass={car.carClass}
+                                    carModel={car.carModel}
+                                    numberOfSeats={car.numberOfSeats}
+                                    numberOfLargeBags={car.numberOfLargeBags}
+                                    numberOfSmallBags={car.numberOfSmallBags}
+                                    numberOfDoors={car.numberOfDoors}
+                                    typeOfGearBox={car.typeOfGearBox}
+                                    image={car.image}
+                                />
+                            })
+                        }
 
                     </Grid>
 
