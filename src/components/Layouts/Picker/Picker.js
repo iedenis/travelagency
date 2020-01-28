@@ -66,7 +66,7 @@ const TabsToDisplay = ({ searchType, tabIndex, setTabIndex }) => {
 const Picker = ({ searchType }) => {
     const PickerWrapper = styled(Paper)`
     z-index:1;
-border: 1px solid;
+/* border: 1px solid; */
 @media screen and (min-width: ${useTheme().breakpoints.values.sm}px) {
     max-width: 500px; 
 }

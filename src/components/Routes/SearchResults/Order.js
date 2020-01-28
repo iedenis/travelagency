@@ -28,7 +28,7 @@ const Order = () => {
     const getStepContent = step => {
         switch (step) {
             case 0:
-                return 'Select campaign settings...';
+                return <SearchResults/>
             case 1:
                 return 'What is an ad group anyways?';
             case 2:
@@ -103,7 +103,7 @@ const Order = () => {
                         </div>
                     ) : (
                             <div>
-                                <Typography >{getStepContent(activeStep)}</Typography>
+                                {/* {getStepContent(activeStep)} */}
                                 <div>
                                     <Button disabled={activeStep === 0} onClick={handleBack} >
                                         Back
@@ -147,8 +147,8 @@ const Order = () => {
                     </Grid>
 
                     <Grid item lg={8} md={7}>
-                        <SearchResults />
-
+                        {/* <SearchResults /> */}
+                        {getStepContent(activeStep)}
                     </Grid>
 
                 </Grid>

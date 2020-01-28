@@ -17,9 +17,7 @@ const theme = createMuiTheme({
         secondary: {
             main: '#F92222'
         },
-        MuiButtonBase: {
-            disableRipple: true
-        },
+       
 
     }
 });

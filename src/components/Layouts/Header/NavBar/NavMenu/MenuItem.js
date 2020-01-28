@@ -6,13 +6,13 @@ import LanguageIcon from '@material-ui/icons/Language';
 import russianFlag from '../../../../../images/assets/flags/russia.svg'
 import usaFlag from '../../../../../images/assets/flags/usa.svg'
 import israelFlag from '../../../../../images/assets/flags/israel.svg'
-
 const Flag = (chosenLanguage) => {
     const flag = (chosenLanguage.item === 'Русский') ? russianFlag : (chosenLanguage.item === 'English' ? usaFlag : israelFlag)
     return <img src={flag} alt='flag'
         style={{ width: '20px' }}
     ></img>
 }
+
 const NavMenuItem = ({ navItemText, link, subMenu, type }) => {
     const [open, setOpen] = useState(false);
     const currencyIcons = [faDollarSign, faEuroSign, faRubleSign, faShekelSign]

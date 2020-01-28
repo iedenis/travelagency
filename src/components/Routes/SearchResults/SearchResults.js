@@ -42,7 +42,7 @@ const searchResult = [
 const Results = () => {
  
     return (
-        <React.Fragment>
+        <React.Fragment> 
                         {
                             searchResult.map((car, idx) => {
                                 return <CarCard key={idx}
