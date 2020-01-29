@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Grow, Paper, ClickAwayListener, MenuList, Button, Popper, MenuItem } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEuroSign, faDollarSign, faRubleSign, faShekelSign } from '@fortawesome/free-solid-svg-icons'
@@ -6,6 +6,8 @@ import LanguageIcon from '@material-ui/icons/Language';
 import russianFlag from '../../../../../images/assets/flags/russia.svg'
 import usaFlag from '../../../../../images/assets/flags/usa.svg'
 import israelFlag from '../../../../../images/assets/flags/israel.svg'
+import { CurrencyContext } from '../../../../SharedState/SharedState';
+
 const Flag = (chosenLanguage) => {
     const flag = (chosenLanguage.item === 'Русский') ? russianFlag : (chosenLanguage.item === 'English' ? usaFlag : israelFlag)
     return <img src={flag} alt='flag'
@@ -16,7 +18,8 @@ const Flag = (chosenLanguage) => {
 const NavMenuItem = ({ navItemText, link, subMenu, type }) => {
     const [open, setOpen] = useState(false);
     const currencyIcons = [faDollarSign, faEuroSign, faRubleSign, faShekelSign]
-    const [currency, setCurrency] = useState(<FontAwesomeIcon style={{ fontSize: '20px' }} icon={faEuroSign} />)
+    // const [currency, setCurrency] = useState(<FontAwesomeIcon style={{ fontSize: '20px' }} icon={faEuroSign} />)
+    const { currency, setCurrency } = useContext(CurrencyContext)
     const [language, setLanguage] = useState(<LanguageIcon />)
     // const [anchorEl, setAnchorEl] = useState(null);
 

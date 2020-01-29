@@ -7,7 +7,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import styled from 'styled-components';
 import CarFeatures from './CarFeatures';
 import Policies from './Policies';
-
+import suppliers from '../../../images/suppliers/suppliers'
 const StyledCard = styled(Card)`
 max-width: 800px;
 margin-bottom: 5px;
@@ -27,9 +27,14 @@ height: 50px; */
     object-fit: fill;
 }
 `
-
+const SupplierImage = styled.img`
+    width: 100px;
+    height: 50px;
+`
+console.log(suppliers.supplier)
 
 const CarCard = ({
+    handleBookButtonClicked,
     carClass,
     carModel,
     numberOfSeats,
@@ -37,14 +42,16 @@ const CarCard = ({
     numberOfSmallBags,
     numberOfDoors,
     typeOfGearBox,
-    image }) => {
+    image,
+    supplier
+}) => {
+    
+    const Img = (supplier) =>{
+        return <suppliers.supplier/>
+    }
     const [anchorEl, setAnchorEl] = useState(null);
     const [expanded, setExpanded] = useState(false);
     const [open, setOpen] = useState(Boolean(anchorEl));
-
-    useEffect(() => {
-        console.log(open);
-    }, [open])
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -54,9 +61,6 @@ const CarCard = ({
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
-    const handleClickAway = () => {
-        setOpen(false)
-    };
     const id = open ? 'simple-popper' : undefined;
 
 
@@ -69,28 +73,16 @@ const CarCard = ({
                         onClick={handleClick}
                         aria-describedby={id}
                     >
-                        <Tooltip title={'Class '+ carClass} arrow>
-                           <div>{carClass.slice(0, 1)}</div> 
+                        <Tooltip title={'Class ' + carClass} arrow>
+                            <div>{carClass.slice(0, 1)}</div>
                         </Tooltip>
-                    <ClickAwayListener onClickAway={handleClickAway}>
-
-                        <Popper
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}>
-                            <div>Class mini is a mini class</div>
-                        </Popper>
-                    </ClickAwayListener>
+                       
                     </Avatar>
-        }
-                action={
-                <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                </IconButton>
-            }
-            title={carModel}
-            subheader="In high demand: 16 booked in the last day"
-        />
+                }
+
+                title={carModel}
+                subheader="In high demand: 16 booked in the last day"
+            />
             <div style={{ display: 'flex' }}>
 
                 <CarImage
@@ -107,7 +99,8 @@ const CarCard = ({
                 />
             </div>
             <CardContent>
-
+            {/* <Img></Img> */}
+                <SupplierImage style={{border: '1px solid'}}src={suppliers.supplier} alt={suppliers.supplier}/>
                 <Typography variant="body2" color="textSecondary" component="p">
                     This impressive paella is a perfect party dish and a fun meal to cook together with your
                     guests. Add 1 cup of frozen peas along with the mussels, if you like.
@@ -116,9 +109,9 @@ const CarCard = ({
 
             </CardContent>
             <CardActions disableSpacing>
-                <div style={{ display: 'flex' ,alignItems:'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                        <Button color='primary' variant='text'
+                    <Button color='primary' variant='text'
                         onClick={handleExpandClick}
                         aria-expanded={expanded}
                         aria-label="show more"
@@ -130,7 +123,7 @@ const CarCard = ({
                 </div>
 
                 <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-                    <Button style={{ width: '200px' }} variant='contained' color='secondary'>Book</Button>
+                    <Button onClick={handleBookButtonClicked} style={{ width: '200px' }} variant='contained' color='secondary'>Book</Button>
                 </div>
 
             </CardActions>
@@ -142,7 +135,7 @@ const CarCard = ({
                     <Policies />
                 </CardContent>
             </Collapse>
-            <Divider/>
+            <Divider />
         </StyledCard>
 
     )

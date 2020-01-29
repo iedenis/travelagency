@@ -3,7 +3,9 @@ import { Container, Paper, Grid, Divider, useMediaQuery, useTheme, Stepper, Step
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
 import SearchResults from './SearchResults'
-
+import AddInsurance from './AddInsurance'
+import OrderConfirmation from './OrderConfirmation'
+import PageNotFound from '../404/PageNotFound'
 
 
 const LeftPane = styled(Paper)`
@@ -25,19 +27,22 @@ const Order = () => {
     }
     const steps = getSteps();
 
+    const handleBookButtonClicked = () => {
+        handleNext();
+    }
     const getStepContent = step => {
         switch (step) {
             case 0:
-                return <SearchResults/>
+                return <SearchResults handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
-                return 'What is an ad group anyways?';
+                return <AddInsurance />
             case 2:
-                return 'This is the bit I really care about!';
+                return <OrderConfirmation />;
             default:
-                return 'Unknown step';
+                return <PageNotFound />;
         }
     }
-   
+
     const isStepSkipped = step => {
         return skipped.has(step);
     };
@@ -73,12 +78,12 @@ const Order = () => {
     const totalSteps = () => {
         return steps.length;
     };
-   
+
 
     const handleReset = () => {
         setActiveStep(0);
         setCompleted({});
-      };
+    };
     return (
         <div style={{ display: 'flex', flex: 1 }}>
 

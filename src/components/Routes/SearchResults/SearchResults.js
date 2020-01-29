@@ -1,8 +1,5 @@
 import React from 'react'
 import CarCard from '../../Layouts/CarCard/CarCard'
-import { Container, Paper, Grid, Divider, useMediaQuery, useTheme } from '@material-ui/core'
-import Picker from '../../Layouts/Picker/Picker'
-import styled from 'styled-components'
 // import Order from './Order'
 import carModels from '../../Layouts/CarCard/carModels/carModels'
 
@@ -16,6 +13,7 @@ const searchResult = [
         numberOfDoors: 4,
         typeOfGearBox: 'Manual',
         image: carModels[1],
+        supplier: 'Budget'
     },
     {
         carClass: 'Mini',
@@ -25,7 +23,8 @@ const searchResult = [
         numberOfSmallBags: 2,
         numberOfDoors: 2,
         typeOfGearBox: 'Manual',
-        image: carModels[3]
+        image: carModels[3],
+        supplier: 'Avis'
     },
     {
         carClass: 'Economy',
@@ -35,31 +34,35 @@ const searchResult = [
         numberOfSmallBags: 1,
         numberOfDoors: 4,
         typeOfGearBox: 'Automatic',
-        image: carModels[4]
+        image: carModels[4],
+        supplier: 'Europcar'
     }
 ]
 
-const Results = () => {
- 
-    return (
-        <React.Fragment> 
-                        {
-                            searchResult.map((car, idx) => {
-                                return <CarCard key={idx}
-                                    carClass={car.carClass}
-                                    carModel={car.carModel}
-                                    numberOfSeats={car.numberOfSeats}
-                                    numberOfLargeBags={car.numberOfLargeBags}
-                                    numberOfSmallBags={car.numberOfSmallBags}
-                                    numberOfDoors={car.numberOfDoors}
-                                    typeOfGearBox={car.typeOfGearBox}
-                                    image={car.image}
-                                />
-                            })
-                        }
+const Results = ({ handleBookButtonClicked }) => {
 
-                </React.Fragment>
-               
+    return (
+        <React.Fragment>
+            {
+                searchResult.map((car, idx) => {
+                    return <CarCard
+                        handleBookButtonClicked={handleBookButtonClicked}
+                        key={idx}
+                        carClass={car.carClass}
+                        carModel={car.carModel}
+                        numberOfSeats={car.numberOfSeats}
+                        numberOfLargeBags={car.numberOfLargeBags}
+                        numberOfSmallBags={car.numberOfSmallBags}
+                        numberOfDoors={car.numberOfDoors}
+                        typeOfGearBox={car.typeOfGearBox}
+                        image={car.image}
+                        supplier={car.supplier}
+                    />
+                })
+            }
+
+        </React.Fragment>
+
     )
 }
 

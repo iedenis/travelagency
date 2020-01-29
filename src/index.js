@@ -17,8 +17,14 @@ const theme = createMuiTheme({
         secondary: {
             main: '#F92222'
         },
-       
-
+        
+    },
+    overrides: {
+        MuiTooltip: {
+            tooltip: {
+                fontSize: "1em",
+            }
+        }
     }
 });
 

@@ -1,28 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSnowflake, faSuitcase, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
 import Gearbox from './featureIcons/gearbox.svg'
 import Seats from './featureIcons/seat.svg'
 import Doors from './featureIcons/car-door.svg'
-import { Grid, Tooltip } from '@material-ui/core'
+import { Grid, Tooltip, Typography, useTheme } from '@material-ui/core'
 import styled from 'styled-components'
-
+import { CurrencyContext } from '../../SharedState/SharedState'
 const FeatureIcon = styled.img`
     width: 16px;
     height: 16px;
 `
+
 const FeatureIconFontAwesome = styled(FontAwesomeIcon)`
 font-size: 16px;`
 const ListItem = styled.li`
 opacity: ${props => props.iszero === undefined || props.iszero > 0 ? 1 : 0.3}
 list-style: none;
 `
+const StyledTooltip = styled(Tooltip)`
+    .mui-tooltip{
+        font-size:10px;
+    }
+`
 const CarFeatures = ({ transmissionType, numberOfSeats, numberOfLargeBags, numberOfSmallBags, numberOfDoors }) => {
+    const currency = useContext(CurrencyContext)
     return (
         <Grid
-        //  style={{ border: '1px solid' }} 
-         container >
-            <Grid item>
+            //  style={{ border: '1px solid' }} 
+            container >
+            <Grid item sm>
 
                 <ul>
                     <ListItem><FeatureIconFontAwesome icon={faSnowflake} /> Aircondition</ListItem>
@@ -39,7 +46,7 @@ const CarFeatures = ({ transmissionType, numberOfSeats, numberOfLargeBags, numbe
 
                 </ul>
             </Grid>
-            <Grid item
+            <Grid item sm
             // item style={{ border: '1px solid' }}
             >
                 <ul>
@@ -49,25 +56,12 @@ const CarFeatures = ({ transmissionType, numberOfSeats, numberOfLargeBags, numbe
 
                 </ul>
             </Grid>
-            <Grid item>
-PRICE HERE
-            </Grid>
-            <Grid item>
-
-
+            <Grid item sm style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Typography style={{ justifyContent: 'flex-end', paddingRight: '2rem' }} variant='h5'><span style={{ fontWeight: 'bolder' }}>400 </span>{currency}</Typography>
             </Grid>
 
 
-            <Grid item>
-
-            </Grid>
-            <Grid item>
-            </Grid>
-            <Grid item>
-            </Grid>
-
-
-        </Grid>
+        </Grid >
 
 
     )
