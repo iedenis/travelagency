@@ -88,16 +88,18 @@ const Order = () => {
         <div style={{ display: 'flex', flex: 1 }}>
 
             <StyledContainer ismobile={isMobile.toString()}>
+                <Grid container>
+                    <Stepper nonLinear activeStep={activeStep}>
+                        {steps.map((label, index) => (
+                            <Step key={label}>
+                                <StepButton onClick={handleStep(index)} completed={completed[index]}>
+                                    {label}
+                                </StepButton>
+                            </Step>
+                        ))}
+                    </Stepper>
+                </Grid>
 
-                <Stepper nonLinear activeStep={activeStep}>
-                    {steps.map((label, index) => (
-                        <Step key={label}>
-                            <StepButton onClick={handleStep(index)} completed={completed[index]}>
-                                {label}
-                            </StepButton>
-                        </Step>
-                    ))}
-                </Stepper>
                 <div>
                     {allStepsCompleted() ? (
                         <div>
