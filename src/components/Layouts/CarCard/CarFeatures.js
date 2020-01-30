@@ -29,7 +29,7 @@ const CarFeatures = ({ transmissionType, numberOfSeats, numberOfLargeBags, numbe
         <Grid
             //  style={{ border: '1px solid' }} 
             container >
-            <Grid item sm>
+            <Grid item lg={5}>
 
                 <ul>
                     <ListItem><FeatureIconFontAwesome icon={faSnowflake} /> Aircondition</ListItem>
@@ -46,7 +46,7 @@ const CarFeatures = ({ transmissionType, numberOfSeats, numberOfLargeBags, numbe
 
                 </ul>
             </Grid>
-            <Grid item sm
+            <Grid item lg={5}
             // item style={{ border: '1px solid' }}
             >
                 <ul>
@@ -56,8 +56,8 @@ const CarFeatures = ({ transmissionType, numberOfSeats, numberOfLargeBags, numbe
 
                 </ul>
             </Grid>
-            <Grid item sm style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Typography style={{ justifyContent: 'flex-end', paddingRight: '2rem' }} variant='h5'><span style={{ fontWeight: 'bolder' }}>400 </span>{currency}</Typography>
+            <Grid item sm style={{paddingTop:'8px', paddingRight:'16px', display: 'flex', justifyContent: 'flex-end' }}>
+                <Typography style={{ justifyContent: 'flex-end'}} variant='h5'><span style={{ fontWeight: 'bolder' }}>400 </span>{currency}</Typography>
             </Grid>
 
 

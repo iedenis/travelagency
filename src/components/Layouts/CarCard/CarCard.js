@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import CarFeatures from './CarFeatures';
 import Policies from './Policies';
 import suppliers from '../../../images/suppliers/suppliers'
+import Avis from '../../../images/suppliers/avis.svg'
 const StyledCard = styled(Card)`
 max-width: 800px;
 margin-bottom: 5px;
@@ -28,10 +29,9 @@ height: 50px; */
 }
 `
 const SupplierImage = styled.img`
-    width: 100px;
-    height: 50px;
+    width: 60px;
+    height: 30px;
 `
-console.log(suppliers.supplier)
 
 const CarCard = ({
     handleBookButtonClicked,
@@ -45,10 +45,8 @@ const CarCard = ({
     image,
     supplier
 }) => {
-    
-    const Img = (supplier) =>{
-        return <suppliers.supplier/>
-    }
+
+    const supplierImagePath = suppliers[supplier]
     const [anchorEl, setAnchorEl] = useState(null);
     const [expanded, setExpanded] = useState(false);
     const [open, setOpen] = useState(Boolean(anchorEl));
@@ -76,7 +74,7 @@ const CarCard = ({
                         <Tooltip title={'Class ' + carClass} arrow>
                             <div>{carClass.slice(0, 1)}</div>
                         </Tooltip>
-                       
+
                     </Avatar>
                 }
 
@@ -99,8 +97,9 @@ const CarCard = ({
                 />
             </div>
             <CardContent>
-            {/* <Img></Img> */}
-                <SupplierImage style={{border: '1px solid'}}src={suppliers.supplier} alt={suppliers.supplier}/>
+              <Tooltip title={supplier} arrow>
+              <SupplierImage  src={supplierImagePath} alt={suppliers.supplier} />
+                  </Tooltip>  
                 <Typography variant="body2" color="textSecondary" component="p">
                     This impressive paella is a perfect party dish and a fun meal to cook together with your
                     guests. Add 1 cup of frozen peas along with the mussels, if you like.

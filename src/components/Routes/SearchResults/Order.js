@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Paper, Grid, Divider, useMediaQuery, useTheme, Stepper, Step, StepLabel, Typography, StepButton, Button } from '@material-ui/core'
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
@@ -6,17 +6,62 @@ import SearchResults from './SearchResults'
 import AddInsurance from './AddInsurance'
 import OrderConfirmation from './OrderConfirmation'
 import PageNotFound from '../404/PageNotFound'
+import Filters from './Filters'
+import carModels from '../../Layouts/CarCard/carModels/carModels'
 
 
 const LeftPane = styled(Paper)`
     max-width: 490px;
 `
-const Order = () => {
-    const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
-    const [activeStep, setActiveStep] = React.useState(0);
-    const [skipped, setSkipped] = React.useState(new Set());
-    const [completed, setCompleted] = React.useState({});
 
+const Order = () => {
+    const [cars, setCars] = useState([
+        {
+            carClass: 'Economy',
+            carModel: 'Fiat Punto',
+            numberOfSeats: 5,
+            numberOfLargeBags: 1,
+            numberOfSmallBags: 1,
+            numberOfDoors: 4,
+            typeOfGearBox: 'Manual',
+            image: carModels[1],
+            supplier: 'Budget'
+        },
+        {
+            carClass: 'Mini',
+            carModel: 'Hyundai i10',
+            numberOfSeats: 4,
+            numberOfLargeBags: 0,
+            numberOfSmallBags: 2,
+            numberOfDoors: 2,
+            typeOfGearBox: 'Manual',
+            image: carModels[3],
+            supplier: 'Avis'
+        },
+        {
+            carClass: 'Economy',
+            carModel: 'Hyundai I20',
+            numberOfSeats: 5,
+            numberOfLargeBags: 1,
+            numberOfSmallBags: 1,
+            numberOfDoors: 4,
+            typeOfGearBox: 'Automatic',
+            image: carModels[4],
+            supplier: 'Europcar'
+        }
+    ])
+    let suppliers = [];
+    useEffect(() => {
+        for (let i = 0; i < cars.length; i++) {
+            if (!suppliers.includes(cars[i].supplier)) suppliers.push(cars[i].supplier)
+        }
+    }, [])
+    const [filteredCars, setFilteredCars] = useState(cars)
+    const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
+    const [activeStep, setActiveStep] = useState(0);
+    const [skipped, setSkipped] = useState(new Set());
+    const [completed, setCompleted] = useState({});
+    let filterOptions;
     const StyledContainer = styled(Container)`
     padding-top: 50px;
     backgroundColor: '#f9f9f9' ;
@@ -30,12 +75,17 @@ const Order = () => {
     const handleBookButtonClicked = () => {
         handleNext();
     }
+    const handleFilter = () => {
+        console.log("CLICKED");
+    }
+
+
     const getStepContent = step => {
         switch (step) {
             case 0:
-                return <SearchResults handleBookButtonClicked={handleBookButtonClicked} />;
+                return <SearchResults searchResult={cars} filterOptions={filterOptions} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
-                return <AddInsurance />
+                return <AddInsurance handleNext={handleNext} handleBack={handleBack} />
             case 2:
                 return <OrderConfirmation />;
             default:
@@ -84,20 +134,25 @@ const Order = () => {
         setActiveStep(0);
         setCompleted({});
     };
+    console.log(suppliers);
     return (
         <div style={{ display: 'flex', flex: 1 }}>
 
             <StyledContainer ismobile={isMobile.toString()}>
                 <Grid container>
-                    <Stepper nonLinear activeStep={activeStep}>
-                        {steps.map((label, index) => (
-                            <Step key={label}>
-                                <StepButton onClick={handleStep(index)} completed={completed[index]}>
-                                    {label}
-                                </StepButton>
-                            </Step>
-                        ))}
-                    </Stepper>
+                    <Grid item sm>
+
+                        <Stepper nonLinear activeStep={activeStep}>
+                            {steps.map((label, index) => (
+                                <Step key={label}>
+                                    <StepButton onClick={handleStep(index)} completed={completed[index]}>
+                                        {label}
+                                    </StepButton>
+                                </Step>
+                            ))}
+                        </Stepper>
+                    </Grid>
+
                 </Grid>
 
                 <div>
@@ -110,20 +165,19 @@ const Order = () => {
                         </div>
                     ) : (
                             <div>
-                                {/* {getStepContent(activeStep)} */}
                                 <div>
-                                    <Button disabled={activeStep === 0} onClick={handleBack} >
+                                    {/* <Button disabled={activeStep === 0} onClick={handleBack} >
                                         Back
-              </Button>
-                                    <Button
+              </Button> */}
+                                    {/* <Button
                                         variant="contained"
                                         color="primary"
                                         onClick={handleNext}
 
                                     >
                                         Next
-              </Button>
-                                    {activeStep !== steps.length &&
+              </Button> */}
+                                    {/* {activeStep !== steps.length &&
                                         (completed[activeStep] ? (
                                             <Typography variant="caption" >
                                                 Step {activeStep + 1} already completed
@@ -132,7 +186,7 @@ const Order = () => {
                                                 <Button variant="contained" color="primary" onClick={handleComplete}>
                                                     {completedSteps() === totalSteps() - 1 ? 'Finish' : 'Complete Step'}
                                                 </Button>
-                                            ))}
+                                            ))} */}
                                 </div>
                             </div>
                         )}
@@ -149,7 +203,7 @@ const Order = () => {
                         <LeftPane >
                             <Picker searchType='cars' />
                             <Divider />
-
+                            <Filters suppliers={suppliers} fetchedCars={{ cars, setCars }} handleFilter={handleFilter} />
                         </LeftPane>
                     </Grid>
 
