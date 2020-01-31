@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Checkbox, FormControlLabel, Button, useTheme } from '@material-ui/core'
+import { Grid, Checkbox, FormControlLabel, Button, useTheme, TextField } from '@material-ui/core'
 import styled from 'styled-components'
 import CarDatePicker from './CarDatePicker'
 import AirportSelect from './AirportSelect'
@@ -87,12 +87,29 @@ const CarPicker = () => {
                         handleDateAndTime={handleDateAndTime}
                     />
                 </Grid>
+                <Grid container justify='space-between' alignItems="center"  >
+                    <Grid item sm={8} lg={8} xs={7}>
 
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No credit card fees</div>
-                    <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No amendment fees</div>
-                    <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> 24/7 phone support</div>
-                </div>
+                        <div  >
+                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No credit card fees</div>
+                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No amendment fees</div>
+                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> 24/7 phone support</div>
+                        </div>
+                    </Grid>
+                    <Grid item justify='flex-end' sm={4} lg={4} xs={5}>
+                    
+                    <TextField
+                    style={ {float:'right', maxWidth: '143px'}}
+                            id="standard-number"
+                            label="Your age"
+                            type="number"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                    </Grid>
+                </Grid>
+
 
 
             </Grid>

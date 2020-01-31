@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Paper, Grid, Divider, useMediaQuery, useTheme, Stepper, Step, StepLabel, Typography, StepButton, Button } from '@material-ui/core'
+import { Container, Paper, Grid, Divider, useMediaQuery, useTheme, Stepper, Step, StepLabel, Typography, StepButton, Button, Hidden } from '@material-ui/core'
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
 import SearchResults from './SearchResults'
@@ -55,7 +55,7 @@ const Order = () => {
         for (let i = 0; i < cars.length; i++) {
             if (!suppliers.includes(cars[i].supplier)) suppliers.push(cars[i].supplier)
         }
-    }, [])
+    }, [cars, suppliers])
     const [filteredCars, setFilteredCars] = useState(cars)
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
     const [activeStep, setActiveStep] = useState(0);
@@ -75,15 +75,15 @@ const Order = () => {
     const handleBookButtonClicked = () => {
         handleNext();
     }
-    const handleFilter = () => {
-        console.log("CLICKED");
+    const handleFilter = event => {
+        console.log(event);
     }
 
 
     const getStepContent = step => {
         switch (step) {
             case 0:
-                return <SearchResults searchResult={cars} filterOptions={filterOptions} handleBookButtonClicked={handleBookButtonClicked} />;
+                return <SearchResults searchResult={filteredCars} filterOptions={filterOptions} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
                 return <AddInsurance handleNext={handleNext} handleBack={handleBack} />
             case 2:
@@ -134,7 +134,7 @@ const Order = () => {
         setActiveStep(0);
         setCompleted({});
     };
-    console.log(suppliers);
+    // console.log(suppliers);
     return (
         <div style={{ display: 'flex', flex: 1 }}>
 
@@ -201,9 +201,12 @@ const Order = () => {
 
                     <Grid item lg={4} md={4} >
                         <LeftPane >
-                            <Picker searchType='cars' />
+                            <Hidden smDown>
+                                <Picker searchType='cars' />
+                            </Hidden>
+
                             <Divider />
-                            <Filters suppliers={suppliers} fetchedCars={{ cars, setCars }} handleFilter={handleFilter} />
+                            <Filters suppliers={suppliers}  handleFilter={handleFilter} />
                         </LeftPane>
                     </Grid>
 

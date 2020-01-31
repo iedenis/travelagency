@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme, Grid } from '@material-ui/core'
+import { useTheme, Grid, Divider } from '@material-ui/core'
 import BottomContactsBar from './BottomContactsBar'
+import QuickLinks from './QuickLinks'
 const Footer = () => {
     const StyledFooter = styled.div`
     /* margin-top:auto; */
@@ -9,13 +10,18 @@ const Footer = () => {
     width: 100%;
     overflow: hidden;
     `
+    const StyledDivider = styled(Divider)`
+    &.MuiDivider-root{
+        background-color:rgba(255, 255, 255, 0.2)
+
+    }
+    `
     return (
         <StyledFooter>
-            <Grid container >
-                {/* <Grid item style={{ borderBottom: '1px solid' }}>
-                    HELLO
-                </Grid> */}
-                    <BottomContactsBar />
+            <Grid container direction='column' >
+                <QuickLinks />
+                <StyledDivider  />
+                <BottomContactsBar />
 
             </Grid>
         </StyledFooter>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Grid, Toolbar, Typography, Hidden } from '@material-ui/core'
+import { Grid, Toolbar, Typography, Hidden, useTheme } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTelegram, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -27,8 +27,11 @@ const BottomContactsBar = () => {
          text-align:center;
      }
     `
+    const StyledToolbar = styled(Toolbar)`
+        background-color: ${useTheme().palette.primary.main};
+    `
     return (
-        <Toolbar style={{ width: '100%' }}>
+        <StyledToolbar style={{ width: '100%' }}>
             <Grid
                 container
                 // justify='space-between'
@@ -36,8 +39,8 @@ const BottomContactsBar = () => {
                 justify='center'
             >
                 <Hidden lgDown><Grid item
-                //  style={{ border: '1px solid' }} 
-                 xl={2} lg={2} /></Hidden>
+                    //  style={{ border: '1px solid' }} 
+                    xl={2} lg={2} /></Hidden>
 
                 <SocialBar item xs={12} sm={6} md={6} lg={6} xl={6}  >
                     <Typography
@@ -62,13 +65,13 @@ const BottomContactsBar = () => {
                         © 2019 www.we4travel.com
                        </Typography>
                 </TradeMark>
-                <Hidden lgDown><Grid item xl={2} lg={2} 
+                <Hidden lgDown><Grid item xl={2} lg={2}
                 // style={{ border: '1px solid' }}
                 >
-                    </Grid></Hidden>
+                </Grid></Hidden>
 
             </Grid>
-        </Toolbar >
+        </StyledToolbar >
 
     )
 }

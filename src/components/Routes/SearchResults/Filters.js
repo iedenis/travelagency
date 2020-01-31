@@ -3,9 +3,9 @@ import { Paper, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPane
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useEffect } from 'react';
 
-const Filters = ({ fetchedCars: { cars, setCars } }) => {
+const Filters = ({ suppliers }) => {
     const [state, setState] = useState({
-        suppliers: [],
+        suppliers: suppliers,
         carClass: '',
         numberOfSeats: 0,
         numberOfLargeBags: [],
@@ -13,32 +13,44 @@ const Filters = ({ fetchedCars: { cars, setCars } }) => {
         numberOfDoors: 0,
         typeOfGearBox: ['Automatic', 'Manual']
     })
+    const [suppliersList, setSuppliersList] = useState([])
+    const [isChecked, setIsChecked] = useState({
+
+    })
+    useEffect(() => {
+        setSuppliersList(suppliers)
+        setIsChecked(suppliersList.map(supplier => { return { [supplier]: false } }))
+        console.log(isChecked)
+    }, [suppliers])
+    useEffect(() => {
+        console.log(isChecked);
+    }, [isChecked])
     // let suppliers = []
     // let numberOfLargeBags = []
-    useEffect(() => {
-        for (let i = 0; i < cars.length; i++) {
-            if (!state.suppliers.includes(cars[i].supplier)) {
-                const temp = state.suppliers.push(cars[i].supplier)
-                setState(prevState => { return { ...prevState, temp } })
-            }
+    // useEffect(() => {
+    //     for (let i = 0; i < cars.length; i++) {
+    //         if (!state.suppliers.includes(cars[i].supplier)) {
+    //             const temp = state.suppliers.push(cars[i].supplier)
+    //             setState(prevState => { return { ...prevState, temp } })
+    //         }
+    //         if (!state.numberOfLargeBags.includes(cars[i].numberOfLargeBags)) state.numberOfLargeBags.push(cars[i].numberOfLargeBags)
 
-            if (!state.numberOfLargeBags.includes(cars[i].numberOfLargeBags)) state.numberOfLargeBags.push(cars[i].numberOfLargeBags)
-        }
-    }, [])
+    //     }
+    // }, [])
 
     // let filters = cars.map(car => { return { supplier: car.supplier, typeOfGearBox: car.typeOfGearBox } })
-    console.log(state.numberOfLargeBags)
-    const handleFilter = (supplier) => {
-        console.log("clicked");
+    const handleFilter = (label) => {
+        console.log(label);
         // cars.filter()
     }
     const CheckBoxFilter = ({ label }) => {
+
         return <FormControlLabel
             control={
                 <Checkbox
-                    //checked={state.checkedB}
-                    onChange={() => handleFilter('checkedB')}
-                    value="checkedB"
+                    checked={isChecked[label]}
+                    onChange={() => handleFilter(label)}
+                    // value={label}
                     color="primary"
                 />
             }
@@ -58,7 +70,7 @@ const Filters = ({ fetchedCars: { cars, setCars } }) => {
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
 
-                    {state.suppliers.map(supplier => {
+                    {suppliersList.map(supplier => {
                         return <CheckBoxFilter key={supplier} label={supplier} />
                     })}
                 </ExpansionPanelDetails>

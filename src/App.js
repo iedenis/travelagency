@@ -52,9 +52,10 @@ const App = () => {
           <Route component={PageNotFound} />
         </Switch>
         <BackToTopButton />
+        <Footer />
+
       </BrowserRouter>
 
-      <Footer />
 
     </div>
   );
