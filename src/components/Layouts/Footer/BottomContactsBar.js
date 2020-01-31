@@ -47,9 +47,10 @@ const BottomContactsBar = () => {
                         variant='caption'
                         style={{ color: '#fff', marginRight: '1rem', opacity: 0.7 }}
                     >
-                        <a href="mailto:contact@we4travel.com" rel="noopener noreferrer" target="_blank">   <SocialIcon icon={faEnvelope} /></a>
-                        contact@we4travel.com
-                       </Typography>
+                        <a style={{textDecoration: 'none', color: '#fafafa'}} href="mailto:contact@we4travel.com" rel="noopener noreferrer" target="_blank">   <SocialIcon icon={faEnvelope} />
+                            contact@we4travel.com
+                        </a>
+                    </Typography>
                     <a href="https://facebook.com" rel="noopener noreferrer" target="_blank"> <SocialIcon icon={faFacebook} /></a>
                     <a href="https://t.me/Holylandcars_bot" rel="noopener noreferrer" target="_blank"><SocialIcon icon={faTelegram} /></a>
                 </SocialBar>
@@ -62,7 +63,7 @@ const BottomContactsBar = () => {
                         style={{ color: '#fff', opacity: 0.7 }}
 
                     >
-                        © 2019 www.we4travel.com
+                        © 2020 www.we4travel.com
                        </Typography>
                 </TradeMark>
                 <Hidden lgDown><Grid item xl={2} lg={2}

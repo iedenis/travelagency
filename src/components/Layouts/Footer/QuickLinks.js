@@ -3,13 +3,10 @@ import { Typography, List, ListItem, Grid, Divider, Container } from '@material-
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 const StyledLink = styled(Link)`
-
     text-decoration: none;
         color: 'yellow';
      opacity: 0.7;
-:hover{
-    background-color: "white"
-}
+
 `
 const LinkColor = styled.span`
 color: #fafafa;
@@ -33,18 +30,16 @@ const QuickLinks = () => {
             <Grid container alignContent='flex-start'>
                 <Grid item style={{ padding: '16px' }}>
 
-                    <Typography variant='body1' >
-                        <Typography style={{ color: '#fafafa', opacity: 0.7 }} >Help links</Typography>
+                        <Typography style={{ color: '#fafafa', opacity: 0.7, textAlign: 'center' }} >Help links</Typography>
                         <StyledDivider />
                         <List dense>
                             <ListItem ><StyledLink to='/about'><LinkColor style={{ color: 'white' }}>About</LinkColor></StyledLink></ListItem>
                             <ListItem><StyledLink to='/contact'><LinkColor>Contact</LinkColor></StyledLink></ListItem>
 
                         </List>
-                    </Typography>
                 </Grid>
                 <Grid item style={{ padding: '16px' }} >
-                    <Typography style={{ color: '#fafafa', opacity: 0.7 }} >Car Rental Companies</Typography>
+                    <Typography style={{ color: '#fafafa', opacity: 0.7, textAlign:'center' }} >Car Rental Companies</Typography>
                     <StyledDivider />
                     <Grid container>
                         <Grid item>
@@ -73,15 +68,13 @@ const QuickLinks = () => {
                 </Grid>
                 <Grid item style={{ padding: '16px' }}>
 
-                    <Typography variant='body1' >
-                        <Typography style={{ color: '#fafafa', opacity: 0.7 }} >Popular destinations</Typography>
+                        <Typography style={{ color: '#fafafa', opacity: 0.7, textAlign: 'center' }} >Popular destinations</Typography>
                         <StyledDivider />
                         <List dense>
                             <ListItem ><StyledLink to='/countries/germany'><LinkColor style={{ color: 'white' }}>Germany</LinkColor></StyledLink></ListItem>
                             <ListItem><StyledLink to='/countries/italy'><LinkColor>Italy</LinkColor></StyledLink></ListItem>
 
                         </List>
-                    </Typography>
                 </Grid>
             </Grid>
         </Container>

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useTheme, Grid, Divider } from '@material-ui/core'
 import BottomContactsBar from './BottomContactsBar'
 import QuickLinks from './QuickLinks'
+import Links from './Links'
 const Footer = () => {
     const StyledFooter = styled.div`
     /* margin-top:auto; */
@@ -12,15 +13,17 @@ const Footer = () => {
     `
     const StyledDivider = styled(Divider)`
     &.MuiDivider-root{
-        background-color:rgba(255, 255, 255, 0.2)
-
+        background-color:rgba(255, 255, 255, 0.2);
+        
     }
     `
+    
     return (
         <StyledFooter>
             <Grid container direction='column' >
                 <QuickLinks />
-                <StyledDivider  />
+                <StyledDivider />
+                <Links/>
                 <BottomContactsBar />
 
             </Grid>
