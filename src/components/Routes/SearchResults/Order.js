@@ -10,11 +10,13 @@ import Filters from './Filters'
 import carModels from '../../Layouts/CarCard/carModels/carModels'
 
 
-const LeftPane = styled(Paper)`
+const LeftPane = styled.div`
 display:flex;
 flex: 1;
 flex-direction: column;
     max-width: 490px;
+    height: 100%;
+
 `
 
 const Order = () => {

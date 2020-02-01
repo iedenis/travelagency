@@ -57,7 +57,7 @@ const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => 
         />
     }
     return (
-        <Paper style={{ height: '400px' }}>
+        <Paper style={{ height: '100%' }}>
             <ExpansionPanel defaultExpanded>
 
                 <ExpansionPanelSummary
