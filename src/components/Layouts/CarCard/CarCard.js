@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import CarFeatures from './CarFeatures';
 import Policies from './Policies';
 import suppliers from '../../../images/suppliers/suppliers'
-import Avis from '../../../images/suppliers/avis.svg'
 const StyledCard = styled(Card)`
 max-width: 800px;
 margin-bottom: 5px;
@@ -32,6 +31,12 @@ const SupplierImage = styled.img`
     width: 60px;
     height: 30px;
 `
+const StyledTitle=styled(CardHeader)`
+    .MuiCardHeader-title{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    `
 
 const CarCard = ({
     handleBookButtonClicked,
@@ -59,12 +64,13 @@ const CarCard = ({
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
+    
     const id = open ? 'simple-popper' : undefined;
 
 
     return (
         <StyledCard>
-            <CardHeader
+            <StyledTitle
                 avatar={
                     <Avatar
                         aria-label="car-model"
@@ -79,7 +85,7 @@ const CarCard = ({
                 }
 
                 title={carModel}
-                subheader="In high demand: 16 booked in the last day"
+                subheader="or similiar"
             />
             <div style={{ display: 'flex' }}>
 

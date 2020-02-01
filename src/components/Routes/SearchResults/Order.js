@@ -11,6 +11,9 @@ import carModels from '../../Layouts/CarCard/carModels/carModels'
 
 
 const LeftPane = styled(Paper)`
+display:flex;
+flex: 1;
+flex-direction: column;
     max-width: 490px;
 `
 
@@ -24,7 +27,8 @@ const Order = () => {
             numberOfSmallBags: 1,
             numberOfDoors: 4,
             typeOfGearBox: 'Manual',
-            image: carModels[1],
+            mileage: 'Unlimited',
+            image: carModels.FiatPunto,
             supplier: 'Budget'
         },
         {
@@ -35,7 +39,8 @@ const Order = () => {
             numberOfSmallBags: 2,
             numberOfDoors: 2,
             typeOfGearBox: 'Manual',
-            image: carModels[3],
+            mileage: 'Unlimited',
+            image: carModels.Hyundai_i10,
             supplier: 'Avis'
         },
         {
@@ -46,9 +51,59 @@ const Order = () => {
             numberOfSmallBags: 1,
             numberOfDoors: 4,
             typeOfGearBox: 'Automatic',
-            image: carModels[4],
+            mileage: 'Limited',
+            image: carModels.Hyundai_i20,
             supplier: 'Europcar'
-        }
+        },
+        {
+            carClass: 'Economy',
+            carModel: 'Nissan Micra',
+            numberOfSeats: 5,
+            numberOfLargeBags: 1,
+            numberOfSmallBags: 1,
+            numberOfDoors: 4,
+            typeOfGearBox: 'Automatic',
+            mileage: 'Limited',
+            image: carModels.Nissan_micra,
+            supplier: 'Dollar'
+        },
+        {
+            carClass: 'Mini',
+            carModel: 'Chevrolet Spark',
+            numberOfSeats: 4,
+            numberOfLargeBags: 0,
+            numberOfSmallBags: 2,
+            numberOfDoors: 4,
+            typeOfGearBox: 'Manual',
+            mileage: 'Unlimited',
+            image: carModels.Chevrolet_spark,
+            supplier: 'Thrifty'
+        },
+        {
+            carClass: 'Compact',
+            carModel: 'Subaru Impresa',
+            numberOfSeats: 5,
+            numberOfLargeBags: 2,
+            numberOfSmallBags: 0,
+            numberOfDoors: 4,
+            typeOfGearBox: 'Automatic',
+            mileage: 'Unlimited',
+            image: carModels.Subaru_impresa,
+            supplier: 'Thrifty'
+        },
+        {
+            carClass: 'SUV',
+            carModel: 'Hyundai Tucson',
+            numberOfSeats: 5,
+            numberOfLargeBags: 3,
+            numberOfSmallBags: 0,
+            numberOfDoors: 4,
+            typeOfGearBox: 'Automatic',
+            mileage: 'Limited',
+            image: carModels.Hyundai_tucson,
+            supplier: 'Budget'
+        },
+
     ])
     let suppliers = [];
     useEffect(() => {
@@ -136,7 +191,7 @@ const Order = () => {
     };
     // console.log(suppliers);
     return (
-        <div style={{ display: 'flex', flex: 1 }}>
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
 
             <StyledContainer ismobile={isMobile.toString()}>
                 <Grid container>
@@ -197,7 +252,7 @@ const Order = () => {
 
 
 
-                <Grid container spacing={1} style={{ border: '1px solid' }}>
+                <Grid container spacing={1} >
 
                     <Grid item lg={4} md={4} >
                         <LeftPane >
@@ -206,7 +261,7 @@ const Order = () => {
                             </Hidden>
 
                             <Divider />
-                            <Filters suppliers={suppliers}  handleFilter={handleFilter} />
+                            <Filters cars={cars} carsToDisplay={{ filteredCars, setFilteredCars }} suppliers={suppliers} handleFilter={handleFilter} />
                         </LeftPane>
                     </Grid>
 

@@ -1,56 +1,55 @@
 import React, { useState } from 'react'
-import { Paper, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, FormControlLabel, Checkbox } from '@material-ui/core'
+import { Paper, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, FormControlLabel, Checkbox, ListItem } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useEffect } from 'react';
-
-const Filters = ({ suppliers }) => {
+import styled from 'styled-components';
+const CheckboxArea = styled(ExpansionPanelDetails)`
+    display: flex;
+    flex-direction: column;
+`
+const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => {
     const [state, setState] = useState({
-        suppliers: suppliers,
-        carClass: '',
-        numberOfSeats: 0,
+        carClasses: [],
+        numberOfSeats: [],
         numberOfLargeBags: [],
-        numberOfSmallBags: 0,
-        numberOfDoors: 0,
-        typeOfGearBox: ['Automatic', 'Manual']
-    })
-    const [suppliersList, setSuppliersList] = useState([])
-    const [isChecked, setIsChecked] = useState({
+        numberOfSmallBags: [],
+        numberOfDoors: [],
+        typeOfGearBox: { Manual: false, Automatic: false },
 
     })
-    useEffect(() => {
-        setSuppliersList(suppliers)
-        setIsChecked(suppliersList.map(supplier => { return { [supplier]: false } }))
-        console.log(isChecked)
-    }, [suppliers])
-    useEffect(() => {
-        console.log(isChecked);
-    }, [isChecked])
-    // let suppliers = []
-    // let numberOfLargeBags = []
-    // useEffect(() => {
-    //     for (let i = 0; i < cars.length; i++) {
-    //         if (!state.suppliers.includes(cars[i].supplier)) {
-    //             const temp = state.suppliers.push(cars[i].supplier)
-    //             setState(prevState => { return { ...prevState, temp } })
-    //         }
-    //         if (!state.numberOfLargeBags.includes(cars[i].numberOfLargeBags)) state.numberOfLargeBags.push(cars[i].numberOfLargeBags)
-
-    //     }
-    // }, [])
-
-    // let filters = cars.map(car => { return { supplier: car.supplier, typeOfGearBox: car.typeOfGearBox } })
-    const handleFilter = (label) => {
-        console.log(label);
-        // cars.filter()
+    const [suppliersList, setSuppliersList] = useState(
+        cars.map(car => {
+            return { supplier: car.supplier, checked: false }
+        })
+    )
+    const handleFilter = (label, idx) => event => {
+        const value = event.target.value
+        switch (value) {
+            case 'typeOfGearBox': setFilteredCars(cars.filter(car => car.typeOfGearBox === label)); break;
+            case 'mileage': setFilteredCars(cars.filter(car => car.mileage === label)); break;
+            case 'supplier':
+                const array = suppliersList;
+                array[idx] = { supplier: label, checked: true }
+                console.log(array)
+                console.log(suppliersList);
+                setSuppliersList(array);
+                break;
+            default: console.log('unknown label'); break;
+        }
+        //const carsToDisplay = cars.filter((car) => car.supplier === label)
+        //setFilteredCars(carsToDisplay)
     }
-    const CheckBoxFilter = ({ label }) => {
+
+
+
+    const CheckBoxFilter = ({ label, type, checked, idx }) => {
 
         return <FormControlLabel
             control={
                 <Checkbox
-                    checked={isChecked[label]}
-                    onChange={() => handleFilter(label)}
-                    // value={label}
+                    checked={checked}
+                    onChange={handleFilter(label, idx)}
+                    value={type}
                     color="primary"
                 />
             }
@@ -66,14 +65,15 @@ const Filters = ({ suppliers }) => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography >Supplier</Typography>
+                    <Typography >Filter by supplier</Typography>
                 </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
+                <CheckboxArea style={{ display: 'flex', flexDirection: 'column' }}>
 
-                    {suppliersList.map(supplier => {
-                        return <CheckBoxFilter key={supplier} label={supplier} />
+                    {suppliersList.map((item, idx) => {
+                        console.log(item.checked);
+                        return <CheckBoxFilter idx={idx} key={idx} label={item.supplier} type='supplier' checked={item.checked} />
                     })}
-                </ExpansionPanelDetails>
+                </CheckboxArea>
             </ExpansionPanel>
             <ExpansionPanel defaultExpanded>
                 <ExpansionPanelSummary
@@ -83,11 +83,11 @@ const Filters = ({ suppliers }) => {
                 >
                     <Typography >Type of gearbox</Typography>
                 </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <CheckBoxFilter label='Automatic' />
-                    <CheckBoxFilter label='Manual' />
+                <CheckboxArea>
+                    <CheckBoxFilter label='Automatic' type='typeOfGearBox' />
+                    <CheckBoxFilter label='Manual' type='typeOfGearBox' />
 
-                </ExpansionPanelDetails>
+                </CheckboxArea>
             </ExpansionPanel>
             <ExpansionPanel defaultExpanded>
                 <ExpansionPanelSummary
@@ -97,10 +97,10 @@ const Filters = ({ suppliers }) => {
                 >
                     <Typography >Mileage/Kilometres</Typography>
                 </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <CheckBoxFilter label='Unlimeted' />
-                    <CheckBoxFilter label='Limited' />
-                </ExpansionPanelDetails>
+                <CheckboxArea>
+                    <CheckBoxFilter label='Unlimited' type='mileage' />
+                    <CheckBoxFilter label='Limited' type='mileage' />
+                </CheckboxArea>
             </ExpansionPanel>
 
 

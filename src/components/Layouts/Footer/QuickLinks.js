@@ -45,21 +45,21 @@ const QuickLinks = () => {
                         <Grid item>
 
                             <List dense>
-                                <ListItem ><StyledAnchor href='https://www.avis.com'>Avis</StyledAnchor></ListItem>
-                                <ListItem ><StyledAnchor href='https://www.budget.com'>Budget</StyledAnchor></ListItem>
-                                <ListItem ><StyledAnchor href='https://www.alamo.com'>Alamo</StyledAnchor></ListItem>
-                                <ListItem ><StyledAnchor href='https://www.europcar.com'>Europcar</StyledAnchor></ListItem>
-                                <ListItem ><StyledAnchor href='https://www.hertz.com'>Hertz</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Avis</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Budget</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Alamo</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Europcar</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Hertz</StyledAnchor></ListItem>
 
                             </List>
                         </Grid>
                         <Grid item>
 
                             <List dense>
-                                <ListItem ><StyledAnchor href='https://www.thrifty.com'>Thrifty</StyledAnchor></ListItem>
-                                <ListItem ><StyledAnchor href='https://www.dollar.com'>Dollar</StyledAnchor></ListItem>
-                                <ListItem ><StyledAnchor href='https://www.enterprise.com'>Enterprise</StyledAnchor></ListItem>
-                                <ListItem ><StyledAnchor href='https://www.sixt.com'>Sixt</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Thrifty</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Dollar</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Enterprise</StyledAnchor></ListItem>
+                                <ListItem ><StyledAnchor href='#'>Sixt</StyledAnchor></ListItem>
                             </List>
                         </Grid>
 

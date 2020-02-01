@@ -96,7 +96,7 @@ const CarPicker = () => {
                             <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> 24/7 phone support</div>
                         </div>
                     </Grid>
-                    <Grid item justify='flex-end' sm={4} lg={4} xs={5}>
+                    <Grid item sm={4} lg={4} xs={5}>
                     
                     <TextField
                     style={ {float:'right', maxWidth: '143px'}}
