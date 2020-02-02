@@ -107,17 +107,13 @@ const Order = () => {
         },
 
     ])
-    let suppliers = [];
-    useEffect(() => {
-        for (let i = 0; i < cars.length; i++) {
-            if (!suppliers.includes(cars[i].supplier)) suppliers.push(cars[i].supplier)
-        }
-    }, [cars, suppliers])
     const [filteredCars, setFilteredCars] = useState([])
-    const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
     const [activeStep, setActiveStep] = useState(0);
     const [skipped, setSkipped] = useState(new Set());
     const [completed, setCompleted] = useState({});
+
+    const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
+   
     const StyledContainer = styled(Container)`
     padding-top: 50px;
     backgroundColor: '#f9f9f9' ;
@@ -208,10 +204,6 @@ const Order = () => {
         Unlimited: false
     })
 
-    useEffect(() => {
-        console.log(suppliersList)
-        console.log(MileageChecked)
-    }, [suppliersList, MileageChecked])
     return (
         <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
 
