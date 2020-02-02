@@ -270,13 +270,13 @@ const Order = () => {
                             </Hidden>
 
                             <Divider />
-                            <Filters
+                            {activeStep===0?<Filters
                                 cars={cars}
                                 filteredCars={{ filteredCars, setFilteredCars }}
                                 gearboxChecked={{ gearBoxChecked, setGearBoxChecked }}
                                 suppliers={{ suppliersList, setSuppliersList }}
                                 mileage={{ MileageChecked, setMileageChecked }}
-                            />
+                            />:null}
                         </LeftPane>
                     </Grid>
 
