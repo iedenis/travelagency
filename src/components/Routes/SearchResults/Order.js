@@ -113,12 +113,11 @@ const Order = () => {
             if (!suppliers.includes(cars[i].supplier)) suppliers.push(cars[i].supplier)
         }
     }, [cars, suppliers])
-    const [filteredCars, setFilteredCars] = useState(cars)
+    const [filteredCars, setFilteredCars] = useState([])
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
     const [activeStep, setActiveStep] = useState(0);
     const [skipped, setSkipped] = useState(new Set());
     const [completed, setCompleted] = useState({});
-    let filterOptions;
     const StyledContainer = styled(Container)`
     padding-top: 50px;
     backgroundColor: '#f9f9f9' ;
@@ -132,15 +131,16 @@ const Order = () => {
     const handleBookButtonClicked = () => {
         handleNext();
     }
-    const handleFilter = event => {
-        console.log(event);
-    }
 
+    const [gearBoxChecked, setGearBoxChecked] = useState({
+        Automatic: false,
+        Manual: false
+    })
 
     const getStepContent = step => {
         switch (step) {
             case 0:
-                return <SearchResults searchResult={filteredCars} filterOptions={filterOptions} handleBookButtonClicked={handleBookButtonClicked} />;
+                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
                 return <AddInsurance handleNext={handleNext} handleBack={handleBack} />
             case 2:
@@ -191,7 +191,27 @@ const Order = () => {
         setActiveStep(0);
         setCompleted({});
     };
-    // console.log(suppliers);
+
+    const removeDuplicates = (array) => {
+        return Array.from(new Set(array.map(a => a.supplier)))
+            .map(supplier => {
+                return array.find(a => a.supplier === supplier)
+            })
+    }
+    const [suppliersList, setSuppliersList] = useState(
+        removeDuplicates(cars.map(car => {
+            return { supplier: car.supplier, checked: false }
+        }))
+    )
+    const [MileageChecked, setMileageChecked] = useState({
+        Limited: false,
+        Unlimited: false
+    })
+
+    useEffect(() => {
+        console.log(suppliersList)
+        console.log(MileageChecked)
+    }, [suppliersList, MileageChecked])
     return (
         <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
 
@@ -249,11 +269,6 @@ const Order = () => {
                         )}
                 </div>
 
-
-
-
-
-
                 <Grid container spacing={1} >
 
                     <Grid item lg={4} md={4} >
@@ -263,7 +278,13 @@ const Order = () => {
                             </Hidden>
 
                             <Divider />
-                            <Filters cars={cars} carsToDisplay={{ filteredCars, setFilteredCars }} suppliers={suppliers} handleFilter={handleFilter} />
+                            <Filters
+                                cars={cars}
+                                filteredCars={{ filteredCars, setFilteredCars }}
+                                gearboxChecked={{ gearBoxChecked, setGearBoxChecked }}
+                                suppliers={{ suppliersList, setSuppliersList }}
+                                mileage={{ MileageChecked, setMileageChecked }}
+                            />
                         </LeftPane>
                     </Grid>
 

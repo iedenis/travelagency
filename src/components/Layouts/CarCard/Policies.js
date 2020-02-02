@@ -27,15 +27,14 @@ const Policies = () => {
             <Grid item>
                 <Divider orientation="vertical" />
             </Grid>
-            <Grid item >
+            <Grid item style={{textAlign: 'left'}}>
 
-                <Typography>Included in the price:</Typography>
+                <Typography variant='body1' style={{marginLeft: '40px'}}>Included in the price:</Typography>
 
                 <ul style={{ listStyle: 'none' }}>
                     <li><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> AmendmentsTheft </li>
                     <li><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> ProtectionCollision </li>
                     <li><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> Damage Waiver </li>
-
                 </ul>
 
             </Grid>

@@ -1,46 +1,7 @@
 import React from 'react'
 import CarCard from '../../Layouts/CarCard/CarCard'
-// import Order from './Order'
-import carModels from '../../Layouts/CarCard/carModels/carModels'
-
-// const searchResult = [
-//     {
-//         carClass: 'Economy',
-//         carModel: 'Fiat Punto',
-//         numberOfSeats: 5,
-//         numberOfLargeBags: 1,
-//         numberOfSmallBags: 1,
-//         numberOfDoors: 4,
-//         typeOfGearBox: 'Manual',
-//         image: carModels[1],
-//         supplier: 'Budget'
-//     },
-//     {
-//         carClass: 'Mini',
-//         carModel: 'Hyundai i10',
-//         numberOfSeats: 4,
-//         numberOfLargeBags: 0,
-//         numberOfSmallBags: 2,
-//         numberOfDoors: 2,
-//         typeOfGearBox: 'Manual',
-//         image: carModels[3],
-//         supplier: 'Avis'
-//     },
-//     {
-//         carClass: 'Economy',
-//         carModel: 'Hyundai I20',
-//         numberOfSeats: 5,
-//         numberOfLargeBags: 1,
-//         numberOfSmallBags: 1,
-//         numberOfDoors: 4,
-//         typeOfGearBox: 'Automatic',
-//         image: carModels[4],
-//         supplier: 'Europcar'
-//     }
-// ]
 
 const Results = ({ handleBookButtonClicked, searchResult }) => {
-
     return (
         <React.Fragment>
             {

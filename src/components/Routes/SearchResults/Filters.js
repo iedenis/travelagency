@@ -7,37 +7,39 @@ const CheckboxArea = styled(ExpansionPanelDetails)`
     display: flex;
     flex-direction: column;
 `
-const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => {
-    const [state, setState] = useState({
-        carClasses: [],
-        numberOfSeats: [],
-        numberOfLargeBags: [],
-        numberOfSmallBags: [],
-        numberOfDoors: [],
-        typeOfGearBox: { Manual: false, Automatic: false },
+const Filters = ({ cars,
+    filteredCars: { filteredCars, setFilteredCars },
+    gearboxChecked: { gearBoxChecked, setGearBoxChecked },
+    suppliers: { suppliersList, setSuppliersList },
+    mileage: { MileageChecked, setMileageChecked }
+}) => {
 
-    })
-    const [suppliersList, setSuppliersList] = useState(
-        cars.map(car => {
-            return { supplier: car.supplier, checked: false }
-        })
-    )
-    const handleFilter = (label, idx) => event => {
+    useEffect(() => {
+
+    }, [])
+
+    const removeSupplier = (supplier) => {
+        const arrayOfcarsBySupplier = filteredCars.filter(car => car.supplier !== supplier)
+        setFilteredCars(arrayOfcarsBySupplier);
+        if (filteredCars.length === 0) setFilteredCars(cars)
+    }
+
+    const handleFilter = (label, idx, checked) => event => {
         const value = event.target.value
+
         switch (value) {
-            case 'typeOfGearBox': setFilteredCars(cars.filter(car => car.typeOfGearBox === label)); break;
-            case 'mileage': setFilteredCars(cars.filter(car => car.mileage === label)); break;
+            case 'typeOfGearBox': setFilteredCars(cars.filter(car => car.typeOfGearBox === label)); setGearBoxChecked({ ...gearBoxChecked, [label]: event.target.checked }); break;
+            case 'mileage': setFilteredCars(cars.filter(car => car.mileage === label)); setMileageChecked({ ...MileageChecked, [label]: event.target.checked }); break;
             case 'supplier':
                 const array = suppliersList;
-                array[idx] = { supplier: label, checked: true }
-                console.log(array)
-                console.log(suppliersList);
+                array[idx] = { supplier: label, checked: event.target.checked };
+
+                checked ? removeSupplier(label) : setFilteredCars(filteredCars.concat(cars.filter(car => car.supplier === label)))
+
                 setSuppliersList(array);
                 break;
             default: console.log('unknown label'); break;
         }
-        //const carsToDisplay = cars.filter((car) => car.supplier === label)
-        //setFilteredCars(carsToDisplay)
     }
 
 
@@ -48,7 +50,7 @@ const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => 
             control={
                 <Checkbox
                     checked={checked}
-                    onChange={handleFilter(label, idx)}
+                    onChange={handleFilter(label, idx, checked)}
                     value={type}
                     color="primary"
                 />
@@ -59,7 +61,6 @@ const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => 
     return (
         <Paper style={{ height: '100%' }}>
             <ExpansionPanel defaultExpanded>
-
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -70,7 +71,7 @@ const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => 
                 <CheckboxArea style={{ display: 'flex', flexDirection: 'column' }}>
 
                     {suppliersList.map((item, idx) => {
-                        console.log(item.checked);
+                        // console.log(item.checked);
                         return <CheckBoxFilter idx={idx} key={idx} label={item.supplier} type='supplier' checked={item.checked} />
                     })}
                 </CheckboxArea>
@@ -84,9 +85,19 @@ const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => 
                     <Typography >Type of gearbox</Typography>
                 </ExpansionPanelSummary>
                 <CheckboxArea>
-                    <CheckBoxFilter label='Automatic' type='typeOfGearBox' />
-                    <CheckBoxFilter label='Manual' type='typeOfGearBox' />
-
+                    <CheckBoxFilter label='Automatic' type='typeOfGearBox' checked={gearBoxChecked.Automatic} />
+                    {/* <CheckBoxFilter label='Manual' type='typeOfGearBox' checked={gearBoxChecked.Manual} /> */}
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={gearBoxChecked.Manual}
+                                onChange={handleFilter('Manual')}
+                                value='typeOfGearBox'
+                                color="primary"
+                            />
+                        }
+                        label={'Manual'}
+                    />
                 </CheckboxArea>
             </ExpansionPanel>
             <ExpansionPanel defaultExpanded>
@@ -98,8 +109,8 @@ const Filters = ({ cars, carsToDisplay: { filteredCars, setFilteredCars } }) => 
                     <Typography >Mileage/Kilometres</Typography>
                 </ExpansionPanelSummary>
                 <CheckboxArea>
-                    <CheckBoxFilter label='Unlimited' type='mileage' />
-                    <CheckBoxFilter label='Limited' type='mileage' />
+                    <CheckBoxFilter label='Unlimited' type='mileage' checked={MileageChecked.Unlimited} />
+                    <CheckBoxFilter label='Limited' type='mileage' checked={MileageChecked.Limited} />
                 </CheckboxArea>
             </ExpansionPanel>
 

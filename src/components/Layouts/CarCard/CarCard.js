@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Typography, IconButton, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Collapse, Button, Popper, ClickAwayListener, Divider, Tooltip } from '@material-ui/core'
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import React, { useState } from 'react'
+import { Typography, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Collapse, Button, Popper, ClickAwayListener, Divider, Tooltip } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import styled from 'styled-components';
 import CarFeatures from './CarFeatures';
 import Policies from './Policies';
@@ -14,8 +11,6 @@ margin-bottom: 5px;
 /* border: 1px solid; */
 `
 const CarImage = styled(CardMedia)`
-/* width: 50px;
-height: 50px; */
 .MuiCardMedia-root{
     display:flex;
 }
@@ -31,7 +26,7 @@ const SupplierImage = styled.img`
     width: 60px;
     height: 30px;
 `
-const StyledTitle=styled(CardHeader)`
+const StyledTitle = styled(CardHeader)`
     .MuiCardHeader-title{
         font-weight: bold;
         font-size: 20px;
@@ -64,7 +59,7 @@ const CarCard = ({
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
-    
+
     const id = open ? 'simple-popper' : undefined;
 
 
@@ -103,12 +98,11 @@ const CarCard = ({
                 />
             </div>
             <CardContent>
-              <Tooltip title={supplier} arrow>
-              <SupplierImage  src={supplierImagePath} alt={suppliers.supplier} />
-                  </Tooltip>  
+                <Tooltip title={supplier} arrow>
+                    <SupplierImage src={supplierImagePath} alt={suppliers.supplier} />
+                </Tooltip>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    This impressive paella is a perfect party dish and a fun meal to cook together with your
-                    guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                    Description or promo
 
           </Typography>
 
