@@ -135,9 +135,9 @@ const Order = () => {
 
     const getStepContent = step => {
         switch (step) {
-            case 0:
-                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
+                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
+            case 0:
                 return <AddInsurance handleNext={handleNext} handleBack={handleBack} />
             case 2:
                 return <OrderConfirmation />;
