@@ -1,14 +1,12 @@
-import React from 'react'
-import { Button, Grid, useTheme, Box, Checkbox, useMediaQuery, InputLabel, Select, MenuItem, Paper, FormControlLabel, Divider, Typography, MobileStepper } from '@material-ui/core'
+import React, {useState} from 'react'
+import { Button, Grid, useTheme, Box, Checkbox, useMediaQuery, InputLabel, Select, MenuItem, Paper, FormControlLabel, Divider, Typography } from '@material-ui/core'
 import add_driver_icon from './images/add_driver.svg'
 import baby_booster_icon from './images/baby_booster.svg'
 import baby_car_seat_icon from './images/baby_car_seat.svg'
 import gps_icon from './images/gps.svg'
 import styled from 'styled-components'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
 import AlertDialog from '../../Layouts/AlertDialog';
+
 const Wrapper = styled(Paper)`
     height: ${props => props.ismobile ? '100%' : '90vh'};
 `
@@ -36,6 +34,7 @@ const AddInsurance = ({ handleNext, handleBack }) => {
 
     const handleClose = (event) => {
         if (event === 'add') setAddedInsurance(true);
+        handleNext();
         setOpen(false);
     };
 
