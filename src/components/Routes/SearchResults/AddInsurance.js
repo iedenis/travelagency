@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Button, Grid, useTheme, Box, Checkbox, useMediaQuery, InputLabel, Select, MenuItem, Paper, FormControlLabel, Divider, Typography } from '@material-ui/core'
 import add_driver_icon from './images/add_driver.svg'
 import baby_booster_icon from './images/baby_booster.svg'
@@ -9,6 +9,12 @@ import AlertDialog from '../../Layouts/AlertDialog';
 
 const Wrapper = styled(Paper)`
     height: ${props => props.ismobile ? '100%' : '90vh'};
+`
+
+const Insurances = styled(Paper)`
+    border-radius: 5px;
+    display:flex;
+    flex-direction:column;
 `
 const AddInsurance = ({ handleNext, handleBack }) => {
 
@@ -98,6 +104,37 @@ const AddInsurance = ({ handleNext, handleBack }) => {
         <>
             <Wrapper ismobile={isMobile.toString()} >
 
+                <Insurances  >
+                    <Typography variant='h6' color='primary'>Please add insurances to travel with real peace of mind</Typography>
+
+                    <FormControlLabel
+                        style={{ marginLeft: '10px' }}
+                        control={
+                            <Checkbox
+                                checked={addedInsurance}
+                                onChange={event => setAddedInsurance(event.target.checked)}
+                                value="insurance"
+                                color="primary"
+                            />
+                        }
+                        label={<Typography variant='h6'>Add excess charge refund coverage</Typography>}
+                    />
+
+                    <FormControlLabel
+                        style={{ marginLeft: '10px' }}
+                        control={
+                            <Checkbox
+                                checked={addedInsurance}
+                                onChange={event => setAddedInsurance(event.target.checked)}
+                                value="insurance"
+                                color="primary"
+                            />
+                        }
+                        label={<Typography variant='h6'>Tires, Windshields and Other Coverages</Typography>}
+                    />
+                </Insurances>
+
+
                 <Grid container direction='column' >
 
                     <AdditionalFeature
@@ -124,21 +161,7 @@ const AddInsurance = ({ handleNext, handleBack }) => {
                         value='gps'
                     />
                     <div>
-                        <div style={{ marginTop: '40px', border: '1px solid #1F398D', borderRadius: '5px' }}>
 
-                            <FormControlLabel
-                                style={{ marginLeft: '10px' }}
-                                control={
-                                    <Checkbox
-                                        checked={addedInsurance}
-                                        onChange={event => setAddedInsurance(event.target.checked)}
-                                        value="insurance"
-                                        color="primary"
-                                    />
-                                }
-                                label={<Typography variant='h6'>Add excess charge refund option</Typography>}
-                            />
-                        </div>
                     </div>
                 </Grid>
                 <Button style={{ marginRight: '20px', marginTop: '20px', border: '1px solid' }} size="small" onClick={handleBack}>
