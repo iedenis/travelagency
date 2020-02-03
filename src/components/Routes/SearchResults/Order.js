@@ -113,7 +113,7 @@ const Order = () => {
     const [completed, setCompleted] = useState({});
 
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
-   
+
     const StyledContainer = styled(Container)`
     padding-top: 50px;
     backgroundColor: '#f9f9f9' ;
@@ -208,7 +208,7 @@ const Order = () => {
         <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
 
             <StyledContainer ismobile={isMobile.toString()}>
-                <Grid container>
+                <Grid container >
                     <Grid item sm>
 
                         <Stepper nonLinear activeStep={activeStep}>
@@ -270,17 +270,17 @@ const Order = () => {
                             </Hidden>
 
                             <Divider />
-                            {activeStep===0?<Filters
+                            {activeStep === 0 ? <Filters
                                 cars={cars}
                                 filteredCars={{ filteredCars, setFilteredCars }}
                                 gearboxChecked={{ gearBoxChecked, setGearBoxChecked }}
                                 suppliers={{ suppliersList, setSuppliersList }}
                                 mileage={{ MileageChecked, setMileageChecked }}
-                            />:null}
+                            /> : null}
                         </LeftPane>
                     </Grid>
 
-                    <Grid item lg={8} md={7}>
+                    <Grid item lg={8} md={7} >
                         {/* <SearchResults /> */}
                         {getStepContent(activeStep)}
                     </Grid>
