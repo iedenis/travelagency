@@ -13,7 +13,7 @@ const Filters = ({ cars,
     mileage: { MileageChecked, setMileageChecked }
 }) => {
 
-    const isPC = useMediaQuery(useTheme().breakpoints.up('sm'));
+    const isPC = useMediaQuery(useTheme().breakpoints.up('md'));
 
     const removeSupplier = (supplier) => {
         const arrayOfcarsBySupplier = filteredCars.filter(car => car.supplier !== supplier)
@@ -115,55 +115,15 @@ const Filters = ({ cars,
 
                 <Grid item lg={12} md={12} sm={4} xs={4} >
                     <SuppliersPannel />
-                    {/* <ExpansionPanel defaultExpanded={isPC} >
-                        <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography >Filter by supplier</Typography>
-                        </ExpansionPanelSummary>
-                        <CheckboxArea style={{ display: 'flex', flexDirection: 'column' }}>
 
-                            {suppliersList.map((item, idx) => {
-                                // console.log(item.checked);
-                                return <CheckBoxFilter idx={idx} key={idx} label={item.supplier} type='supplier' checked={item.checked} />
-                            })}
-                        </CheckboxArea>
-                    </ExpansionPanel> */}
                 </Grid>
-                <Grid item lg={12} md={12} sm={4}xs={4} >
+                <Grid item lg={12} md={12} sm={4} xs={4} >
                     <GearBoxPanel />
-                    {/* <ExpansionPanel defaultExpanded={isPC}>
-                        <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                        >
-                            <Typography >Type of gearbox</Typography>
-                        </ExpansionPanelSummary>
-                        <CheckboxArea>
-                            <CheckBoxFilter label='Automatic' type='typeOfGearBox' checked={gearBoxChecked.Automatic} />
-                            <CheckBoxFilter label='Manual' type='typeOfGearBox' checked={gearBoxChecked.Manual} />
 
-                        </CheckboxArea>
-                    </ExpansionPanel> */}
                 </Grid>
                 <Grid item lg={12} md={12} sm={4} xs={4}>
                     <MileagePanel />
-                    {/* <ExpansionPanel defaultExpanded={isPC}>
-                        <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                        >
-                            <Typography >Mileage/Kilometres</Typography>
-                        </ExpansionPanelSummary>
-                        <CheckboxArea>
-                            <CheckBoxFilter label='Unlimited' type='mileage' checked={MileageChecked.Unlimited} />
-                            <CheckBoxFilter label='Limited' type='mileage' checked={MileageChecked.Limited} />
-                        </CheckboxArea>
-                    </ExpansionPanel> */}
+
                 </Grid>
 
             </Grid>

@@ -18,6 +18,7 @@ const Results = ({ handleBookButtonClicked, searchResult }) => {
                         typeOfGearBox={car.typeOfGearBox}
                         image={car.image}
                         supplier={car.supplier}
+                        price_per_day={car.price_per_day}
                     />
                 })
             }

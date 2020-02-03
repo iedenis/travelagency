@@ -31,7 +31,8 @@ const Order = () => {
             typeOfGearBox: 'Manual',
             mileage: 'Unlimited',
             image: carModels.FiatPunto,
-            supplier: 'Budget'
+            supplier: 'Budget',
+            price_per_day: 35
         },
         {
             carClass: 'Mini',
@@ -43,7 +44,8 @@ const Order = () => {
             typeOfGearBox: 'Manual',
             mileage: 'Unlimited',
             image: carModels.Hyundai_i10,
-            supplier: 'Avis'
+            supplier: 'Avis',
+            price_per_day: 40
         },
         {
             carClass: 'Economy',
@@ -55,7 +57,8 @@ const Order = () => {
             typeOfGearBox: 'Automatic',
             mileage: 'Limited',
             image: carModels.Hyundai_i20,
-            supplier: 'Europcar'
+            supplier: 'Europcar',
+            price_per_day: 38
         },
         {
             carClass: 'Economy',
@@ -67,7 +70,8 @@ const Order = () => {
             typeOfGearBox: 'Automatic',
             mileage: 'Limited',
             image: carModels.Nissan_micra,
-            supplier: 'Dollar'
+            supplier: 'Dollar',
+            price_per_day: 35
         },
         {
             carClass: 'Mini',
@@ -79,7 +83,8 @@ const Order = () => {
             typeOfGearBox: 'Manual',
             mileage: 'Unlimited',
             image: carModels.Chevrolet_spark,
-            supplier: 'Thrifty'
+            supplier: 'Thrifty',
+            price_per_day: 33
         },
         {
             carClass: 'Compact',
@@ -91,7 +96,8 @@ const Order = () => {
             typeOfGearBox: 'Automatic',
             mileage: 'Unlimited',
             image: carModels.Subaru_impresa,
-            supplier: 'Thrifty'
+            supplier: 'Thrifty',
+            price_per_day: 38
         },
         {
             carClass: 'SUV',
@@ -103,7 +109,8 @@ const Order = () => {
             typeOfGearBox: 'Automatic',
             mileage: 'Limited',
             image: carModels.Hyundai_tucson,
-            supplier: 'Budget'
+            supplier: 'Budget',
+            price_per_day: 45
         },
 
     ])
@@ -136,7 +143,7 @@ const Order = () => {
     const getStepContent = step => {
         switch (step) {
             case 0:
-                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
+                return <SearchResults  searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
                 return <AddInsurance handleNext={handleNext} handleBack={handleBack} />
             case 2:
@@ -263,7 +270,7 @@ const Order = () => {
 
                 <Grid container spacing={1} >
 
-                    <Grid item lg={4} md={4} >
+                    <Grid item lg={4} md={4} sm={12} >
                         <LeftPane >
                             <Hidden smDown>
                                 <Picker searchType='cars' />
@@ -280,7 +287,7 @@ const Order = () => {
                         </LeftPane>
                     </Grid>
 
-                    <Grid item lg={8} md={7} >
+                    <Grid item lg={8} md={8} sm={12} xs={12}>
                         {/* <SearchResults /> */}
                         {getStepContent(activeStep)}
                     </Grid>

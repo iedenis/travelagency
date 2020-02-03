@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import CarFeatures from './CarFeatures';
 import Policies from './Policies';
 import suppliers from '../../../images/suppliers/suppliers'
+
 const StyledCard = styled(Card)`
 max-width: 800px;
 margin-bottom: 5px;
@@ -43,7 +44,8 @@ const CarCard = ({
     numberOfDoors,
     typeOfGearBox,
     image,
-    supplier
+    supplier,
+    price_per_day
 }) => {
 
     const supplierImagePath = suppliers[supplier]
@@ -95,6 +97,7 @@ const CarCard = ({
                     numberOfLargeBags={numberOfLargeBags}
                     numberOfSmallBags={numberOfSmallBags}
                     numberOfDoors={numberOfDoors}
+                    price_per_day={price_per_day}
                 />
             </div>
             <CardContent>
