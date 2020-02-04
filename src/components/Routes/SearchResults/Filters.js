@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Paper, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, FormControlLabel, Checkbox, ListItem, useMediaQuery, useTheme, Grid } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
+
 const CheckboxArea = styled(ExpansionPanelDetails)`
     display: flex;
     flex-direction: column;
@@ -56,7 +57,7 @@ const Filters = ({ cars,
     }
 
     const MileagePanel = () => {
-        return <ExpansionPanel defaultExpanded={isPC}>
+        return <ExpansionPanel defaultExpanded={isPC} style={{ marginTop: isPC ? '16px' : '0px' }}>
             <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
@@ -74,13 +75,13 @@ const Filters = ({ cars,
     }
 
     const GearBoxPanel = () => {
-        return <ExpansionPanel defaultExpanded={isPC}>
+        return <ExpansionPanel defaultExpanded={isPC} style={{ marginTop: isPC? '16px': '0px' }}>
             <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"
             >
-                <Typography >{isPC ? 'Type of gearbox' : 'Gearbox'}</Typography>
+                <Typography  >{isPC ? 'Type of gearbox' : 'Gearbox'}</Typography>
             </ExpansionPanelSummary>
             <CheckboxArea>
                 <CheckBoxFilter label='Automatic' type='typeOfGearBox' checked={gearBoxChecked.Automatic} />

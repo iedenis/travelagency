@@ -17,7 +17,18 @@ const theme = createMuiTheme({
         secondary: {
             main: '#F92222'
         },
-        
+        info: {
+            main: "#bac778",
+        },
+        success: {
+            main: "#bac778",
+        },
+        warning: {
+            main: "#bac778",
+        },
+
+
+
     },
     overrides: {
         MuiTooltip: {

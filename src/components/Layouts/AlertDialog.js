@@ -9,7 +9,12 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default function AlertDialog({
     open,
     handleClose,
-    setAddedInsurance
+    setAddedInsurance,
+    countries,
+    dialogContentText,
+    dialogTitle,
+    buttonAccept,
+    buttonReject
 }) {
 
     return (
@@ -19,19 +24,22 @@ export default function AlertDialog({
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="alert-dialog-title">{"Purchase insurance"}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                    Please purchase our insurance ...
-            </DialogContentText>
+                    {/* Please purchase our insurance ... */}
+                    {dialogContentText}
+                </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button value='add' onClick={()=>handleClose('add')} color="primary">
-                    Add Insurance
-            </Button>
+                <Button value='add' onClick={() => handleClose('add')} color="primary">
+                    {/* Add Insurance */}
+                    {buttonAccept}
+                </Button>
                 <Button onClick={handleClose} color="primary" autoFocus>
-                    Continue without insurance
-            </Button>
+                    {/* Continue without insurance */}
+                    {buttonReject}
+                </Button>
             </DialogActions>
         </Dialog >
 

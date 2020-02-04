@@ -143,7 +143,7 @@ const Order = () => {
     const getStepContent = step => {
         switch (step) {
             case 0:
-                return <SearchResults  searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
+                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
                 return <AddInsurance handleNext={handleNext} handleBack={handleBack} />
             case 2:
@@ -217,7 +217,6 @@ const Order = () => {
             <StyledContainer ismobile={isMobile.toString()}>
                 <Grid container >
                     <Grid item sm>
-
                         <Stepper nonLinear activeStep={activeStep}>
                             {steps.map((label, index) => (
                                 <Step key={label}>

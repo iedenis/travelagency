@@ -46,7 +46,7 @@ const CarFeatures = ({ price_per_day, transmissionType, numberOfSeats, numberOfL
         <Grid
             style={{
                 display: 'flex',
-                border: '1px solid'
+                // border: '1px solid'
             }}
             container direction={isMobile ? 'column-reverse' : 'row'}   >
             <Grid item lg={4} md >

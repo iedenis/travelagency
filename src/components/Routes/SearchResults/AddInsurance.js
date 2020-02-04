@@ -6,15 +6,16 @@ import baby_car_seat_icon from './images/baby_car_seat.svg'
 import gps_icon from './images/gps.svg'
 import styled from 'styled-components'
 import AlertDialog from '../../Layouts/AlertDialog';
+import Alert from '@material-ui/lab/Alert';
 
 const Wrapper = styled(Paper)`
     height: ${props => props.ismobile ? '100%' : '90vh'};
 `
 
 const Insurances = styled(Paper)`
-    border-radius: 5px;
     display:flex;
     flex-direction:column;
+    margin-bottom: 16px;
 `
 const AddInsurance = ({ handleNext, handleBack }) => {
 
@@ -30,10 +31,11 @@ const AddInsurance = ({ handleNext, handleBack }) => {
         gps: { isChecked: false, count: 0 }
     });
     const [addedInsurance, setAddedInsurance] = useState(false);
+    const [travelToAnotherCountry, setTravelToAnotherCountry] = useState(false);
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
-    const [open, setOpen] = React.useState(false);
-
+    const [open, setOpen] = useState(false);
+    const [countriesListOpen, setCountriesListOpen] = useState(false)
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -43,8 +45,13 @@ const AddInsurance = ({ handleNext, handleBack }) => {
         handleNext();
         setOpen(false);
     };
-
-
+    const handleClickCountriesListOpen = () => {
+        console.log('HERE')
+        setCountriesListOpen(true);
+    }
+    const handleCloseCountriesListClose = () => {
+        setCountriesListOpen(false)
+    }
     const handleAddInsurance = event => {
         console.log(event.target.checked)
         setAddedInsurance(event.target.checked)
@@ -63,10 +70,27 @@ const AddInsurance = ({ handleNext, handleBack }) => {
             }
         })
     }
+    const handleTravel = () => {
+        setCountriesListOpen(true)
+    }
+    /**
+     * Components for heading and additional features
+     */
+
+    const Heading = ({ label }) => {
+        return <Typography
+            variant='h6'
+
+            color='primary'
+            style={{ paddingLeft: '18px' }}>
+            {label}
+        </Typography>
+    }
 
     const AdditionalFeature = ({ icon, description, price, value }) => {
 
-        return <Grid xs={12} sm={12} lg={6} item style={{ display: 'flex', padding: '10px', justifyContent: 'space-between' }} >
+        return <Grid item xs={12} sm={12} lg={6}
+            style={{ display: 'flex', padding: '10px', justifyContent: 'space-between' }} >
             <Box display='flex'>
                 <Checkbox
                     checked={checked[value].isChecked}
@@ -101,42 +125,41 @@ const AddInsurance = ({ handleNext, handleBack }) => {
     }
 
     return (
-        <>
-            <Wrapper ismobile={isMobile.toString()} >
 
-                <Insurances  >
-                    <Typography variant='h6' color='primary'>Please add insurances to travel with real peace of mind</Typography>
+        <Wrapper ismobile={isMobile.toString()} >
+            <Insurances  >
+                <Heading label='Please add insurances to travel with real peace of mind' />
+                <FormControlLabel
+                    style={{ marginLeft: '10px' }}
+                    control={
+                        <Checkbox
+                            checked={addedInsurance}
+                            onChange={event => setAddedInsurance(event.target.checked)}
+                            value="insurance"
+                            color="primary"
+                        />
+                    }
+                    label={<Typography variant='h6'>Add excess charge refund coverage</Typography>}
+                />
 
-                    <FormControlLabel
-                        style={{ marginLeft: '10px' }}
-                        control={
-                            <Checkbox
-                                checked={addedInsurance}
-                                onChange={event => setAddedInsurance(event.target.checked)}
-                                value="insurance"
-                                color="primary"
-                            />
-                        }
-                        label={<Typography variant='h6'>Add excess charge refund coverage</Typography>}
-                    />
+                <FormControlLabel
+                    style={{ marginLeft: '10px' }}
+                    control={
+                        <Checkbox
+                            checked={addedInsurance}
+                            onChange={event => setAddedInsurance(event.target.checked)}
+                            value="insurance"
+                            color="primary"
+                        />
+                    }
+                    label={<Typography variant='h6'>Tires, Windshields and Other Coverages</Typography>}
+                />
+            </Insurances>
 
-                    <FormControlLabel
-                        style={{ marginLeft: '10px' }}
-                        control={
-                            <Checkbox
-                                checked={addedInsurance}
-                                onChange={event => setAddedInsurance(event.target.checked)}
-                                value="insurance"
-                                color="primary"
-                            />
-                        }
-                        label={<Typography variant='h6'>Tires, Windshields and Other Coverages</Typography>}
-                    />
-                </Insurances>
-
+            <Paper style={{ marginBottom: '16px' }}>
 
                 <Grid container direction='column' >
-
+                    <Heading label='Extras' />
                     <AdditionalFeature
                         icon={add_driver_icon}
                         description='Add additional driver'
@@ -164,24 +187,60 @@ const AddInsurance = ({ handleNext, handleBack }) => {
 
                     </div>
                 </Grid>
-                <Button style={{ marginRight: '20px', marginTop: '20px', border: '1px solid' }} size="small" onClick={handleBack}>
-                    Back
-        </Button>
-                <Button style={{ marginTop: '20px', border: '1px solid' }} size="small" onClick={addedInsurance ? handleNext : handleClickOpen}>
-                    Next
-            </Button>
-                <AlertDialog
-                    handleClickOpen={handleClickOpen}
-                    handleClose={handleClose}
-                    open={open}
-                    setAddedInsurance={setAddedInsurance}
+            </Paper>
+
+            <Paper style={{ marginTop: '20px' }}>
+
+                <Heading label="Travel to another country?" />
+                <FormControlLabel
+                    style={{ marginLeft: '10px' }}
+                    control={
+                        <Checkbox
+                            checked={countriesListOpen}
+                            onChange={handleTravel}
+                            value="insurance"
+                            color="primary"
+                        />
+                    }
+                    label={<Typography variant='h6'>I plan to travel to another country</Typography>}
+
                 />
-            </Wrapper>
+                <AlertDialog
+                    dialogTitle={'List of countries you can travel to with the requested car'}
+                    countries={true}
+                    handleClickOpen={handleClickCountriesListOpen}
+                    handleClose={handleCloseCountriesListClose}
+                    open={countriesListOpen}
 
 
+                />
+            </Paper>
+            <Alert style={{ marginTop: '20px' }} severity="success"><Typography variant='h6'>Good news, Full Insurance is available</Typography>
+                Cover any bumps or scrapes and have a hassle-free rental. Book everything in one place quickly and easily.
+
+</Alert>
+
+            <Button style={{ marginRight: '20px', marginTop: '20px', border: '1px solid' }} size="small" onClick={handleBack}>
+                Back
+        </Button>
+            <Button style={{ marginTop: '20px', border: '1px solid' }} size="small" onClick={addedInsurance ? handleNext : handleClickOpen}>
+                Next
+            </Button>
+            <AlertDialog
+                handleClickOpen={handleClickOpen}
+                handleClose={handleClose}
+                open={open}
+                setAddedInsurance={setAddedInsurance}
+                dialogContentText={'Please purchase our insurance ...'}
+                dialogTitle={'Add Insurance'}
+                buttonAccept={'I want to add the insurance'}
+                buttonReject={'Continue without insurance'}
+            />
 
 
-        </>
+        </Wrapper>
+
+
 
     )
 }
