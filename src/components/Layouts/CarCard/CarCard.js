@@ -45,7 +45,7 @@ const CarCard = ({
     typeOfGearBox,
     image,
     supplier,
-    price_per_day
+    pricePerDay
 }) => {
 
     const supplierImagePath = suppliers[supplier]
@@ -97,7 +97,7 @@ const CarCard = ({
                     numberOfLargeBags={numberOfLargeBags}
                     numberOfSmallBags={numberOfSmallBags}
                     numberOfDoors={numberOfDoors}
-                    price_per_day={price_per_day}
+                    price_per_day={pricePerDay}
                 />
             </div>
             <CardContent>
