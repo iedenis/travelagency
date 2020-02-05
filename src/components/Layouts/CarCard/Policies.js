@@ -17,7 +17,6 @@ padding-left: ${props => props.ismobile ? '0px' : '40px'};
 
 const Policies = () => {
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
-    console.log(isMobile)
     return (
 
         <Grid container >

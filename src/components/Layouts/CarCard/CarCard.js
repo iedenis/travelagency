@@ -97,7 +97,7 @@ const CarCard = ({
                     numberOfLargeBags={numberOfLargeBags}
                     numberOfSmallBags={numberOfSmallBags}
                     numberOfDoors={numberOfDoors}
-                    price_per_day={pricePerDay}
+                    pricePerDay={pricePerDay}
                 />
             </div>
             <CardContent>

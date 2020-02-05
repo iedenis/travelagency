@@ -93,7 +93,7 @@ const Filters = ({ cars,
     }
 
     const SuppliersPannel = () => {
-        return <ExpansionPanel defaultExpanded={isPC} >
+        return <ExpansionPanel defaultExpanded={isPC} style={{ marginTop: isPC? '16px': '0px' }} >
             <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"

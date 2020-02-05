@@ -5,7 +5,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Checkbox, Typography, FormControlLabel, Grid } from '@material-ui/core';
+import { Checkbox, Typography, FormControlLabel, Grid, Paper } from '@material-ui/core';
+import { useEffect } from 'react';
 
 export default function AlertDialog({
     open,
@@ -17,8 +18,22 @@ export default function AlertDialog({
     buttonAccept,
     buttonReject,
     listOfCountries,
-    setTravelCountries
+    ...rest
 }) {
+    console.log(rest);
+    const { travelCountries, setTravelCountries, setListOfCountries } = rest;
+    const handleCheckCountry = country => event => {
+        const idx = event.target.value
+        const isChecked = event.target.checked
+console.log(isChecked);
+        console.log(listOfCountries)
+        const temp = listOfCountries
+        temp[idx].checked = isChecked;
+        setTimeout(()=>setListOfCountries(temp)) 
+    }
+    useEffect(() => {
+      console.log(listOfCountries);
+    }, [listOfCountries])
     return (
         <Dialog
             open={open}
@@ -30,19 +45,21 @@ export default function AlertDialog({
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                     {/* Please purchase our insurance ... */}
-                    {isCountryList ? listOfCountries.map(country => <FormControlLabel
-                        key={country}
+                    {isCountryList ? listOfCountries.map((country, idx) => {console.log(country.checked);return <FormControlLabel
+                        key={country.countryName}
                         style={{ marginLeft: '10px' }}
+                        label={country.countryName}
+
                         control={
+                           
                             <Checkbox
-                                checked={false}
-                                onChange={() => console.log('changed')}
-                                value="countries"
+                                checked={country.checked}
+                                onChange={handleCheckCountry(country)}
+                                value={idx}
                                 color="primary"
                             />
                         }
-                        label={country}
-                    />
+                    />}
                     ) : dialogContentText}
                 </DialogContentText>
             </DialogContent>

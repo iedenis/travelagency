@@ -36,8 +36,7 @@ const PriceGridItem = styled(Grid)`
     justify-content: ${props => props.ismobile ? 'flex-start' : 'flex-end'}
     flex: 1;
 `
-const CarFeatures = ({ price_per_day, transmissionType, numberOfSeats, numberOfLargeBags, numberOfSmallBags, numberOfDoors }) => {
-
+const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLargeBags, numberOfSmallBags, numberOfDoors }) => {
 
     const currency = useContext(CurrencyContext)
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
@@ -79,7 +78,7 @@ const CarFeatures = ({ price_per_day, transmissionType, numberOfSeats, numberOfL
             <PriceGridItem item sm lg={4} md ismobile={isMobile.toString()} >
                 <ul>
                     <ListItem>
-                        <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{price_per_day} {currency[0]}
+                        <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
                             <span style={{ fontWeight: 'lighter', fontSize: '1rem' }}>per day</span>
                         </Box>
                     </ListItem>

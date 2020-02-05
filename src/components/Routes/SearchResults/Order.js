@@ -21,6 +21,22 @@ flex-direction: column;
 `
 
 const Order = () => {
+
+    const extrasPrices = {
+        childBoosterPrice: 5,
+        childSeatPrice: 2,
+        additionalDriverPrice: 4,
+        gpsPrice: 3,
+        currencyCode: 'USD'
+    }
+
+    /**
+     * State block
+     */
+    const [filteredCars, setFilteredCars] = useState([])
+    const [activeStep, setActiveStep] = useState(0);
+    const [skipped, setSkipped] = useState(new Set());
+    const [completed, setCompleted] = useState({});
     const [currencySign, setCurrency] = useContext(CurrencyContext)
     const [cars, setCars] = useState([
         {
@@ -34,7 +50,7 @@ const Order = () => {
             mileage: 'Unlimited',
             image: carModels.FiatPunto,
             supplier: 'Budget',
-            price_per_day: 35
+            pricePerDay: 35
         },
         {
             carClass: 'Mini',
@@ -47,7 +63,7 @@ const Order = () => {
             mileage: 'Unlimited',
             image: carModels.Hyundai_i10,
             supplier: 'Avis',
-            price_per_day: 40
+            pricePerDay: 40
         },
         {
             carClass: 'Economy',
@@ -60,7 +76,7 @@ const Order = () => {
             mileage: 'Limited',
             image: carModels.Hyundai_i20,
             supplier: 'Europcar',
-            price_per_day: 38
+            pricePerDay: 38
         },
         {
             carClass: 'Economy',
@@ -73,7 +89,7 @@ const Order = () => {
             mileage: 'Limited',
             image: carModels.Nissan_micra,
             supplier: 'Dollar',
-            price_per_day: 35
+            pricePerDay: 35
         },
         {
             carClass: 'Mini',
@@ -86,7 +102,7 @@ const Order = () => {
             mileage: 'Unlimited',
             image: carModels.Chevrolet_spark,
             supplier: 'Thrifty',
-            price_per_day: 33
+            pricePerDay: 33
         },
         {
             carClass: 'Compact',
@@ -99,7 +115,7 @@ const Order = () => {
             mileage: 'Unlimited',
             image: carModels.Subaru_impresa,
             supplier: 'Thrifty',
-            price_per_day: 38
+            pricePerDay: 38
         },
         {
             carClass: 'SUV',
@@ -112,24 +128,14 @@ const Order = () => {
             mileage: 'Limited',
             image: carModels.Hyundai_tucson,
             supplier: 'Budget',
-            price_per_day: 45
+            pricePerDay: 45
         },
 
     ])
 
-    const extrasPrices = {
-        childBoosterPrice: 5,
-        childSeatPrice: 2,
-        additionalDriverPrice: 4,
-        gpsPrice: 3,
-        currencyCode: 'USD'
-    }
+    /** */
 
-    const [filteredCars, setFilteredCars] = useState([])
-    const [activeStep, setActiveStep] = useState(0);
-    const [skipped, setSkipped] = useState(new Set());
-    const [completed, setCompleted] = useState({});
-
+    
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
     const StyledContainer = styled(Container)`
@@ -153,9 +159,9 @@ const Order = () => {
 
     const getStepContent = step => {
         switch (step) {
-            case 0:
-                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
+                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
+            case 0:
                 return <AddInsurance
                     handleNext={handleNext}
                     handleBack={handleBack}
