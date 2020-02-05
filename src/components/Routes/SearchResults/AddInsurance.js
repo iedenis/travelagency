@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import AlertDialog from '../../Layouts/AlertDialog';
 import Alert from '@material-ui/lab/Alert';
 
+
 const Wrapper = styled(Paper)`
     height: ${props => props.ismobile ? '100%' : '90vh'};
 `
@@ -17,7 +18,18 @@ const Insurances = styled(Paper)`
     flex-direction:column;
     margin-bottom: 16px;
 `
-const AddInsurance = ({ handleNext, handleBack }) => {
+const AddInsurance = ({
+
+    additionalDriverPrice,
+    childBoosterPrice,
+    childSeatPrice,
+    gpsPrice,
+
+    handleNext,
+    handleBack,
+    currencySign,
+    countries
+}) => {
 
     const Icon = styled.img`
     color: ${useTheme().palette.primary.main}
@@ -30,6 +42,8 @@ const AddInsurance = ({ handleNext, handleBack }) => {
         child_seat: { isChecked: false, count: 0 },
         gps: { isChecked: false, count: 0 }
     });
+    const [travelCountries, setTravelCountries] = useState([])
+    const listOfCountries = ['Germany', 'Poland', 'Czech Republic', 'Slovakia', 'Italy'];
     const [addedInsurance, setAddedInsurance] = useState(false);
     const [travelToAnotherCountry, setTravelToAnotherCountry] = useState(false);
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
@@ -102,12 +116,9 @@ const AddInsurance = ({ handleNext, handleBack }) => {
 
                 <Icon src={icon} alt={icon} />
                 <div style={{ marginLeft: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'green' }}>Only {price} per day</span>
+                    <span style={{ color: 'green' }}>Only {price}{currencySign} per day</span>
                     <span>{description}</span>
                 </div>
-
-
-
             </Box>
             <Select
                 labelId="demo-simple-select-label"
@@ -163,24 +174,24 @@ const AddInsurance = ({ handleNext, handleBack }) => {
                     <AdditionalFeature
                         icon={add_driver_icon}
                         description='Add additional driver'
-                        price='5$'
+                        price={additionalDriverPrice}
                         value='driver'
                     />
                     <AdditionalFeature
                         icon={baby_booster_icon}
                         description='Child booster'
-                        price='2$'
+                        price={childBoosterPrice}
                         value='booster' />
                     <AdditionalFeature
                         icon={baby_car_seat_icon}
                         description='Child seat'
-                        price='2$'
+                        price={childSeatPrice}
                         value='child_seat'
                     />
                     <AdditionalFeature
                         icon={gps_icon}
                         description='GPS device'
-                        price='1$'
+                        price={gpsPrice}
                         value='gps'
                     />
                     <div>
@@ -207,11 +218,14 @@ const AddInsurance = ({ handleNext, handleBack }) => {
                 />
                 <AlertDialog
                     dialogTitle={'List of countries you can travel to with the requested car'}
-                    countries={true}
+                    isCountryList={true}
                     handleClickOpen={handleClickCountriesListOpen}
                     handleClose={handleCloseCountriesListClose}
                     open={countriesListOpen}
-
+                    listOfCountries={listOfCountries}
+                    setTravelCountries={setTravelCountries}
+                    buttonAccept={'I want to add the insurance'} //have to remove it
+                    buttonReject={'Continue without insurance'}
 
                 />
             </Paper>
@@ -235,6 +249,8 @@ const AddInsurance = ({ handleNext, handleBack }) => {
                 dialogTitle={'Add Insurance'}
                 buttonAccept={'I want to add the insurance'}
                 buttonReject={'Continue without insurance'}
+                isCountryList={false}
+                listOfCountries={[]}
             />
 
 

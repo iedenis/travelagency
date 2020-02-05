@@ -17,25 +17,27 @@ const Flag = (chosenLanguage) => {
 
 const NavMenuItem = ({ navItemText, link, subMenu, type }) => {
     const [open, setOpen] = useState(false);
-    const currencyIcons = [faDollarSign, faEuroSign, faRubleSign, faShekelSign]
-    // const [currency, setCurrency] = useState(<FontAwesomeIcon style={{ fontSize: '20px' }} icon={faEuroSign} />)
-    const { currency, setCurrency } = useContext(CurrencyContext)
+    const currencyIcons = [{ icon: faDollarSign, sign: '$', code: 'USD' }, { icon: faEuroSign, sign: '€', code: 'EUR' }, { icon: faRubleSign, sign: '₽', code: 'RUB' }, { icon: faShekelSign, sign: '₪', code: 'ILS' }]
+
+    const [currency,  setCurrency] = useContext(CurrencyContext)
     const [language, setLanguage] = useState(<LanguageIcon />)
-    // const [anchorEl, setAnchorEl] = useState(null);
 
     const anchorRef = React.useRef(null);
 
-    // const handleClick = event => {
-    //     console.log(event.currentTarget)
-    //     setAnchorEl(event.currentTarget);
-    // };
+
     const handleToggle = () => {
         setOpen(prevOpen => !prevOpen);
     };
 
     const handleClose = (event, type, item) => {
+        const selectedCurrency = currencyIcons[subMenu.indexOf(item)];
+
         switch (type) {
-            case 'currency': setCurrency(<FontAwesomeIcon style={{ fontSize: '20px' }} icon={currencyIcons[subMenu.indexOf(item)]}></FontAwesomeIcon>); break;
+            case 'currency': setCurrency({
+                icon: <FontAwesomeIcon style={{ fontSize: '20px' }} icon={selectedCurrency.icon}></FontAwesomeIcon>,
+                sign: selectedCurrency.sign,
+                code: selectedCurrency.code
+            }); break;
             case 'language': setLanguage(<Flag item={item} />); break;
             default: break;
         }

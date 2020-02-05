@@ -1,5 +1,5 @@
 import './App.css';
-import React, { createContext, useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Header from './components/Layouts/Header/Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Main from './components/Routes/Home/MainSection/Main';
@@ -12,30 +12,22 @@ import SignIn from './components/Routes/SignIn/SignIn';
 import Order from './components/Routes/SearchResults/Order';
 import PageNotFound from './components/Routes/404/PageNotFound';
 import { CurrencyContext } from './components/SharedState/SharedState'
-import { faDollarSign, faEuroSign, faRubleSign, faShekelSign } from '@fortawesome/free-solid-svg-icons';
+import { faEuroSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const App = () => {
 
-  const currencyIcons = [faDollarSign, faEuroSign, faRubleSign, faShekelSign]
-  const [currency, setCurrency] = useState(<FontAwesomeIcon style={{ fontSize: '20px' }} icon={faEuroSign} />)
-
+  const [currency, setCurrency] = useState({
+    code: 'EUR',
+    sign: '€',
+    icon: <FontAwesomeIcon style={{ fontSize: '20px' }} icon={faEuroSign} />
+  })
   return (
     <div className="App">
 
       <BrowserRouter>
 
-        {/*Parallax*/}
-        {/* <div className='back' style={{
-          backgroundImage: `url(${background})`,
-          backgroundSize: 'cover',
-          // transform: 'translateZ(-1px) scale(2)',
-          // WebkitTransform: 'translateZ(-1px) scale(2)',
-          // MozTransform:'translateZ(0)'
-        }}> */}
-        {/* <ParallaxBack> */}
-
-        <CurrencyContext.Provider value={{ currency, setCurrency }}>
+        <CurrencyContext.Provider value={[currency.icon, setCurrency]}>
           <Header />
         </CurrencyContext.Provider>
         <Switch>
@@ -44,7 +36,7 @@ const App = () => {
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/blog' component={Blog} />
           <Route exact path='/results'>
-            <CurrencyContext.Provider value={currency}>
+            <CurrencyContext.Provider value={[currency.sign, setCurrency]}>
               <Order />
             </CurrencyContext.Provider>
           </Route>
@@ -57,7 +49,7 @@ const App = () => {
       </BrowserRouter>
 
 
-    </div>
+    </div >
   );
 
 

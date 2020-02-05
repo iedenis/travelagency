@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Container, Paper, Grid, Divider, useMediaQuery, useTheme, Stepper, Step, StepLabel, Typography, StepButton, Button, Hidden } from '@material-ui/core'
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
@@ -8,6 +8,7 @@ import OrderConfirmation from './OrderConfirmation'
 import PageNotFound from '../404/PageNotFound'
 import Filters from './Filters'
 import carModels from '../../Layouts/CarCard/carModels/carModels'
+import { CurrencyContext } from '../../SharedState/SharedState';
 
 
 const LeftPane = styled.div`
@@ -20,6 +21,7 @@ flex-direction: column;
 `
 
 const Order = () => {
+    const [currencySign, setCurrency] = useContext(CurrencyContext)
     const [cars, setCars] = useState([
         {
             carClass: 'Economy',
@@ -114,6 +116,15 @@ const Order = () => {
         },
 
     ])
+
+    const extrasPrices = {
+        childBoosterPrice: 5,
+        childSeatPrice: 2,
+        additionalDriverPrice: 4,
+        gpsPrice: 3,
+        currencyCode: 'USD'
+    }
+
     const [filteredCars, setFilteredCars] = useState([])
     const [activeStep, setActiveStep] = useState(0);
     const [skipped, setSkipped] = useState(new Set());
@@ -145,7 +156,15 @@ const Order = () => {
             case 0:
                 return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
-                return <AddInsurance handleNext={handleNext} handleBack={handleBack} />
+                return <AddInsurance
+                    handleNext={handleNext}
+                    handleBack={handleBack}
+                    additionalDriverPrice={extrasPrices.additionalDriverPrice}
+                    childBoosterPrice={extrasPrices.childBoosterPrice}
+                    childSeatPrice={extrasPrices.childSeatPrice}
+                    gpsPrice={extrasPrices.gpsPrice}
+                    currencySign={currencySign}
+                />
             case 2:
                 return <OrderConfirmation />;
             default:

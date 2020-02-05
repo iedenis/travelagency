@@ -79,7 +79,7 @@ const CarFeatures = ({ price_per_day, transmissionType, numberOfSeats, numberOfL
             <PriceGridItem item sm lg={4} md ismobile={isMobile.toString()} >
                 <ul>
                     <ListItem>
-                        <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{price_per_day} {currency}
+                        <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{price_per_day} {currency[0]}
                             <span style={{ fontWeight: 'lighter', fontSize: '1rem' }}>per day</span>
                         </Box>
                     </ListItem>

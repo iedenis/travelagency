@@ -5,18 +5,20 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Checkbox, Typography, FormControlLabel, Grid } from '@material-ui/core';
 
 export default function AlertDialog({
     open,
     handleClose,
     setAddedInsurance,
-    countries,
+    isCountryList,
     dialogContentText,
     dialogTitle,
     buttonAccept,
-    buttonReject
+    buttonReject,
+    listOfCountries,
+    setTravelCountries
 }) {
-
     return (
         <Dialog
             open={open}
@@ -28,18 +30,31 @@ export default function AlertDialog({
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                     {/* Please purchase our insurance ... */}
-                    {dialogContentText}
+                    {isCountryList ? listOfCountries.map(country => <FormControlLabel
+                        key={country}
+                        style={{ marginLeft: '10px' }}
+                        control={
+                            <Checkbox
+                                checked={false}
+                                onChange={() => console.log('changed')}
+                                value="countries"
+                                color="primary"
+                            />
+                        }
+                        label={country}
+                    />
+                    ) : dialogContentText}
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button value='add' onClick={() => handleClose('add')} color="primary">
+                {!isCountryList ? <><Button value='add' onClick={() => handleClose('add')} color="primary">
                     {/* Add Insurance */}
                     {buttonAccept}
                 </Button>
-                <Button onClick={handleClose} color="primary" autoFocus>
-                    {/* Continue without insurance */}
-                    {buttonReject}
-                </Button>
+                    <Button onClick={handleClose} color="primary" autoFocus>
+                        {/* Continue without insurance */}
+                        {buttonReject}
+                    </Button></> : <Button onClick={() => handleClose('Ok')}>Ok</Button>}
             </DialogActions>
         </Dialog >
 
