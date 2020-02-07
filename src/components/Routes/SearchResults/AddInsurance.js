@@ -43,7 +43,7 @@ const AddInsurance = ({
         gps: { isChecked: false, count: 0 }
     });
     const [travelCountries, setTravelCountries] = useState([])
-    const [listOfCountries, setListOfCountries] = useState([{ countryName: 'Germany', checked: true }, { countryName: 'Poland', checked: false }, { countryName: 'Czech Republic', checked: false }, { countryName: 'Slovakia', checked: false }, { countryName: 'Italy', checked: false }]);
+    const [listOfCountries, setListOfCountries] = useState({ Germany: false, Poland: false, 'Czech Republic': false, Slovakia: false, Italy: false });
     const [addedInsurance, setAddedInsurance] = useState(false);
     const [travelToAnotherCountry, setTravelToAnotherCountry] = useState(false);
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
@@ -56,6 +56,8 @@ const AddInsurance = ({
 
     const handleClose = (event) => {
         if (event === 'add') setAddedInsurance(true);
+        if (event === 'Ok') {
+        }
         handleNext();
         setOpen(false);
     };
@@ -207,7 +209,7 @@ const AddInsurance = ({
                     style={{ marginLeft: '10px' }}
                     control={
                         <Checkbox
-                            checked={countriesListOpen}
+                            checked={travelCountries.length > 0}
                             onChange={handleTravel}
                             value="insurance"
                             color="primary"
@@ -228,6 +230,7 @@ const AddInsurance = ({
                     setTravelCountries={setTravelCountries}
                     buttonAccept={'I want to add the insurance'} //have to remove it
                     buttonReject={'Continue without insurance'}
+                    setTravelToAnotherCountry={setTravelToAnotherCountry}
 
                 />
             </Paper>
