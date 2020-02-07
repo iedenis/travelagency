@@ -28,7 +28,10 @@ const AddInsurance = ({
     handleNext,
     handleBack,
     currencySign,
-    countries
+    countries,
+
+    extras,
+    setExtras
 }) => {
 
     const Icon = styled.img`
@@ -36,16 +39,15 @@ const AddInsurance = ({
     width: 60px;
     height: 60px;
     `
-    const [checked, setChecked] = React.useState({
-        driver: { isChecked: false, count: 0 },
-        booster: { isChecked: false, count: 0 },
-        child_seat: { isChecked: false, count: 0 },
-        gps: { isChecked: false, count: 0 }
-    });
+    // const [extras, setExtras] = React.useState({
+    //     driver: { isChecked: false, count: 0 },
+    //     booster: { isChecked: false, count: 0 },
+    //     child_seat: { isChecked: false, count: 0 },
+    //     gps: { isChecked: false, count: 0 }
+    // });
     const [travelCountries, setTravelCountries] = useState([])
     const [listOfCountries, setListOfCountries] = useState({ Germany: false, Poland: false, 'Czech Republic': false, Slovakia: false, Italy: false });
     const [addedInsurance, setAddedInsurance] = useState(false);
-    const [travelToAnotherCountry, setTravelToAnotherCountry] = useState(false);
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
     const [open, setOpen] = useState(false);
@@ -56,31 +58,23 @@ const AddInsurance = ({
 
     const handleClose = (event) => {
         if (event === 'add') setAddedInsurance(true);
-        if (event === 'Ok') {
-        }
         handleNext();
         setOpen(false);
     };
     const handleClickCountriesListOpen = () => {
-        console.log('HERE')
         setCountriesListOpen(true);
     }
     const handleCloseCountriesListClose = () => {
         setCountriesListOpen(false)
     }
-    const handleAddInsurance = event => {
-        console.log(event.target.checked)
-        setAddedInsurance(event.target.checked)
-    }
+
     const handleChange = name => event => {
-        console.log(checked[name])
         const checkValue = event.target.checked;
-        checkValue ? setChecked({ ...checked, [name]: { isChecked: checkValue, count: 1 } }) :
-            setChecked({ ...checked, [name]: { isChecked: checkValue, count: 0 } })
+        setExtras({ ...extras, [name]: { isChecked: checkValue, count: checkValue ? 1 : 0 } })
     };
     const handleSelect = name => event => {
-        setChecked({
-            ...checked, [name]: {
+        setExtras({
+            ...extras, [name]: {
                 isChecked: (event.target.value > 0) || false,
                 count: event.target.value
             }
@@ -109,7 +103,7 @@ const AddInsurance = ({
             style={{ display: 'flex', padding: '10px', justifyContent: 'space-between' }} >
             <Box display='flex'>
                 <Checkbox
-                    checked={checked[value].isChecked}
+                    checked={extras[value].isChecked}
                     value={value}
                     color="primary"
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -125,7 +119,7 @@ const AddInsurance = ({
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={checked[value].count}
+                value={extras[value].count}
                 onChange={handleSelect(value)}
             >
                 <MenuItem value={0}>0</MenuItem>
@@ -230,7 +224,6 @@ const AddInsurance = ({
                     setTravelCountries={setTravelCountries}
                     buttonAccept={'I want to add the insurance'} //have to remove it
                     buttonReject={'Continue without insurance'}
-                    setTravelToAnotherCountry={setTravelToAnotherCountry}
 
                 />
             </Paper>

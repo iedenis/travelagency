@@ -38,6 +38,12 @@ const Order = () => {
     const [skipped, setSkipped] = useState(new Set());
     const [completed, setCompleted] = useState({});
     const [currencySign, setCurrency] = useContext(CurrencyContext)
+    const [extras, setExtras] = React.useState({
+        driver: { isChecked: false, count: 0 },
+        booster: { isChecked: false, count: 0 },
+        child_seat: { isChecked: false, count: 0 },
+        gps: { isChecked: false, count: 0 }
+    });
     const [cars, setCars] = useState([
         {
             carClass: 'Economy',
@@ -135,7 +141,7 @@ const Order = () => {
 
     /** */
 
-    
+
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
     const StyledContainer = styled(Container)`
@@ -159,10 +165,12 @@ const Order = () => {
 
     const getStepContent = step => {
         switch (step) {
-            case 1:
-                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 0:
+                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
+            case 1:
                 return <AddInsurance
+                    extras={extras}
+                    setExtras={setExtras}
                     handleNext={handleNext}
                     handleBack={handleBack}
                     additionalDriverPrice={extrasPrices.additionalDriverPrice}

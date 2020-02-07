@@ -13,12 +13,15 @@ export default function AlertDialog({
     isCountryList,
     dialogContentText,
     dialogTitle,
-    buttonAccept,
-    buttonReject,
-    listOfCountries,
+
     ...rest
 }) {
-    const { travelCountries, setTravelCountries, setListOfCountries } = rest;
+    const { travelCountries,
+        setTravelCountries,
+        setListOfCountries,
+        listOfCountries,
+        buttonAccept,
+        buttonReject } = rest;
     const handleCheckCountry = country => event => {
         if (event.target.checked === true) setTravelCountries([...travelCountries, country])
         else {
@@ -40,13 +43,11 @@ export default function AlertDialog({
                 <FormGroup>
 
                     {isCountryList ? Object.entries(listOfCountries).map(([country, value]) => {
-                         return <FormControlLabel
+                        return <FormControlLabel
                             key={country}
                             style={{ marginLeft: '10px' }}
                             label={country}
-
                             control={
-
                                 <Checkbox
                                     checked={value}
                                     onChange={handleCheckCountry(country)}
