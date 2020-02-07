@@ -4,7 +4,7 @@ import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
 import SearchResults from './SearchResults'
 import AddInsurance from './AddInsurance'
-import OrderConfirmation from './OrderConfirmation'
+import OrderSummary from './OrderSummary'
 import PageNotFound from '../404/PageNotFound'
 import Filters from './Filters'
 import carModels from '../../Layouts/CarCard/carModels/carModels'
@@ -139,8 +139,6 @@ const Order = () => {
 
     ])
 
-    /** */
-
 
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
@@ -150,7 +148,7 @@ const Order = () => {
     margin-top: ${props => props.ismobile ? '0px' : '50px'};
 `
     function getSteps() {
-        return ['Choose your car', 'Add insurance', 'Order confirmation'];
+        return ['Choose your car', 'Add insurance', 'Order summary', 'Payment'];
     }
     const steps = getSteps();
 
@@ -180,7 +178,8 @@ const Order = () => {
                     currencySign={currencySign}
                 />
             case 2:
-                return <OrderConfirmation />;
+                return <OrderSummary />;
+            case 3: return <div>Payment</div>
             default:
                 return <PageNotFound />;
         }
@@ -325,8 +324,7 @@ const Order = () => {
                     </Grid>
 
                 </Grid>
-                {/* <Grid container style={{ border: '1px solid', maxWidth: '780px' }}>
-                </Grid> */}
+
             </StyledContainer >
         </div>
 

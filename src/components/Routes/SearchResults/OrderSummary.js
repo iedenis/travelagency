@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OrderConfirmation = () => {
+const OrderSummary = () => {
     return (
         <div>
             Order confirmation
@@ -8,4 +8,4 @@ const OrderConfirmation = () => {
     )
 }
 
-export default OrderConfirmation
+export default OrderSummary
