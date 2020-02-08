@@ -16,7 +16,7 @@ const fadeInAnimation = keyframes`${fadeOut}`;
 // const FadeInImage = styled.div`
 //     animation: 5s ${fadeInAnimation};
 // `;
-const MainSection = () => {
+const MainSection = ({ setDriverAge }) => {
     const [background, setBackground] = useState(background_4)
 
     const changeBackground = (country) => {
@@ -27,7 +27,7 @@ const MainSection = () => {
         //     setBackground(background_4)
         // }
     }
-    
+
     const StyledSection = styled.section`
         background-image: url(${props => props.background});
         /* animation: 5s ${fadeInAnimation}; */
@@ -62,17 +62,17 @@ const MainSection = () => {
         <StyledSection background={background}>
             <StyledContainer>
                 <Grid container >
-                    <Grid container style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' , marginRight: 'auto' }}>
-                    <Grid item xs={12} sm={12} lg={5} md={6} xl={5}  >
-                            <Picker />
+                    <Grid container style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto' }}>
+                        <Grid item xs={12} sm={12} lg={5} md={6} xl={5}  >
+                            <Picker setDriverAge={setDriverAge} />
                         </Grid>
                         <Hidden mdDown>
-                            <Grid style={{marginLeft:'auto'}} item xs={12} sm={12} lg={5} md={6} xl={5}  >
+                            <Grid style={{ marginLeft: 'auto' }} item xs={12} sm={12} lg={5} md={6} xl={5}  >
                                 <PromoSlider changeBackground={changeBackground} />
                             </Grid>
                         </Hidden>
 
-                      
+
 
                     </Grid>
 

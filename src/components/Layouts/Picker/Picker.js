@@ -47,23 +47,21 @@ height:240 ;
 
 const TabsToDisplay = ({ searchType, tabIndex, setTabIndex }) => {
     const tabs = [
-    <StyledTab key={0} label={'Cars'} />,
-    <StyledTab key={1} label={'Hotels'} />,
-    <StyledTab key={2} label={'Other'} />
-]
+        <StyledTab key={0} label={'Cars'} />,
+        <StyledTab key={1} label={'Hotels'} />,
+        <StyledTab key={2} label={'Other'} />
+    ]
     return <StyledTabs
         variant="fullWidth"
         value={tabIndex}
         onChange={(e, index) => setTabIndex(index)}
     >
         {searchType === 'cars' ? tabs[0] :
-            searchType === 'hotels' ? tabs[1] :tabs}
-        }
-
+            searchType === 'hotels' ? tabs[1] : tabs}
     </StyledTabs>
-
 }
-const Picker = ({ searchType }) => {
+
+const Picker = ({ searchType, setDriverAge }) => {
     const PickerWrapper = styled(Paper)`
     z-index:1;
 /* border: 1px solid; */
@@ -111,7 +109,7 @@ const Picker = ({ searchType }) => {
             <TabsToDisplay tabIndex={tabIndex} searchType={searchType} setTabIndex={setTabIndex} />
 
             <TabPanel value={tabIndex} index={0}>
-                <CarPicker />
+                <CarPicker setDriverAge={setDriverAge} />
             </TabPanel>
 
             <TabPanel value={tabIndex} index={1}>

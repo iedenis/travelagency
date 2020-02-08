@@ -4,7 +4,7 @@ import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
 import SearchResults from './SearchResults'
 import AddInsurance from './AddInsurance'
-import OrderSummary from './OrderSummary'
+import OrderSummary from './OrderSummary/OrderSummary'
 import PageNotFound from '../404/PageNotFound'
 import Filters from './Filters'
 import carModels from '../../Layouts/CarCard/carModels/carModels'
@@ -20,7 +20,12 @@ flex-direction: column;
 
 `
 
-const Order = () => {
+const StyledContainer = styled(Container)`
+padding-top: 50px;
+backgroundColor: '#f9f9f9' ;
+margin-top: ${props => props.ismobile ? '0px' : '50px'};
+`
+const Order = ({ driverAge }) => {
 
     const extrasPrices = {
         childBoosterPrice: 5,
@@ -38,117 +43,26 @@ const Order = () => {
     const [skipped, setSkipped] = useState(new Set());
     const [completed, setCompleted] = useState({});
     const [currencySign, setCurrency] = useContext(CurrencyContext)
+    const [driver, setDriver] = useState({
+        title: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        age: driverAge
+    })
     const [extras, setExtras] = React.useState({
         driver: { isChecked: false, count: 0 },
         booster: { isChecked: false, count: 0 },
         child_seat: { isChecked: false, count: 0 },
         gps: { isChecked: false, count: 0 }
     });
-    const [cars, setCars] = useState([
-        {
-            carClass: 'Economy',
-            carModel: 'Fiat Punto',
-            numberOfSeats: 5,
-            numberOfLargeBags: 1,
-            numberOfSmallBags: 1,
-            numberOfDoors: 4,
-            typeOfGearBox: 'Manual',
-            mileage: 'Unlimited',
-            image: carModels.FiatPunto,
-            supplier: 'Budget',
-            pricePerDay: 35
-        },
-        {
-            carClass: 'Mini',
-            carModel: 'Hyundai i10',
-            numberOfSeats: 4,
-            numberOfLargeBags: 0,
-            numberOfSmallBags: 2,
-            numberOfDoors: 2,
-            typeOfGearBox: 'Manual',
-            mileage: 'Unlimited',
-            image: carModels.Hyundai_i10,
-            supplier: 'Avis',
-            pricePerDay: 40
-        },
-        {
-            carClass: 'Economy',
-            carModel: 'Hyundai I20',
-            numberOfSeats: 5,
-            numberOfLargeBags: 1,
-            numberOfSmallBags: 1,
-            numberOfDoors: 4,
-            typeOfGearBox: 'Automatic',
-            mileage: 'Limited',
-            image: carModels.Hyundai_i20,
-            supplier: 'Europcar',
-            pricePerDay: 38
-        },
-        {
-            carClass: 'Economy',
-            carModel: 'Nissan Micra',
-            numberOfSeats: 5,
-            numberOfLargeBags: 1,
-            numberOfSmallBags: 1,
-            numberOfDoors: 4,
-            typeOfGearBox: 'Automatic',
-            mileage: 'Limited',
-            image: carModels.Nissan_micra,
-            supplier: 'Dollar',
-            pricePerDay: 35
-        },
-        {
-            carClass: 'Mini',
-            carModel: 'Chevrolet Spark',
-            numberOfSeats: 4,
-            numberOfLargeBags: 0,
-            numberOfSmallBags: 2,
-            numberOfDoors: 4,
-            typeOfGearBox: 'Manual',
-            mileage: 'Unlimited',
-            image: carModels.Chevrolet_spark,
-            supplier: 'Thrifty',
-            pricePerDay: 33
-        },
-        {
-            carClass: 'Compact',
-            carModel: 'Subaru Impresa',
-            numberOfSeats: 5,
-            numberOfLargeBags: 2,
-            numberOfSmallBags: 0,
-            numberOfDoors: 4,
-            typeOfGearBox: 'Automatic',
-            mileage: 'Unlimited',
-            image: carModels.Subaru_impresa,
-            supplier: 'Thrifty',
-            pricePerDay: 38
-        },
-        {
-            carClass: 'SUV',
-            carModel: 'Hyundai Tucson',
-            numberOfSeats: 5,
-            numberOfLargeBags: 3,
-            numberOfSmallBags: 0,
-            numberOfDoors: 4,
-            typeOfGearBox: 'Automatic',
-            mileage: 'Limited',
-            image: carModels.Hyundai_tucson,
-            supplier: 'Budget',
-            pricePerDay: 45
-        },
-
-    ])
 
 
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
-    const StyledContainer = styled(Container)`
-    padding-top: 50px;
-    backgroundColor: '#f9f9f9' ;
-    margin-top: ${props => props.ismobile ? '0px' : '50px'};
-`
     function getSteps() {
-        return ['Choose your car', 'Add insurance', 'Order summary', 'Payment'];
+        return ['Choose your car', 'Add insurance', 'Order summary'];
     }
     const steps = getSteps();
 
@@ -178,8 +92,8 @@ const Order = () => {
                     currencySign={currencySign}
                 />
             case 2:
-                return <OrderSummary />;
-            case 3: return <div>Payment</div>
+                return <OrderSummary driver={{ driver, setDriver }} driverAge={driverAge} />;
+            // case 3: return <div>Payment</div>
             default:
                 return <PageNotFound />;
         }
@@ -330,5 +244,100 @@ const Order = () => {
 
     )
 }
+
+const cars = [
+    {
+        carClass: 'Economy',
+        carModel: 'Fiat Punto',
+        numberOfSeats: 5,
+        numberOfLargeBags: 1,
+        numberOfSmallBags: 1,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Manual',
+        mileage: 'Unlimited',
+        image: carModels.FiatPunto,
+        supplier: 'Budget',
+        pricePerDay: 35
+    },
+    {
+        carClass: 'Mini',
+        carModel: 'Hyundai i10',
+        numberOfSeats: 4,
+        numberOfLargeBags: 0,
+        numberOfSmallBags: 2,
+        numberOfDoors: 2,
+        typeOfGearBox: 'Manual',
+        mileage: 'Unlimited',
+        image: carModels.Hyundai_i10,
+        supplier: 'Avis',
+        pricePerDay: 40
+    },
+    {
+        carClass: 'Economy',
+        carModel: 'Hyundai I20',
+        numberOfSeats: 5,
+        numberOfLargeBags: 1,
+        numberOfSmallBags: 1,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Automatic',
+        mileage: 'Limited',
+        image: carModels.Hyundai_i20,
+        supplier: 'Europcar',
+        pricePerDay: 38
+    },
+    {
+        carClass: 'Economy',
+        carModel: 'Nissan Micra',
+        numberOfSeats: 5,
+        numberOfLargeBags: 1,
+        numberOfSmallBags: 1,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Automatic',
+        mileage: 'Limited',
+        image: carModels.Nissan_micra,
+        supplier: 'Dollar',
+        pricePerDay: 35
+    },
+    {
+        carClass: 'Mini',
+        carModel: 'Chevrolet Spark',
+        numberOfSeats: 4,
+        numberOfLargeBags: 0,
+        numberOfSmallBags: 2,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Manual',
+        mileage: 'Unlimited',
+        image: carModels.Chevrolet_spark,
+        supplier: 'Thrifty',
+        pricePerDay: 33
+    },
+    {
+        carClass: 'Compact',
+        carModel: 'Subaru Impresa',
+        numberOfSeats: 5,
+        numberOfLargeBags: 2,
+        numberOfSmallBags: 0,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Automatic',
+        mileage: 'Unlimited',
+        image: carModels.Subaru_impresa,
+        supplier: 'Thrifty',
+        pricePerDay: 38
+    },
+    {
+        carClass: 'SUV',
+        carModel: 'Hyundai Tucson',
+        numberOfSeats: 5,
+        numberOfLargeBags: 3,
+        numberOfSmallBags: 0,
+        numberOfDoors: 4,
+        typeOfGearBox: 'Automatic',
+        mileage: 'Limited',
+        image: carModels.Hyundai_tucson,
+        supplier: 'Budget',
+        pricePerDay: 45
+    },
+
+]
 
 export default Order

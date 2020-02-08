@@ -7,8 +7,8 @@ import gps_icon from './images/gps.svg'
 import styled from 'styled-components'
 import AlertDialog from '../../Layouts/AlertDialog';
 import Alert from '@material-ui/lab/Alert';
-
-
+import { NavigateBefore } from '@material-ui/icons/';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 const Wrapper = styled(Paper)`
     height: ${props => props.ismobile ? '100%' : '90vh'};
 `
@@ -231,13 +231,15 @@ const AddInsurance = ({
                 Cover any bumps or scrapes and have a hassle-free rental. Book everything in one place quickly and easily.
 
 </Alert>
-
-            <Button style={{ marginRight: '20px', marginTop: '20px', border: '1px solid' }} size="small" onClick={handleBack}>
-                Back
+            <Grid container justify='space-between'>
+                <Button style={{ marginRight: '20px', marginTop: '20px' }} size="small" onClick={handleBack}>
+                    <NavigateBefore /> Back to car choosing
         </Button>
-            <Button style={{ marginTop: '20px', border: '1px solid' }} size="small" onClick={addedInsurance ? handleNext : handleClickOpen}>
-                Next
-            </Button>
+                <Button style={{ marginTop: '20px' }} size="small" onClick={addedInsurance ? handleNext : handleClickOpen}>
+                    Go to summary
+<NavigateNextIcon />
+                </Button>
+            </Grid>
             <AlertDialog
                 handleClickOpen={handleClickOpen}
                 handleClose={handleClose}

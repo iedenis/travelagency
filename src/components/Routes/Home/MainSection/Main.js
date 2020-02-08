@@ -2,10 +2,10 @@ import React from 'react'
 import MainSection from '../MainSection'
 import ContactSection from '../ContactSection/ContactSection'
 import SecondSection from '../SecondSection/SecondSection'
-const Main = () => {
+const Main = ({ setDriverAge }) => {
     return (
         <React.Fragment>
-            <MainSection />
+            <MainSection setDriverAge={setDriverAge} />
             <ContactSection />
             <SecondSection />
         </React.Fragment>

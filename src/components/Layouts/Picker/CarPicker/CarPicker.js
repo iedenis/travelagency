@@ -7,6 +7,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useEffect } from 'react'
 
 const today = new Date();
 const SearchButton = styled(Button)`
@@ -25,7 +26,7 @@ const handleDateAndTime = () => {
     console.log("Handle date");
 }
 
-const CarPicker = () => {
+const CarPicker = ({ setDriverAge }) => {
     const [dates, setDates] = useState({
         pickUpDate: today,
         dropOffDate: new Date().setDate(today.getDate() + 3),
@@ -35,13 +36,19 @@ const CarPicker = () => {
     const handleCheckChange = (event) => {
         setIsDifferentLocation(event.target.checked)
     }
-
-    const validateForm = () => {
-        console.log('validating the form');
+    const [age, setAge] = useState()
+    const validateForm = (age) => {
+        console.log(age);
+        setDriverAge(age)
     }
+    // useEffect(() => {
+    //     console.log(age);
+
+    // }, [age])
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('md'));
     const justify = `${matches ? 'flex-end' : 'center'}`;
+
     return (
         <Form noValidate autoComplete="off">
 
@@ -97,16 +104,15 @@ const CarPicker = () => {
                         </div>
                     </Grid>
                     <Grid item sm={4} lg={4} xs={5}>
-                    
-                    <TextField
-                    style={ {float:'right', maxWidth: '143px'}}
-                            id="standard-number"
+
+                        <TextField
+                            style={{ float: 'right', maxWidth: '143px' }}
+                            id="standard-textarea"
                             label="Your age"
                             type="number"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
+                            onChange={event => setAge(event.target.value)}
                         />
+
                     </Grid>
                 </Grid>
 
@@ -118,7 +124,7 @@ const CarPicker = () => {
                 justify={justify}
             >
                 <Grid xs={12} sm={8} md={4} lg={4} style={{ marginTop: '20px' }} item>
-                    <Link style={{ textDecoration: 'none' }} to='/results'><SearchButton ispc={matches.valueOf.toString()} onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton></Link>
+                    <Link style={{ textDecoration: 'none' }} to='/results'><SearchButton ispc={matches.valueOf.toString()} onClick={() => validateForm(age)} variant='contained' color='secondary'>Search</SearchButton></Link>
                 </Grid>
             </Grid>
 
