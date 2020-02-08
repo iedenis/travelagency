@@ -77,7 +77,7 @@ const Order = ({ driverAge }) => {
 
     const getStepContent = step => {
         switch (step) {
-            case 2:
+            case 0:
                 return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
             case 1:
                 return <AddInsurance
@@ -91,7 +91,7 @@ const Order = ({ driverAge }) => {
                     gpsPrice={extrasPrices.gpsPrice}
                     currencySign={currencySign}
                 />
-            case 0:
+            case 2:
                 return <OrderSummary driver={{ driver, setDriver }} driverAge={driverAge} />;
             // case 3: return <div>Payment</div>
             default:
