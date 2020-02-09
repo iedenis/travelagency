@@ -1,14 +1,15 @@
 import React from 'react'
 import CarCard from '../../Layouts/CarCard/CarCard'
 
-const Results = ({ handleBookButtonClicked, searchResult }) => {
+const Results = ({ handleBookButtonClicked, searchResult, requestedCar, setRequestedCar }) => {
     return (
         <React.Fragment>
             {
                 searchResult.map((car, idx) => {
                     return <CarCard
                         handleBookButtonClicked={handleBookButtonClicked}
-                        key={idx}
+                        key={car.id}
+                        id={car.id}
                         carClass={car.carClass}
                         carModel={car.carModel}
                         numberOfSeats={car.numberOfSeats}

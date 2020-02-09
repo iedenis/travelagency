@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Typography, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Collapse, Button, Popper, ClickAwayListener, Divider, Tooltip } from '@material-ui/core'
+import { Typography, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Collapse, Button, Divider, Tooltip } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
 import CarFeatures from './CarFeatures';
@@ -45,9 +45,9 @@ const CarCard = ({
     typeOfGearBox,
     image,
     supplier,
-    pricePerDay
+    pricePerDay,
+    id: carId
 }) => {
-
     const supplierImagePath = suppliers[supplier]
     const [anchorEl, setAnchorEl] = useState(null);
     const [expanded, setExpanded] = useState(false);
@@ -69,16 +69,16 @@ const CarCard = ({
         <StyledCard>
             <StyledTitle
                 avatar={
-                    <Avatar
-                        aria-label="car-model"
-                        onClick={handleClick}
-                        aria-describedby={id}
-                    >
-                        <Tooltip title={'Class ' + carClass} arrow>
+                    <Tooltip title={carClass + ' Class'} arrow>
+                        <Avatar
+                            aria-label="car-model"
+                            onClick={handleClick}
+                            aria-describedby={id}
+                        >
                             <div>{carClass.slice(0, 1)}</div>
-                        </Tooltip>
 
-                    </Avatar>
+                        </Avatar>
+                    </Tooltip>
                 }
 
                 title={carModel}
@@ -125,7 +125,12 @@ const CarCard = ({
                 </div>
 
                 <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-                    <Button onClick={handleBookButtonClicked} style={{ width: '200px' }} variant='contained' color='secondary'>Book</Button>
+                    <Button
+                        onClick={() => handleBookButtonClicked(carId)}
+                        style={{ width: '200px' }}
+                        variant='contained'
+                        color='secondary'>Book
+                     </Button>
                 </div>
 
             </CardActions>

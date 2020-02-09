@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TextField, MenuItem } from '@material-ui/core'
 
 const airports = [
@@ -7,22 +7,23 @@ const airports = [
     'Ramon Airport'
 ]
 
-const AirportSelect = ({ isPickupDate, handleAirportSelected }) => {
-    const [selectedAirport, setSelectedAirport] = useState(airports[0]);
-    const handleSelection = (event) => {
-        setSelectedAirport(event.target.value)
-    }
+const SearchLocation = ({ isPickupDate, handleLocationSelected, location }) => {
+   
     return (
         <TextField
             id="airport-selection"
             select
             label={isPickupDate ? "Pick-up location" : "Drop-off location"}
-            value={selectedAirport}
-            onChange={handleSelection}
+            value={location}
+            defaultValue={location}
+            onChange={event => handleLocationSelected(event.target.value, isPickupDate)}
             style={{ width: '100%' }}
         >
             {airports.map((airport, idx) => (
-                <MenuItem key={idx} value={airport}>
+                <MenuItem
+                    key={idx}
+                    value={airport}
+                >
                     {airport}
                 </MenuItem>
             ))}
@@ -31,4 +32,4 @@ const AirportSelect = ({ isPickupDate, handleAirportSelected }) => {
     )
 }
 
-export default AirportSelect
+export default SearchLocation

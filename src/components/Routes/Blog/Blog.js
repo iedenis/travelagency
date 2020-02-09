@@ -1,12 +1,11 @@
 import React from 'react'
-import CarCard from '../../Layouts/CarCard/CarCard'
 import BackToTopButton from '../../Layouts/BackToTopButton/BackToTopButton'
-import { Container, Typography, Divider } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 const Blog = () => {
-    const handleScroll = (e) => {
+    // const handleScroll = (e) => {
 
-        console.log('scrolling');
-    }
+    //     console.log('scrolling');
+    // }
 
     const Content = () => {
 

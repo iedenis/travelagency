@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Grid, Checkbox, FormControlLabel, Button, useTheme, TextField } from '@material-ui/core'
 import styled from 'styled-components'
 import CarDatePicker from './CarDatePicker'
-import AirportSelect from './AirportSelect'
+import SearchLocation from './SearchLocation'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useEffect } from 'react'
-
+import { SearchDetailsContext } from '../../../../App'
 const today = new Date();
 const SearchButton = styled(Button)`
 width: 100%;
@@ -19,79 +18,113 @@ height: ${props => props.ispc ? '100%' : '50px'};
 `
 const Form = styled.form`
 `
-const handleAirportSelected = () => {
-    console.log('selected');
-}
+
 const handleDateAndTime = () => {
     console.log("Handle date");
 }
 
-const CarPicker = ({ setDriverAge }) => {
+const CarPicker = () => {
+
+    const [searchDetails, setSearchDetails] = useContext(SearchDetailsContext)
+
     const [dates, setDates] = useState({
         pickUpDate: today,
         dropOffDate: new Date().setDate(today.getDate() + 3),
     })
     const [isDifferentLocation, setIsDifferentLocation] = useState(false);
 
-    const handleCheckChange = (event) => {
-        setIsDifferentLocation(event.target.checked)
-    }
-    const [age, setAge] = useState()
-    const validateForm = (age) => {
-        console.log(age);
-        setDriverAge(age)
-    }
-    // useEffect(() => {
-    //     console.log(age);
+    const [tempSearchDetails, setTempSearchDetails] = useState({
+        pickUpLocation: searchDetails.pickUpLocation,
+        dropOffLocation: searchDetails.dropOffLocation,
+        pickUpDate: searchDetails.pickUpDate,
+        pickUpTime: searchDetails.pickUpTime,
+        dropOffDate: searchDetails.dropOffDate,
+        dropOffTime: searchDetails.dropOffTime,
+        driverAge: searchDetails.driverAge
+    })
 
-    // }, [age])
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('md'));
+    const handleLocationSelected = (location, isPickupLocation) => {
+        const key = isPickupLocation ? 'pickUpLocation' : 'dropOffLocation'
+        setTempSearchDetails({
+            ...tempSearchDetails, [key]: location
+        })
+    }
+
+    const handleTimeSelected = (time, isPickUpTime) => {
+        const type = isPickUpTime ? 'pickUpTime' : 'dropOffTime'
+        console.log(isPickUpTime);
+        setTempSearchDetails({
+            ...tempSearchDetails, [type]: time
+        })
+    }
+
+    // useEffect(() => {
+    //     console.log(tempSearchDetails)
+    //     console.log(searchDetails)
+
+    // }, [tempSearchDetails, searchDetails])
+
+    const validateForm = () => {
+        setSearchDetails(tempSearchDetails)
+    }
+
+    const matches = useMediaQuery(useTheme().breakpoints.up('md'));
     const justify = `${matches ? 'flex-end' : 'center'}`;
 
     return (
         <Form noValidate autoComplete="off">
 
-            <Grid container
-                direction='column'
-                spacing={2}
-
-            >
-                <Grid item xs={12}
-
-                >
-                    <AirportSelect isPickupDate={true} handleAirportSelected={handleAirportSelected} />
+            <Grid container direction='column' spacing={2} >
+                <Grid item xs={12}>
+                    <SearchLocation
+                        isPickupDate={true}
+                        handleLocationSelected={handleLocationSelected}
+                        location={tempSearchDetails.pickUpLocation}
+                    />
                 </Grid>
-                <Grid
-                    item xs={12}>
+
+                <Grid item xs={12}>
                     <FormControlLabel
                         control={
                             <Checkbox
-                                onChange={handleCheckChange}
+                                onChange={event => setIsDifferentLocation(event.target.checked)}
                                 color="primary"
                             />
                         }
                         label="Drop-off at different location"
                     />
                     {isDifferentLocation ?
-                        <Grid item><AirportSelect isPickupDate={false} handleAirportSelected={handleAirportSelected} /></Grid> : null
+                        <Grid item>
+                            <SearchLocation
+                                isPickupDate={false}
+                                handleLocationSelected={handleLocationSelected}
+                                location={tempSearchDetails.dropOffLocation}
+                            /></Grid> : null
                     }
 
                 </Grid>
+
                 <Grid container
                     spacing={2} >
                     <CarDatePicker
+                        time={tempSearchDetails.pickUpTime}
+                        date={tempSearchDetails.pickUpDate}
+                        setTempSearchDetails={setTempSearchDetails}
                         setDates={setDates}
                         isPickupDate={true}
                         handleDateAndTime={handleDateAndTime}
+                        handleTimeSelected={handleTimeSelected}
                     />
                 </Grid>
                 <Grid container
                     spacing={2}
                 >
                     <CarDatePicker
+                        time={tempSearchDetails.dropOffTime}
+                        date={tempSearchDetails.dropOffDate}
                         isPickupDate={false}
                         handleDateAndTime={handleDateAndTime}
+                        handleTimeSelected={handleTimeSelected}
                     />
                 </Grid>
                 <Grid container justify='space-between' alignItems="center"  >
@@ -110,7 +143,9 @@ const CarPicker = ({ setDriverAge }) => {
                             id="standard-textarea"
                             label="Your age"
                             type="number"
-                            onChange={event => setAge(event.target.value)}
+                            value={tempSearchDetails.driverAge}
+                            name='driverAge'
+                            onChange={event => setTempSearchDetails({ ...tempSearchDetails, [event.target.name]: event.target.value })}
                         />
 
                     </Grid>
@@ -124,7 +159,7 @@ const CarPicker = ({ setDriverAge }) => {
                 justify={justify}
             >
                 <Grid xs={12} sm={8} md={4} lg={4} style={{ marginTop: '20px' }} item>
-                    <Link style={{ textDecoration: 'none' }} to='/results'><SearchButton ispc={matches.valueOf.toString()} onClick={() => validateForm(age)} variant='contained' color='secondary'>Search</SearchButton></Link>
+                    <Link style={{ textDecoration: 'none' }} to='/results'><SearchButton ispc={matches.valueOf.toString()} onClick={() => validateForm()} variant='contained' color='secondary'>Search</SearchButton></Link>
                 </Grid>
             </Grid>
 

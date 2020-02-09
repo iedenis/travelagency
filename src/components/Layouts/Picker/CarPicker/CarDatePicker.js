@@ -1,24 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { MuiPickersUtilsProvider, DatePicker, TimePicker } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { Grid } from '@material-ui/core';
 
-const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
+const CarDatePicker = ({ setDates,
+  isPickupDate,
+  handleDateAndTime,
+  date,
+  setTempSearchDetails,
+  handleTimeSelected,
+  time }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    // setDates({
 
-    // })
   }
-  // console.log(new Date().setDate((selectedDate.getDate() + 3)));
+ 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
       <Grid item sm={8} xs={7}>
         <DatePicker
           autoOk
-          value={selectedDate}
+          value={date}
           format="dd/MM/yyyy"
           label={isPickupDate ? "Pick-up date" : "Drop-off date"}
           onChange={handleDateChange}
@@ -31,8 +35,8 @@ const CarDatePicker = ({ setDates, isPickupDate, handleDateAndTime }) => {
           label="Time"
           // clearable
           ampm={false}
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={time}
+          onChange={time => handleTimeSelected(time.getTime(), isPickupDate)}
         />
       </Grid>
 

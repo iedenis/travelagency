@@ -19,7 +19,7 @@ const NavMenuItem = ({ navItemText, link, subMenu, type }) => {
     const [open, setOpen] = useState(false);
     const currencyIcons = [{ icon: faDollarSign, sign: '$', code: 'USD' }, { icon: faEuroSign, sign: '€', code: 'EUR' }, { icon: faRubleSign, sign: '₽', code: 'RUB' }, { icon: faShekelSign, sign: '₪', code: 'ILS' }]
 
-    const [currency,  setCurrency] = useContext(CurrencyContext)
+    const [currency, setCurrency] = useContext(CurrencyContext)
     const [language, setLanguage] = useState(<LanguageIcon />)
 
     const anchorRef = React.useRef(null);

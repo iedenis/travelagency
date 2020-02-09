@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Button, Hidden, Container } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Hidden, Container } from '@material-ui/core'
 import styled from 'styled-components'
 import logo from '../../../../images/logo.png'
 import NavMenu from './NavMenu/NavMenu'

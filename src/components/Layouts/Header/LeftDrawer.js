@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';

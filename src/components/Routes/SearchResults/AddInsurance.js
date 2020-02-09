@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Grid, useTheme, Box, Checkbox, useMediaQuery, InputLabel, Select, MenuItem, Paper, FormControlLabel, Divider, Typography } from '@material-ui/core'
+import { Button, Grid, useTheme, Box, Checkbox, useMediaQuery, Select, MenuItem, Paper, FormControlLabel, Typography } from '@material-ui/core'
 import add_driver_icon from './images/add_driver.svg'
 import baby_booster_icon from './images/baby_booster.svg'
 import baby_car_seat_icon from './images/baby_car_seat.svg'
@@ -31,23 +31,21 @@ const AddInsurance = ({
     countries,
 
     extras,
-    setExtras
+    setExtras,
+
+    travelCountries,
+    setTravelCountries,
+    listOfCountries,
+    setListOfCountries,
+    addedInsurance,
+    setAddedInsurance
 }) => {
 
     const Icon = styled.img`
     color: ${useTheme().palette.primary.main}
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     `
-    // const [extras, setExtras] = React.useState({
-    //     driver: { isChecked: false, count: 0 },
-    //     booster: { isChecked: false, count: 0 },
-    //     child_seat: { isChecked: false, count: 0 },
-    //     gps: { isChecked: false, count: 0 }
-    // });
-    const [travelCountries, setTravelCountries] = useState([])
-    const [listOfCountries, setListOfCountries] = useState({ Germany: false, Poland: false, 'Czech Republic': false, Slovakia: false, Italy: false });
-    const [addedInsurance, setAddedInsurance] = useState(false);
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
     const [open, setOpen] = useState(false);
@@ -109,12 +107,15 @@ const AddInsurance = ({
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                     onChange={handleChange(value)}
                 />
+                <div style={{ display: 'flex', alignItems: 'center' }}>
 
-                <Icon src={icon} alt={icon} />
-                <div style={{ marginLeft: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'green' }}>Only {price}{currencySign} per day</span>
-                    <span>{description}</span>
+                    <Icon src={icon} alt={icon} />
+                    <div style={{ marginLeft: '10px', display: 'flex', flexDirection: 'column' }}>
+                        <Typography variant='body1'>{description}</Typography>
+                        <Typography variant='body2' style={{ color: 'green' }}>Only {price}{currencySign} per day</Typography>
+                    </div>
                 </div>
+
             </Box>
             <Select
                 labelId="demo-simple-select-label"

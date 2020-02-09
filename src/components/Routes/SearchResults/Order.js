@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Container, Paper, Grid, Divider, useMediaQuery, useTheme, Stepper, Step, StepLabel, Typography, StepButton, Button, Hidden } from '@material-ui/core'
+import React, { useState, useContext } from 'react'
+import { Container, Grid, Divider, useMediaQuery, useTheme, Stepper, Step, Typography, StepButton, Button, Hidden } from '@material-ui/core'
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
 import SearchResults from './SearchResults'
@@ -43,6 +43,24 @@ const Order = ({ driverAge }) => {
     const [skipped, setSkipped] = useState(new Set());
     const [completed, setCompleted] = useState({});
     const [currencySign, setCurrency] = useContext(CurrencyContext)
+
+
+    /** Order start */
+
+    const [requestedCar, setRequestedCar] = useState({
+        carClass: '',
+        carModel: '',
+        numberOfSeats: '',
+        numberOfLargeBags: 0,
+        numberOfSmallBags: 0,
+        numberOfDoors: 0,
+        typeOfGearBox: '',
+        image: '',
+        supplier: '',
+        pricePerDay: ''
+
+    })
+
     const [driver, setDriver] = useState({
         title: '',
         firstName: '',
@@ -51,13 +69,18 @@ const Order = ({ driverAge }) => {
         phone: '',
         age: driverAge
     })
-    const [extras, setExtras] = React.useState({
+    const [extras, setExtras] = useState({
         driver: { isChecked: false, count: 0 },
         booster: { isChecked: false, count: 0 },
         child_seat: { isChecked: false, count: 0 },
         gps: { isChecked: false, count: 0 }
     });
 
+    const [travelCountries, setTravelCountries] = useState([])
+    const [listOfCountries, setListOfCountries] = useState({ Germany: false, Poland: false, 'Czech Republic': false, Slovakia: false, Italy: false });
+    const [addedInsurance, setAddedInsurance] = useState(false);
+
+    /**Order end */
 
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
@@ -66,10 +89,13 @@ const Order = ({ driverAge }) => {
     }
     const steps = getSteps();
 
-    const handleBookButtonClicked = () => {
+    const handleBookButtonClicked = (carId) => {
+        console.log(carId);
+        setRequestedCar(
+            { ...cars[carId - 1] }
+        )
         handleNext();
     }
-
     const [gearBoxChecked, setGearBoxChecked] = useState({
         Automatic: false,
         Manual: false
@@ -77,8 +103,13 @@ const Order = ({ driverAge }) => {
 
     const getStepContent = step => {
         switch (step) {
-            case 0:
-                return <SearchResults searchResult={filteredCars.length !== 0 ? filteredCars : cars} handleBookButtonClicked={handleBookButtonClicked} />;
+            case 2:
+                return <SearchResults
+                    requestedCar={requestedCar}
+                    setRequestedCar={setRequestedCar}
+                    searchResult={filteredCars.length !== 0 ? filteredCars : cars}
+                    handleBookButtonClicked={handleBookButtonClicked}
+                />;
             case 1:
                 return <AddInsurance
                     extras={extras}
@@ -90,9 +121,19 @@ const Order = ({ driverAge }) => {
                     childSeatPrice={extrasPrices.childSeatPrice}
                     gpsPrice={extrasPrices.gpsPrice}
                     currencySign={currencySign}
+                    listOfCountries={listOfCountries}
+                    setListOfCountries={setListOfCountries}
+                    addedInsurance={addedInsurance}
+                    setAddedInsurance={setAddedInsurance}
+                    travelCountries={travelCountries}
+                    setTravelCountries={setTravelCountries}
                 />
-            case 2:
-                return <OrderSummary driver={{ driver, setDriver }} driverAge={driverAge} />;
+            case 0:
+                return <OrderSummary
+                    driver={{ driver, setDriver }}
+                    driverAge={driverAge}
+                    requestedCar={requestedCar}
+                />;
             // case 3: return <div>Payment</div>
             default:
                 return <PageNotFound />;
@@ -122,12 +163,12 @@ const Order = ({ driverAge }) => {
     const completedSteps = () => {
         return Object.keys(completed).length;
     };
-    const handleComplete = () => {
-        const newCompleted = completed;
-        newCompleted[activeStep] = true;
-        setCompleted(newCompleted);
-        handleNext();
-    };
+    // const handleComplete = () => {
+    //     const newCompleted = completed;
+    //     newCompleted[activeStep] = true;
+    //     setCompleted(newCompleted);
+    //     handleNext();
+    // };
     const allStepsCompleted = () => {
         return completedSteps() === totalSteps();
     };
@@ -247,6 +288,7 @@ const Order = ({ driverAge }) => {
 
 const cars = [
     {
+        id: 1,
         carClass: 'Economy',
         carModel: 'Fiat Punto',
         numberOfSeats: 5,
@@ -260,6 +302,7 @@ const cars = [
         pricePerDay: 35
     },
     {
+        id: 2,
         carClass: 'Mini',
         carModel: 'Hyundai i10',
         numberOfSeats: 4,
@@ -273,6 +316,7 @@ const cars = [
         pricePerDay: 40
     },
     {
+        id: 3,
         carClass: 'Economy',
         carModel: 'Hyundai I20',
         numberOfSeats: 5,
@@ -286,6 +330,7 @@ const cars = [
         pricePerDay: 38
     },
     {
+        id: 4,
         carClass: 'Economy',
         carModel: 'Nissan Micra',
         numberOfSeats: 5,
@@ -299,6 +344,7 @@ const cars = [
         pricePerDay: 35
     },
     {
+        id: 5,
         carClass: 'Mini',
         carModel: 'Chevrolet Spark',
         numberOfSeats: 4,
@@ -312,6 +358,7 @@ const cars = [
         pricePerDay: 33
     },
     {
+        id: 6,
         carClass: 'Compact',
         carModel: 'Subaru Impresa',
         numberOfSeats: 5,
@@ -325,6 +372,7 @@ const cars = [
         pricePerDay: 38
     },
     {
+        id: 7,
         carClass: 'SUV',
         carModel: 'Hyundai Tucson',
         numberOfSeats: 5,

@@ -2,16 +2,13 @@ import React from 'react'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import promo_1 from '../../../../images/promo/promo_1.png'
-import promo_2 from '../../../../images/promo/promo_4.jpg'
-import promo_3 from '../../../../images/promo/promo_3.jpg'
+// import promo_1 from '../../../../images/promo/promo_1.png'
+// import promo_2 from '../../../../images/promo/promo_4.jpg'
+// import promo_3 from '../../../../images/promo/promo_3.jpg'
 
 import styled from 'styled-components';
 import { Typography, Button } from '@material-ui/core';
-// const PromoImage = styled.img`
-//     max-width: 100%;
-//     max-height: 100%;
-// `
+
 let index = 0;
 const promos = [
     {
@@ -48,9 +45,7 @@ const StyledSlider = styled(Slider)`
 const SlideContent = styled.div`
 flex:1;
 `
-const onChange = () => {
-    console.log('changed');
-}
+
 const PromoSlider = ({ changeBackground }) => {
     const settings = {
         afterChange: () => { changeBackground(promos[index].country); index=(index+1)%2 },

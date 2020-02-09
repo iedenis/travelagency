@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Paper, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, FormControlLabel, Checkbox, ListItem, useMediaQuery, useTheme, Grid } from '@material-ui/core'
+import React from 'react'
+import { Paper, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, FormControlLabel, Checkbox, useMediaQuery, useTheme, Grid } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
 
@@ -75,7 +75,7 @@ const Filters = ({ cars,
     }
 
     const GearBoxPanel = () => {
-        return <ExpansionPanel defaultExpanded={isPC} style={{ marginTop: isPC? '16px': '0px' }}>
+        return <ExpansionPanel defaultExpanded={isPC} style={{ marginTop: isPC ? '16px' : '0px' }}>
             <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
@@ -93,7 +93,7 @@ const Filters = ({ cars,
     }
 
     const SuppliersPannel = () => {
-        return <ExpansionPanel defaultExpanded={isPC} style={{ marginTop: isPC? '16px': '0px' }} >
+        return <ExpansionPanel defaultExpanded={isPC} style={{ marginTop: isPC ? '16px' : '0px' }} >
             <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"

@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useTheme, Grid, Container, Hidden } from '@material-ui/core'
 import Picker from '../../Layouts/Picker/Picker'
 import backgroundImage from '../../../images/background.png'
 import Companies from './MainSection/Companies'
 import PromoSlider from './MainSection/PromoSlider'
-import background_2 from '../../../images/assets/background_2.jpg'
-import background_3 from '../../../images/background_2.png'
+// import background_2 from '../../../images/assets/background_2.jpg'
+// import background_3 from '../../../images/background_2.png'
 import background_4 from '../../../images/background_3.png'
-import background_5 from '../../../images/background_4.png'
+// import background_5 from '../../../images/background_4.png'
 import { fadeOut } from 'react-animations';
 
 const fadeInAnimation = keyframes`${fadeOut}`;
@@ -17,8 +17,8 @@ const fadeInAnimation = keyframes`${fadeOut}`;
 //     animation: 5s ${fadeInAnimation};
 // `;
 const MainSection = ({ setDriverAge }) => {
-    const [background, setBackground] = useState(background_4)
-
+    // const [background, setBackground] = useState(background_4)
+const background = background_4;
     const changeBackground = (country) => {
         // if (country === 'United Kingdom') {
         //     setBackground(background_4)

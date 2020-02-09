@@ -23,11 +23,7 @@ const ListItem = styled.li`
         margin-left: 5px;
     }
 `
-const StyledTooltip = styled(Tooltip)`
-    .mui-tooltip{
-        font-size:10px;
-    }
-`
+
 const PriceGridItem = styled(Grid)`
     /* border: 1px solid; */
     /* padding:16px;
