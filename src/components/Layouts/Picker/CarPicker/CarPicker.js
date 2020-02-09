@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Grid, Checkbox, FormControlLabel, Button, useTheme, TextField } from '@material-ui/core'
 import styled from 'styled-components'
 import CarDatePicker from './CarDatePicker'
@@ -19,9 +19,6 @@ height: ${props => props.ispc ? '100%' : '50px'};
 const Form = styled.form`
 `
 
-const handleDateAndTime = () => {
-    console.log("Handle date");
-}
 
 const CarPicker = () => {
 
@@ -52,17 +49,17 @@ const CarPicker = () => {
 
     const handleTimeSelected = (time, isPickUpTime) => {
         const type = isPickUpTime ? 'pickUpTime' : 'dropOffTime'
-        console.log(isPickUpTime);
         setTempSearchDetails({
             ...tempSearchDetails, [type]: time
         })
     }
-
-    // useEffect(() => {
-    //     console.log(tempSearchDetails)
-    //     console.log(searchDetails)
-
-    // }, [tempSearchDetails, searchDetails])
+    const handleDateSelected = (date, isPickUpdate) => {
+        console.log("HERE")
+        const typeOfDate = isPickUpdate ? 'pickUpDate' : 'dropOffDate'
+        setTempSearchDetails({
+            ...tempSearchDetails, [typeOfDate]: date
+        })
+    }
 
     const validateForm = () => {
         setSearchDetails(tempSearchDetails)
@@ -112,8 +109,8 @@ const CarPicker = () => {
                         setTempSearchDetails={setTempSearchDetails}
                         setDates={setDates}
                         isPickupDate={true}
-                        handleDateAndTime={handleDateAndTime}
                         handleTimeSelected={handleTimeSelected}
+                        handleDateSelected={handleDateSelected}
                     />
                 </Grid>
                 <Grid container
@@ -123,8 +120,8 @@ const CarPicker = () => {
                         time={tempSearchDetails.dropOffTime}
                         date={tempSearchDetails.dropOffDate}
                         isPickupDate={false}
-                        handleDateAndTime={handleDateAndTime}
                         handleTimeSelected={handleTimeSelected}
+                        handleDateSelected={handleDateSelected}
                     />
                 </Grid>
                 <Grid container justify='space-between' alignItems="center"  >

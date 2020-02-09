@@ -14,9 +14,11 @@ import PageNotFound from './components/Routes/404/PageNotFound';
 import { CurrencyContext } from './components/SharedState/SharedState'
 import { faEuroSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect } from 'react';
 export const SearchDetailsContext = createContext()
 
 const date = new Date();
+
 const defaultTime = date.setHours(10, 0, 0)
 const App = () => {
 
@@ -31,6 +33,8 @@ const App = () => {
     dropOffTime: defaultTime,
     driverAge: ''
   })
+
+
   const [driverAge, setDriverAge] = useState(0);
 
   const [currency, setCurrency] = useState({

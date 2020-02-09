@@ -103,7 +103,7 @@ const Order = ({ driverAge }) => {
 
     const getStepContent = step => {
         switch (step) {
-            case 2:
+            case 0:
                 return <SearchResults
                     requestedCar={requestedCar}
                     setRequestedCar={setRequestedCar}
@@ -128,7 +128,7 @@ const Order = ({ driverAge }) => {
                     travelCountries={travelCountries}
                     setTravelCountries={setTravelCountries}
                 />
-            case 0:
+            case 2:
                 return <OrderSummary
                     driver={{ driver, setDriver }}
                     driverAge={driverAge}
