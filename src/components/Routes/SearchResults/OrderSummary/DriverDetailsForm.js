@@ -1,6 +1,9 @@
 import React from 'react'
 import { Grid, Typography, Divider, TextField, MenuItem, useMediaQuery, useTheme } from '@material-ui/core'
+import styled from 'styled-components';
+const Form = styled.form`
 
+`
 const DriverDetailsForm = ({
     tempDriver,
     handleChange,

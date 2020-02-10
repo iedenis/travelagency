@@ -54,7 +54,6 @@ const CarPicker = () => {
         })
     }
     const handleDateSelected = (date, isPickUpdate) => {
-        console.log("HERE")
         const typeOfDate = isPickUpdate ? 'pickUpDate' : 'dropOffDate'
         setTempSearchDetails({
             ...tempSearchDetails, [typeOfDate]: date

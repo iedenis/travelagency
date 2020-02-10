@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { TextField, Paper, Typography, Divider } from '@material-ui/core';
 import styled from 'styled-components';
 import DriverDetailsForm from './DriverDetailsForm';
+import SummaryCard from './SummaryCard';
 
 const DetailsWraper = styled(Paper)`
-
+background-color: #f5f5f5;
 display: flex;
 justify-content: center;
 `
@@ -17,7 +18,9 @@ const FlightDetails = styled.div`
 const OrderSummary = ({
     driver: { driver, setDriver },
     driverAge,
-    requestedCar }) => {
+    requestedCar,
+    searchDetails
+}) => {
 
     // const ispc = useMediaQuery(useTheme().breakpoints.up('sm'));
 
@@ -39,7 +42,10 @@ const OrderSummary = ({
     // }, [tempDriver, ispc])
     return (
         <>
-            {/* <CarSummary /> */}
+            <SummaryCard
+                searchDetails={searchDetails}
+                requestedCar={requestedCar}
+            />
             <DetailsWraper>
                 <DriverDetailsForm
                     tempDriver={tempDriver}

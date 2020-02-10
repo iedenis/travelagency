@@ -9,23 +9,23 @@ import PageNotFound from '../404/PageNotFound'
 import Filters from './Filters'
 import carModels from '../../Layouts/CarCard/carModels/carModels'
 import { CurrencyContext } from '../../SharedState/SharedState';
-
+import SearchDetailsContext from '../../../App'
 
 const LeftPane = styled.div`
-display:flex;
-flex: 1;
-flex-direction: column;
+    display:flex;
+    flex: 1;
+    flex-direction: column;
     max-width: 490px;
     height: 100%;
 
 `
 
 const StyledContainer = styled(Container)`
-padding-top: 50px;
-backgroundColor: '#f9f9f9' ;
-margin-top: ${props => props.ismobile ? '0px' : '50px'};
+    padding-top: 50px;
+    backgroundColor: '#f9f9f9' ;
+    margin-top: ${props => props.ismobile ? '0px' : '50px'};
 `
-const Order = ({ driverAge }) => {
+const Order = ({ searchDetails }) => {
 
     const extrasPrices = {
         childBoosterPrice: 5,
@@ -43,19 +43,18 @@ const Order = ({ driverAge }) => {
     const [skipped, setSkipped] = useState(new Set());
     const [completed, setCompleted] = useState({});
     const [currencySign, setCurrency] = useContext(CurrencyContext)
-
-
+    // const searchDetails = useContext(SearchDetailsContext)
     /** Order start */
 
     const [requestedCar, setRequestedCar] = useState({
-        carClass: '',
-        carModel: '',
+        carClass: 'Mini',
+        carModel: 'Chevrolet Spark',
         numberOfSeats: '',
         numberOfLargeBags: 0,
         numberOfSmallBags: 0,
         numberOfDoors: 0,
         typeOfGearBox: '',
-        image: '',
+        image: '../../../components/Layouts/CarCard/carModels/images/focus.jpg',
         supplier: '',
         pricePerDay: ''
 
@@ -67,7 +66,7 @@ const Order = ({ driverAge }) => {
         lastName: '',
         email: '',
         phone: '',
-        age: driverAge
+        age: searchDetails.driverAge
     })
     const [extras, setExtras] = useState({
         driver: { isChecked: false, count: 0 },
@@ -79,6 +78,7 @@ const Order = ({ driverAge }) => {
     const [travelCountries, setTravelCountries] = useState([])
     const [listOfCountries, setListOfCountries] = useState({ Germany: false, Poland: false, 'Czech Republic': false, Slovakia: false, Italy: false });
     const [addedInsurance, setAddedInsurance] = useState(false);
+
 
     /**Order end */
 
@@ -130,9 +130,9 @@ const Order = ({ driverAge }) => {
                 />
             case 2:
                 return <OrderSummary
-                    driver={{ driver, setDriver }}
-                    driverAge={driverAge}
                     requestedCar={requestedCar}
+                    driver={{ driver, setDriver }}
+                    searchDetails={searchDetails}
                 />;
             // case 3: return <div>Payment</div>
             default:
@@ -199,11 +199,11 @@ const Order = ({ driverAge }) => {
     })
 
     return (
-        <div style={{ display: 'flex', flex: 1, flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'column', backgroundColor: '#f5f5f5' }}>
 
             <StyledContainer ismobile={isMobile.toString()}>
                 <Grid container >
-                    <Grid item sm>
+                    <Grid item sm style={{ marginBottom: '8px', borderRadius: '4px' }}>
                         <Stepper nonLinear activeStep={activeStep}>
                             {steps.map((label, index) => (
                                 <Step key={label}>

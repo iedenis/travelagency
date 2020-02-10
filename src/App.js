@@ -25,11 +25,11 @@ const App = () => {
 
 
   const [searchDetails, setSearchDetails] = useState({
-    pickUpLocation: '',
-    dropOffLocation: '',
+    pickUpLocation: 'Ben Gurion Airport',
+    dropOffLocation: 'Haifa Airport',
     pickUpDate: new Date(),
     pickUpTime: defaultTime,
-    dropOffDate: date.setDate(date.getDate() + 3),
+    dropOffDate: new Date(date.setDate(date.getDate() + 3)),
     dropOffTime: defaultTime,
     driverAge: ''
   })
@@ -64,10 +64,10 @@ const App = () => {
           <Route exact path='/results'>
             <CurrencyContext.Provider value={[currency.sign, setCurrency]}>
               <SearchDetailsContext.Provider value={[searchDetails, setSearchDetails]}>
-                <Order driverAge={driverAge} />
+                <Order searchDetails={searchDetails} />
               </SearchDetailsContext.Provider>
-
             </CurrencyContext.Provider>
+
           </Route>
           <Route exact path='/sign-in' component={SignIn} />
           <Route component={PageNotFound} />
