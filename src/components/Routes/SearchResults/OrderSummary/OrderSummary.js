@@ -3,6 +3,7 @@ import { TextField, Paper, Typography, Divider } from '@material-ui/core';
 import styled from 'styled-components';
 import DriverDetailsForm from './DriverDetailsForm';
 import SummaryCard from './SummaryCard';
+import { useEffect } from 'react';
 
 const DetailsWraper = styled(Paper)`
 background-color: #f5f5f5;
@@ -21,9 +22,11 @@ const OrderSummary = ({
     requestedCar,
     searchDetails
 }) => {
-
+   
     // const ispc = useMediaQuery(useTheme().breakpoints.up('sm'));
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     const [tempDriver, setTempDriver] = useState({
         title: '',
         firstName: '',

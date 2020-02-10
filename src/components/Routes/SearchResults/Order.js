@@ -129,7 +129,7 @@ const Order = ({ searchDetails }) => {
                     setTravelCountries={setTravelCountries}
                 />
             case 2:
-                return <OrderSummary
+                return  <OrderSummary
                     requestedCar={requestedCar}
                     driver={{ driver, setDriver }}
                     searchDetails={searchDetails}
