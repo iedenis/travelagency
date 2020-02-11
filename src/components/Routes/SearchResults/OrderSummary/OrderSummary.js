@@ -20,13 +20,14 @@ const OrderSummary = ({
     driver: { driver, setDriver },
     driverAge,
     requestedCar,
-    searchDetails
+    searchDetails,
+    extras
 }) => {
-   
+
     // const ispc = useMediaQuery(useTheme().breakpoints.up('sm'));
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+    }, [])
     const [tempDriver, setTempDriver] = useState({
         title: '',
         firstName: '',
@@ -40,14 +41,13 @@ const OrderSummary = ({
         setTempDriver({ ...tempDriver, [event.target.name]: event.target.value })
     }
 
-    // useEffect(() => {
-    //     console.log(tempDriver);
-    // }, [tempDriver, ispc])
+    
     return (
         <>
             <SummaryCard
                 searchDetails={searchDetails}
                 requestedCar={requestedCar}
+                extras={extras}
             />
             <DetailsWraper>
                 <DriverDetailsForm
