@@ -8,7 +8,8 @@ import suppliers from '../../../images/suppliers/suppliers'
 
 const StyledCard = styled(Card)`
 max-width: 800px;
-margin-bottom: 5px;
+margin-bottom: 32px;
+padding: 8px;
 /* border: 1px solid; */
 `
 const CarImage = styled(CardMedia)`
@@ -111,38 +112,18 @@ const CarCard = ({
 
             </CardContent>
             <CardActions disableSpacing>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+              
+              <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
+                  <Button
+                      onClick={() => handleBookButtonClicked(carId)}
+                      style={{ width: '200px' }}
+                      variant='contained'
+                      color='secondary'>Book
+                   </Button>
+              </div>
 
-                    <Button color='primary' variant='text'
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon />
-                        details
-                        </Button>
+          </CardActions>
 
-                </div>
-
-                <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-                    <Button
-                        onClick={() => handleBookButtonClicked(carId)}
-                        style={{ width: '200px' }}
-                        variant='contained'
-                        color='secondary'>Book
-                     </Button>
-                </div>
-
-            </CardActions>
-            <Collapse
-                in={expanded}
-                timeout="auto" unmountOnExit>
-                <CardContent>
-                    <Divider />
-                    <Policies />
-                </CardContent>
-            </Collapse>
-            <Divider />
         </StyledCard>
 
     )

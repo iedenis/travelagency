@@ -4,9 +4,10 @@ import { faSnowflake, faSuitcase, faSuitcaseRolling, faCheck } from '@fortawesom
 import Gearbox from './featureIcons/gearbox.svg'
 import Seats from './featureIcons/seat.svg'
 import Doors from './featureIcons/car-door.svg'
-import { Grid, Tooltip, Typography, useTheme, useMediaQuery, Box } from '@material-ui/core'
+import { Grid, Tooltip, Typography, useTheme, useMediaQuery, Box, Divider } from '@material-ui/core'
 import styled from 'styled-components'
 import { CurrencyContext } from '../../SharedState/SharedState'
+import Policies from './Policies'
 
 const FeatureIcon = styled.img`
     width: 16px;
@@ -60,16 +61,14 @@ const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLar
                         <ListItem iszero={numberOfLargeBags}><FeatureIconFontAwesome icon={faSuitcase} />{numberOfLargeBags === 1 ? <span>1 Large bag</span> : numberOfLargeBags === 0 ? <span>Large bags</span> : <span>{numberOfLargeBags} Large bags</span>}
                         </ListItem>
                     </Tooltip>
-
-                </ul>
-            </Grid>
-            <Grid item lg={4} md
-            >
-                <ul>
                     <ListItem ><FeatureIcon src={Gearbox} alt={Gearbox} /> <span>{transmissionType} Gearbox</span></ListItem>
                     <ListItem><FeatureIcon src={Doors} /> <span>{numberOfDoors} Doors</span></ListItem>
                     <ListItem><FeatureIcon src={Seats} /><span>{numberOfSeats} Seats</span> </ListItem>
+
                 </ul>
+            </Grid>
+            <Grid item lg={4} md >
+                <Policies/>
             </Grid>
             <PriceGridItem item sm lg={4} md ismobile={isMobile.toString()} >
                 <ul>
@@ -85,16 +84,22 @@ const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLar
                                 <Typography variant='body1'> <FontAwesomeIcon style={{ color: 'green', marginRight: '8px' }} icon={faCheck} />Free Cancellation</Typography>
                             </Tooltip>
                         </Box>
-
                     </ListItem>
+                    <Typography variant='body1' style={{ marginTop: '8px' }}>Included in the price:</Typography>
+                    <Divider style={{ marginBottom: '8px' }}  />
+                        <ListItem ><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> AmendmentsTheft </ListItem>
+                        <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> ProtectionCollision </ListItem>
+                        <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> Damage Waiver </ListItem>
+
+
 
                 </ul>
-
+    
             </PriceGridItem>
         </Grid >
 
 
-    )
-}
-
-export default CarFeatures
+            )
+        }
+        
+        export default CarFeatures

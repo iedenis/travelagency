@@ -20,7 +20,7 @@ const Policies = () => {
     return (
 
         <Grid container >
-            <Grid item lg={4} sm={6} md={6} xs={12}
+            <Grid item 
             style={{padding:  '8px'}}
             >
                 <Typography>Policies</Typography>
@@ -31,22 +31,7 @@ const Policies = () => {
                     <div><FontAwesomeIcon style={{ color: '#008000' }} icon={faMapMarker} /> Ben Gurion Airport</div>
                 </div>
             </Grid>
-            <Grid item xs={12} lg={1}             style={{padding:  '8px'}}
->
-
-                <Divider style={{ marginTop: isMobile ? '8px': '0px'}} orientation={isMobile ? "horizontal" : "vertical"} />
-            </Grid>
-            <Grid item style={{padding:'8px', textAlign: 'left' }}>
-
-                <Typography variant='body1' style={{  marginTop: isMobile ? '8px' : '0px' }}>Included in the price:</Typography>
-
-                <List ismobile={isMobile.toString()} >
-                    <li><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> AmendmentsTheft </li>
-                    <li><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> ProtectionCollision </li>
-                    <li><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> Damage Waiver </li>
-                </List>
-
-            </Grid>
+        
         </Grid >
 
     )
