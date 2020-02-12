@@ -23,12 +23,12 @@ const Policies = () => {
             <Grid item 
             style={{padding:  '8px'}}
             >
-                <Typography>Policies</Typography>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Link >rental terms</Link>
                     <div><MileagePolicyIcon src={mileage} alt='milage-policy' /> Mileage unlimited</div>
                     <div><FontAwesomeIcon style={{ color: '#008000' }} icon={faGasPump} /> Fuel from full to full</div>
                     <div><FontAwesomeIcon style={{ color: '#008000' }} icon={faMapMarker} /> Ben Gurion Airport</div>
+                    <Link >rental terms</Link>
+
                 </div>
             </Grid>
         
