@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Container, Grid, Divider, useMediaQuery, useTheme, Stepper, Step, Typography, StepButton, Button, Hidden } from '@material-ui/core'
 import Picker from '../../Layouts/Picker/Picker'
 import styled from 'styled-components'
@@ -75,6 +75,9 @@ const Order = ({ searchDetails }) => {
         gps: { isChecked: false, count: 0 }
     });
 
+    useEffect(() => {
+       console.log(extras)
+    }, [extras])
     const [travelCountries, setTravelCountries] = useState([])
     const [listOfCountries, setListOfCountries] = useState({ Germany: false, Poland: false, 'Czech Republic': false, Slovakia: false, Italy: false });
     const [addedInsurance, setAddedInsurance] = useState(false);
@@ -90,7 +93,6 @@ const Order = ({ searchDetails }) => {
     const steps = getSteps();
 
     const handleBookButtonClicked = (carId) => {
-        console.log(carId);
         setRequestedCar(
             { ...cars[carId - 1] }
         )
@@ -129,7 +131,8 @@ const Order = ({ searchDetails }) => {
                     setTravelCountries={setTravelCountries}
                 />
             case 2:
-                return  <OrderSummary
+                return <OrderSummary
+                    extras={extras}
                     requestedCar={requestedCar}
                     driver={{ driver, setDriver }}
                     searchDetails={searchDetails}
