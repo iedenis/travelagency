@@ -81,12 +81,10 @@ const CarCard = ({
     const PriceSection = () => {
 
         return <PriceGridItem container wrap='nowrap'>
-            <ul style={{ paddingLeft: '0px' }}>
-                <ListItem>
+            <ul style={{ paddingLeft: '0px' , margin:'0px'}}>
                     {/* <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
                         <span style={{ fontWeight: 'lighter', fontSize: '1rem' }}>per day</span>
                     </Box> */}
-                </ListItem>
                 <ListItem>
                     <Box fontWeight='normal' style={{ marginTop: '8px' }}>
                         <Tooltip title="FREE cancellation up to 48 hours " arrow>

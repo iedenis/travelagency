@@ -6,7 +6,7 @@ const Main = ({  }) => {
     return (
         <React.Fragment>
             <MainSection  />
-            <ContactSection />
+            {/* <ContactSection /> */}
             <SecondSection />
         </React.Fragment>
     )

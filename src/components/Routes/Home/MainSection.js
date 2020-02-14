@@ -11,36 +11,23 @@ import background_4 from '../../../images/background_3.png'
 // import background_5 from '../../../images/background_4.png'
 import { fadeOut } from 'react-animations';
 
-const fadeInAnimation = keyframes`${fadeOut}`;
 
-// const FadeInImage = styled.div`
-//     animation: 5s ${fadeInAnimation};
-// `;
 const MainSection = ({ setDriverAge }) => {
-    // const [background, setBackground] = useState(background_4)
 const background = background_4;
     const changeBackground = (country) => {
-        // if (country === 'United Kingdom') {
-        //     setBackground(background_4)
-        // }
-        // else {
-        //     setBackground(background_4)
-        // }
+     
     }
 
     const StyledSection = styled.section`
         background-image: url(${props => props.background});
-        /* animation: 5s ${fadeInAnimation}; */
-
-        /* background-image: url(${backgroundImage});  */
         background-size: cover;
         /* padding-top: 50px; */
-        height: calc(100vh - 94px);
+        height: calc(100vh - 64px);
         width: 100%; 
             @media screen and (max-width: ${useTheme().breakpoints.values.sm}px) {
                 padding-top: 0px;
                 margin-top:0px;
-                height: calc(100vh - 55px);
+                /* height: calc(100vh - 55px); */
                 background-image: none;
         }
     }`
@@ -49,7 +36,7 @@ const background = background_4;
     z-index:1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height:100%;
         @media screen and (max-width: 600px) {
             &.MuiContainer-root{
@@ -61,7 +48,7 @@ const background = background_4;
     return (
         <StyledSection background={background}>
             <StyledContainer>
-                <Grid container >
+                <Grid container style={{flex:1, flexShrink:0, flexWrap:'wrap'}}>
                     <Grid container style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto' }}>
                         <Grid item xs={12} sm={12} lg={5} md={6} xl={5}  >
                             <Picker setDriverAge={setDriverAge} />
@@ -71,12 +58,9 @@ const background = background_4;
                                 <PromoSlider changeBackground={changeBackground} />
                             </Grid>
                         </Hidden>
-
-
-
                     </Grid>
-
                 </Grid>
+
                 <Grid item>
                     <Companies />
                 </Grid>
