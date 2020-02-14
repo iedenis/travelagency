@@ -75,9 +75,6 @@ const Order = ({ searchDetails }) => {
         gps: { isChecked: false, count: 0 }
     });
 
-    useEffect(() => {
-       console.log(extras)
-    }, [extras])
     const [travelCountries, setTravelCountries] = useState([])
     const [listOfCountries, setListOfCountries] = useState({ Germany: false, Poland: false, 'Czech Republic': false, Slovakia: false, Italy: false });
     const [addedInsurance, setAddedInsurance] = useState(false);
@@ -388,7 +385,6 @@ const cars = [
         supplier: 'Budget',
         pricePerDay: 45
     },
-
 ]
 
 export default Order

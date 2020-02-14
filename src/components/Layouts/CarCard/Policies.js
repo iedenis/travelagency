@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Grid, Divider, Link, useMediaQuery, useTheme } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faGasPump, faMapMarker } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faGasPump, faMapMarker, faQuestion } from '@fortawesome/free-solid-svg-icons'
 import mileage from './featureIcons/mileage.svg'
 import styled from 'styled-components'
 
@@ -10,25 +10,25 @@ const MileagePolicyIcon = styled.img`
     height: 16px;
 `
 const List = styled.ul`
-list-style: none;
-padding-left: ${props => props.ismobile ? '0px' : '40px'};
+    padding-left:0px;
+    list-style: none;
+/* padding-left: ${props => props.ismobile ? '0px' : '40px'}; */
 `
 
 
 const Policies = () => {
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
     return (
-
-        <Grid container >
-            <Grid item >
+        <Grid container justify='center' >
+            <Grid item style={{ padding: '8px' }} >
                 <List >
                     <li><MileagePolicyIcon src={mileage} alt='milage-policy' /> Mileage unlimited</li>
                     <li><FontAwesomeIcon style={{ color: '#008000' }} icon={faGasPump} /> Fuel from full to full</li>
                     <li><FontAwesomeIcon style={{ color: '#008000' }} icon={faMapMarker} /> Ben Gurion Airport</li>
-                    <Link >rental terms</Link>
+                    <li><FontAwesomeIcon style={{ color: '#008000' }} icon={faQuestion} /><Link > Rental Conditions</Link> </li>
                 </List>
             </Grid>
-        
+
         </Grid >
 
     )

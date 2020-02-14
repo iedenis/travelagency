@@ -25,14 +25,7 @@ const ListItem = styled.li`
     }
 `
 
-const PriceGridItem = styled(Grid)`
-    /* border: 1px solid; */
-    /* padding:16px;
-    padding-left: ${props => props.ismobile ? '40px' : '16px'}; */
-    display: flex;
-    justify-content: ${props => props.ismobile ? 'flex-start' : 'flex-end'}
-    flex: 1;
-`
+
 const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLargeBags, numberOfSmallBags, numberOfDoors }) => {
 
     const currency = useContext(CurrencyContext)
@@ -42,11 +35,12 @@ const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLar
         <Grid
             style={{
                 display: 'flex',
+                flex: 1,
                 // border: '1px solid'
             }}
             container direction={isMobile ? 'column-reverse' : 'row'}   >
-            <Grid item lg={4} md >
-                <ul>
+            <Grid item xs={12} md style={{padding:'8px', display: isMobile ? 'flex' : '', justifyContent: 'center' }} >
+                <ul style={{paddingLeft:'0px'}}>
                     <ListItem><FeatureIconFontAwesome icon={faSnowflake} /> <span>Aircondition</span></ListItem>
                     <ListItem iszero={numberOfSmallBags}>
                         <Tooltip disableHoverListener={isMobile} title={'This car can hold ' + (numberOfSmallBags === 1 ? '1 Small bag' : `${numberOfSmallBags} Small bags`)} arrow>
@@ -67,39 +61,10 @@ const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLar
 
                 </ul>
             </Grid>
-            <Grid item lg={4} md >
-                <Policies/>
-            </Grid>
-            <PriceGridItem item sm lg={4} md ismobile={isMobile.toString()} >
-                <ul>
-                    <ListItem>
-                        <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
-                            <span style={{ fontWeight: 'lighter', fontSize: '1rem' }}>per day</span>
-                        </Box>
-                    </ListItem>
-                    <ListItem>
-                        <Box fontWeight='normal' style={{ marginTop: '8px' }}>
-                            <Tooltip title="FREE cancellation up to 48 hours " arrow>
-
-                                <Typography variant='body1'> <FontAwesomeIcon style={{ color: 'green', marginRight: '8px' }} icon={faCheck} />Free Cancellation</Typography>
-                            </Tooltip>
-                        </Box>
-                    </ListItem>
-                    <Typography variant='body1' style={{ marginTop: '8px' }}>Included in the price:</Typography>
-                    <Divider style={{ marginBottom: '8px' }}  />
-                        <ListItem ><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> AmendmentsTheft </ListItem>
-                        <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> ProtectionCollision </ListItem>
-                        <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> Damage Waiver </ListItem>
-
-
-
-                </ul>
-    
-            </PriceGridItem>
         </Grid >
 
 
-            )
-        }
-        
-        export default CarFeatures
+    )
+}
+
+export default CarFeatures

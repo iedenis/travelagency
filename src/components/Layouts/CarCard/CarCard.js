@@ -1,24 +1,26 @@
-import React, { useState } from 'react'
-import { Typography, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Collapse, Button, Divider, Tooltip } from '@material-ui/core'
+import React, { useState, useContext } from 'react'
+import { Typography, CardContent, CardMedia, CardActions, Card, CardHeader, Avatar, Button, Divider, Tooltip, useMediaQuery, useTheme, Box, Grid } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
 import CarFeatures from './CarFeatures';
 import Policies from './Policies';
 import suppliers from '../../../images/suppliers/suppliers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { CurrencyContext } from '../../SharedState/SharedState';
 
 const StyledCard = styled(Card)`
 max-width: 800px;
 margin-bottom: 32px;
 padding: 8px;
-/* border: 1px solid; */
 `
 const CarImage = styled(CardMedia)`
 .MuiCardMedia-root{
     display:flex;
 }
 &.MuiCardMedia-media{
-    width: 200px;
-    height: 133px;
+    max-width: 200px;
+    max-height: 133px;
 }
 &.MuiCardMedia-img{
     object-fit: fill;
@@ -34,7 +36,19 @@ const StyledTitle = styled(CardHeader)`
         font-size: 20px;
     }
     `
+const ListItem = styled.li`
+    opacity: ${props => props.iszero === undefined || props.iszero > 0 ? 1 : 0.3}
+    list-style: none;
+    /* span{
+        margin-left: 5px;
+    } */
+`
+const PriceGridItem = styled(Grid)`
+padding:8px;
+display: flex;
+justify-content: ${props => props.ismobile ? 'flex-start' : 'flex-end'};
 
+`
 const CarCard = ({
     handleBookButtonClicked,
     carClass,
@@ -51,12 +65,10 @@ const CarCard = ({
 }) => {
     const supplierImagePath = suppliers[supplier]
     const [anchorEl, setAnchorEl] = useState(null);
-    const [expanded, setExpanded] = useState(false);
     const [open, setOpen] = useState(Boolean(anchorEl));
+    const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+
 
     const handleClick = event => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -65,6 +77,34 @@ const CarCard = ({
 
     const id = open ? 'simple-popper' : undefined;
 
+    const PriceSection = () => {
+        const currency = useContext(CurrencyContext)
+
+        return <PriceGridItem container wrap='nowrap'>
+            <ul style={{paddingLeft:'0px'}}>
+                <ListItem>
+                    <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
+                        <span style={{ fontWeight: 'lighter', fontSize: '1rem' }}>per day</span>
+                    </Box>
+                </ListItem>
+                <ListItem>
+                    <Box fontWeight='normal' style={{ marginTop: '8px' }}>
+                        <Tooltip title="FREE cancellation up to 48 hours " arrow>
+
+                            <Typography variant='body1'> <FontAwesomeIcon style={{ color: 'green', marginRight: '8px' }} icon={faCheck} />Free Cancellation</Typography>
+                        </Tooltip>
+                    </Box>
+                </ListItem>
+                {/* <Typography variant='body1' style={{ marginTop: '8px' }}>Included in the price:</Typography> */}
+                {/* <Divider style={{ marginBottom: '8px' }}  /> */}
+                <ListItem ><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> AmendmentsTheft </ListItem>
+                <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> ProtectionCollision </ListItem>
+                <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> Damage Waiver </ListItem>
+            </ul>
+
+        </PriceGridItem>
+
+    }
 
     return (
         <StyledCard>
@@ -85,44 +125,55 @@ const CarCard = ({
                 title={carModel}
                 subheader="or similiar"
             />
-            <div style={{ display: 'flex' }}>
+            <Grid container style={{
+                display: 'flex',
+                justifyContent: isMobile ? 'center' : '',
+                // border: '1px solid',
+            }}>
+                <Grid item xs={6} lg={3}>
 
-                <CarImage
-                    component='img'
-                    image={image}
-                    title={carModel}
-                />
-                <CarFeatures
-                    transmissionType={typeOfGearBox}
-                    numberOfSeats={numberOfSeats}
-                    numberOfLargeBags={numberOfLargeBags}
-                    numberOfSmallBags={numberOfSmallBags}
-                    numberOfDoors={numberOfDoors}
-                    pricePerDay={pricePerDay}
-                />
-            </div>
-            <CardContent>
+                    <CarImage
+                        ismobile={isMobile.toString()}
+                        component='img'
+                        image={image}
+                        title={carModel}
+                    />
+                </Grid>
+                <Grid item xs={6} lg={3}>
+                    <CarFeatures
+                        transmissionType={typeOfGearBox}
+                        numberOfSeats={numberOfSeats}
+                        numberOfLargeBags={numberOfLargeBags}
+                        numberOfSmallBags={numberOfSmallBags}
+                        numberOfDoors={numberOfDoors}
+                        pricePerDay={pricePerDay}
+                    />
+                </Grid>
+                <Grid item xs={6} lg={3} 
+                // style={{ border: '1px solid' }}
+                >
+                    <Policies />
+                </Grid>
+                <Grid item xs={6} lg={3}>
+                    <PriceSection />
+
+                </Grid>
+
+            </Grid>
+            <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Tooltip title={supplier} arrow>
                     <SupplierImage src={supplierImagePath} alt={suppliers.supplier} />
                 </Tooltip>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    Description or promo
 
-          </Typography>
-
-            </CardContent>
-            <CardActions disableSpacing>
-              
-              <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-                  <Button
-                      onClick={() => handleBookButtonClicked(carId)}
-                      style={{ width: '200px' }}
-                      variant='contained'
-                      color='secondary'>Book
+                <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
+                    <Button
+                        onClick={() => handleBookButtonClicked(carId)}
+                        style={{ width: '200px' }}
+                        variant='contained'
+                        color='secondary'>Book
                    </Button>
-              </div>
-
-          </CardActions>
+                </div>
+            </CardContent>
 
         </StyledCard>
 
