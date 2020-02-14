@@ -74,18 +74,18 @@ const CarCard = ({
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
+    const currency = useContext(CurrencyContext)
 
     const id = open ? 'simple-popper' : undefined;
 
     const PriceSection = () => {
-        const currency = useContext(CurrencyContext)
 
         return <PriceGridItem container wrap='nowrap'>
-            <ul style={{paddingLeft:'0px'}}>
+            <ul style={{ paddingLeft: '0px' }}>
                 <ListItem>
-                    <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
+                    {/* <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
                         <span style={{ fontWeight: 'lighter', fontSize: '1rem' }}>per day</span>
-                    </Box>
+                    </Box> */}
                 </ListItem>
                 <ListItem>
                     <Box fontWeight='normal' style={{ marginTop: '8px' }}>
@@ -105,7 +105,13 @@ const CarCard = ({
         </PriceGridItem>
 
     }
-
+    const Title = ({ carModel }) => {
+        return <div style={{display:'flex',justifyContent:'space-between'}}><span>{carModel}</span>
+            <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
+                <span style={{ fontWeight: 'initial', fontSize: '1rem', marginLeft: '8px' }}>per day</span>
+            </Box>
+        </div>
+    }
     return (
         <StyledCard>
             <StyledTitle
@@ -122,7 +128,7 @@ const CarCard = ({
                     </Tooltip>
                 }
 
-                title={carModel}
+                title={<Title carModel={carModel} />}
                 subheader="or similiar"
             />
             <Grid container style={{
@@ -149,7 +155,7 @@ const CarCard = ({
                         pricePerDay={pricePerDay}
                     />
                 </Grid>
-                <Grid item xs={6} lg={3} 
+                <Grid item xs={6} lg={3}
                 // style={{ border: '1px solid' }}
                 >
                     <Policies />
