@@ -12,10 +12,10 @@ import background_4 from '../../../images/background_3.png'
 import { fadeOut } from 'react-animations';
 
 
-const MainSection = ({ setDriverAge }) => {
-const background = background_4;
+const MainSection = () => {
+    const background = background_4;
     const changeBackground = (country) => {
-     
+
     }
 
     const StyledSection = styled.section`
@@ -48,11 +48,11 @@ const background = background_4;
     return (
         <StyledSection background={background}>
             <StyledContainer>
-                
-                <Grid container style={{flex:1, flexShrink:0, }}>
+
+                <Grid container style={{ flex: 1, flexShrink: 0, }}>
                     <Grid container style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto' }}>
                         <Grid item xs={12} sm={12} lg={5} md={6} xl={5}  >
-                            <Picker setDriverAge={setDriverAge} />
+                            <Picker />
                         </Grid>
                         <Hidden mdDown>
                             <Grid style={{ marginLeft: 'auto' }} item xs={12} sm={12} lg={5} md={6} xl={5}  >

@@ -61,7 +61,7 @@ const TabsToDisplay = ({ searchType, tabIndex, setTabIndex }) => {
     </StyledTabs>
 }
 
-const Picker = ({ searchType, setDriverAge }) => {
+const Picker = ({ searchType }) => {
     const PickerWrapper = styled(Paper)`
     z-index:1;
 /* border: 1px solid; */
@@ -94,22 +94,11 @@ const Picker = ({ searchType, setDriverAge }) => {
     const [tabIndex, setTabIndex] = React.useState(0);
     return (
         <PickerWrapper >
-            {/* <StyledTabs
-                variant="fullWidth"
-                value={tabIndex}
-                onChange={(e, index) => setTabIndex(index)}
-            >
-            <StyledTab
-                    label={'Cars'} />
-                <StyledTab
-                    label={'Hotels'} />
-                <StyledTab
-                    label={'Other'} />
-            </StyledTabs> */}
+           
             <TabsToDisplay tabIndex={tabIndex} searchType={searchType} setTabIndex={setTabIndex} />
 
             <TabPanel value={tabIndex} index={0}>
-                <CarPicker setDriverAge={setDriverAge} />
+                <CarPicker  />
             </TabPanel>
 
             <TabPanel value={tabIndex} index={1}>
