@@ -29,10 +29,6 @@ const CarPicker = () => {
     })
     const [isValidated, setIsValidated] = useState(false)
 
-    useEffect(() => {
-        console.log(ageError);
-        console.log(isValidated);
-    }, [ageError, isValidated])
     const [dates, setDates] = useState({
         pickUpDate: today,
         dropOffDate: new Date().setDate(today.getDate() + 3),
@@ -74,7 +70,7 @@ const CarPicker = () => {
             console.log('setting');
             setAgeError({
                 error: true,
-                helperText: 'Please insert your age'
+                helperText: 'At least 18 years old'
             })
 
         }
@@ -184,7 +180,7 @@ const CarPicker = () => {
             >
                 <Grid xs={12} sm={8} md={4} lg={4} style={{ marginTop: '20px' }} item>
 
-                    <Link style={{ textDecoration: 'none' }} to='/'>
+                    <Link style={{ textDecoration: 'none' }} to={tempSearchDetails.driverAge > 17 ? '/results' : '/'} >
                         <SearchButton ispc={matches.valueOf.toString()} onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton>
                     </Link>
                 </Grid>
