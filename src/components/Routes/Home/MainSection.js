@@ -48,7 +48,8 @@ const background = background_4;
     return (
         <StyledSection background={background}>
             <StyledContainer>
-                <Grid container style={{flex:1, flexShrink:0, flexWrap:'wrap'}}>
+                
+                <Grid container style={{flex:1, flexShrink:0, }}>
                     <Grid container style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: 'auto' }}>
                         <Grid item xs={12} sm={12} lg={5} md={6} xl={5}  >
                             <Picker setDriverAge={setDriverAge} />

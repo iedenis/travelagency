@@ -5,7 +5,7 @@ import CarDatePicker from './CarDatePicker'
 import SearchLocation from './SearchLocation'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { SearchDetailsContext } from '../../../../App'
 const today = new Date();
@@ -23,7 +23,16 @@ const Form = styled.form`
 const CarPicker = () => {
 
     const [searchDetails, setSearchDetails] = useContext(SearchDetailsContext)
+    const [ageError, setAgeError] = useState({
+        error: false,
+        helperText: ''
+    })
+    const [isValidated, setIsValidated] = useState(false)
 
+    useEffect(() => {
+        console.log(ageError);
+        console.log(isValidated);
+    }, [ageError, isValidated])
     const [dates, setDates] = useState({
         pickUpDate: today,
         dropOffDate: new Date().setDate(today.getDate() + 3),
@@ -61,7 +70,24 @@ const CarPicker = () => {
     }
 
     const validateForm = () => {
-        setSearchDetails(tempSearchDetails)
+        if (tempSearchDetails.driverAge < 18) {
+            console.log('setting');
+            setAgeError({
+                error: true,
+                helperText: 'Please insert your age'
+            })
+
+        }
+        else {
+            setAgeError({
+                error: false,
+                helperText: ''
+            })
+            setIsValidated(true)
+
+            setSearchDetails(tempSearchDetails)
+
+        }
     }
 
     const matches = useMediaQuery(useTheme().breakpoints.up('md'));
@@ -135,6 +161,8 @@ const CarPicker = () => {
                     <Grid item sm={4} lg={4} xs={5}>
 
                         <TextField
+                            required={true}
+                            {...ageError}
                             style={{ float: 'right', maxWidth: '143px' }}
                             id="standard-textarea"
                             label="Your age"
@@ -155,7 +183,10 @@ const CarPicker = () => {
                 justify={justify}
             >
                 <Grid xs={12} sm={8} md={4} lg={4} style={{ marginTop: '20px' }} item>
-                    <Link style={{ textDecoration: 'none' }} to='/results'><SearchButton ispc={matches.valueOf.toString()} onClick={() => validateForm()} variant='contained' color='secondary'>Search</SearchButton></Link>
+
+                    <Link style={{ textDecoration: 'none' }} to='/'>
+                        <SearchButton ispc={matches.valueOf.toString()} onClick={validateForm} variant='contained' color='secondary'>Search</SearchButton>
+                    </Link>
                 </Grid>
             </Grid>
 

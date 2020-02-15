@@ -170,7 +170,7 @@ const AddInsurance = ({
                     <Heading label='Extras' />
                     <AdditionalFeature
                         icon={add_driver_icon}
-                        description='Add additional driver'
+                        description='Additional driver'
                         price={additionalDriverPrice}
                         value='driver'
                     />
