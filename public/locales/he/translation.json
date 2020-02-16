@@ -19,7 +19,10 @@
             "dropOffDifferentLocation": "החזרת רכב במקום אחר",
             "dropOffDate": "תאריך החזרת רכב",
             "pickUpDate": "תאריך קבלת רכב",
-            "time": "זמן"
+            "time": "זמן",
+            "pickUpLocation": "מיקום איסוף",
+            "dropOffLocation":"מיקום החזרה"
+
         }
     },
     "home": {

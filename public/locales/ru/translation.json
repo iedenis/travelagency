@@ -19,7 +19,9 @@
             "dropOffDifferentLocation": "Возврат машины в другом месте",
             "dropOffDate": "Дата возврата",
             "pickUpDate": "Дата получения",
-            "time": "Время"
+            "time": "Время",
+            "pickUpLocation": "Место получения",
+            "dropOffLocation": "Место возврата"
         }
     },
     "home": {

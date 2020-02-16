@@ -19,7 +19,9 @@
             "dropOffDifferentLocation": "Drop-off at different location",
             "dropOffDate": "Drop-off date",
             "pickUpDate": "Pick-up date",
-            "time": "Time"
+            "time": "Time",
+            "pickUpLocation": "Pick-up location",
+            "dropOffLocation":"Drop-off location"
         }
     },
     "home": {

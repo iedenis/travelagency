@@ -38,9 +38,9 @@ const NavBar = ({ toggleDrawer, menuItems }) => {
                         <Logo src={logo}></Logo >
                     </Link>
 
-                    <Hidden xsDown>
+                    {/* <Hidden xsDown> */}
                         <NavMenu menuItems={menuItems} />
-                    </Hidden>
+                    {/* </Hidden> */}
                     {/* <Hidden smUp><div className="right" style={{ flex: 1 }}></div></Hidden> */}
                 </SytledToolbar>
             </Container>

@@ -71,7 +71,7 @@ const CarPicker = () => {
             console.log('setting');
             setAgeError({
                 error: true,
-                helperText: 'At least 18 years old'
+                helperText: t('picker.carpicker.driverAge.error')
             })
 
         }
