@@ -1,27 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Typography,Grid } from '@material-ui/core'
+import { Typography, Grid } from '@material-ui/core'
 import italyImage from '../../../../images/italy.jpeg'
 import germanyImage from '../../../../images/photo-1534313314376-a72289b6181e'
 import russiaImage from '../../../../images/russia.jpeg'
 import israelImage from '../../../../images/israel.jpeg'
 import switzerlandImage from '../../../../images/switzerland.jpeg'
 import spainImage from '../../../../images/spainImage.jpeg'
-
+import { useTranslation } from 'react-i18next'
 import CityCard from './CityCard'
+
+const PopularWrapper = styled.div`
+margin-top: 30px;
+`
+
 const Popular = () => {
-    const PopularWrapper=styled.div`
-     margin-top: 30px;
-    `
+    const { t } = useTranslation();
     const cityName = 'Italy'
     const description = 'Italy, country of south-central Europe, occupying a peninsula that juts deep into the Mediterranean Sea. Italy comprises some of the most varied and scenic landscapes on Earth and is often described as a country shaped like a boot. At its broad top stand the Alps, which are among the worlds most rugged mountains';
 
     return (
         <PopularWrapper>
-            <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom:'30px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '30px' }}>
 
                 <Typography variant='h4'>
-                    Popular destinations
+                    {t('home.secondsection.head')}
                 </Typography>
                 {/* <div style={{width:'200px', border: '1px solid'}}></div> */}
             </div>

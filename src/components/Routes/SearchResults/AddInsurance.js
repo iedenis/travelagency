@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import { Button, Grid, useTheme, Box, Checkbox, useMediaQuery, Select, MenuItem, Paper, FormControlLabel, Typography } from '@material-ui/core'
-import add_driver_icon from './images/add_driver.svg'
-import baby_booster_icon from './images/baby_booster.svg'
-import baby_car_seat_icon from './images/baby_car_seat.svg'
-import gps_icon from './images/gps.svg'
+import add_driver_icon from './images/add_driver_black.svg'
+import baby_booster_icon from './images/baby_booster_black.svg'
+import baby_car_seat_icon from './images/baby_car_seat _black.svg'
+import gps_icon from './images/gps_black.svg'
 import styled from 'styled-components'
 import AlertDialog from '../../Layouts/AlertDialog';
 import Alert from '@material-ui/lab/Alert';
 import { NavigateBefore } from '@material-ui/icons/';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-const Wrapper = styled(Paper)`
+const Wrapper = styled.div`
     height: ${props => props.ismobile ? '100%' : '90vh'};
 `
 
 const Insurances = styled(Paper)`
     display:flex;
     flex-direction:column;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 `
 const AddInsurance = ({
 
@@ -89,10 +89,18 @@ const AddInsurance = ({
         return <Typography
             variant='h6'
 
-            color='primary'
+            // color='primary'
             style={{ paddingLeft: '18px' }}>
             {label}
         </Typography>
+    }
+
+    const numberOfOptions = number => {
+        const optionsArray = [];
+        for (let i = 0; i < number; i++) {
+            optionsArray.push(<MenuItem key={i} value={i}>{i}</MenuItem>)
+        }
+        return optionsArray;
     }
 
     const AdditionalFeature = ({ icon, description, price, value }) => {
@@ -123,11 +131,8 @@ const AddInsurance = ({
                 value={extras[value].count}
                 onChange={handleSelect(value)}
             >
-                <MenuItem value={0}>0</MenuItem>
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
+                {numberOfOptions(value === 'gps' ? 1 : 10)}
             </Select>
-
         </Grid>
 
     }
@@ -164,7 +169,7 @@ const AddInsurance = ({
                 />
             </Insurances>
 
-            <Paper style={{ marginBottom: '16px' }}>
+            <Paper style={{ marginBottom: '32px' }}>
 
                 <Grid container direction='column' >
                     <Heading label='Extras' />
@@ -228,7 +233,7 @@ const AddInsurance = ({
 
                 />
             </Paper>
-            <Alert style={{ marginTop: '20px' }} severity="success"><Typography variant='h6'>Good news, Full Insurance is available</Typography>
+            <Alert style={{ marginTop: '32px' }} severity="success"><Typography variant='h6'>Good news, Full Insurance is available</Typography>
                 Cover any bumps or scrapes and have a hassle-free rental. Book everything in one place quickly and easily.
 
 </Alert>

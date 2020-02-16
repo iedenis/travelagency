@@ -1,0 +1,30 @@
+{
+    "picker": {
+        "tabs": {
+            "cars": "cars",
+            "hotels": "hotels",
+            "other": "other"
+        },
+        "carpicker": {
+            "ageError": "At least 18 years old",
+            "freeFeatures": {
+                "creditCard": "No credit card fees",
+                "amedments": "No amendment fees",
+                "support": "24/7 phone support"
+            },
+            "driverAge": {
+                "driverAge": "Your age",
+                "error": "At least 18 years old"
+            },
+            "dropOffDifferentLocation": "Drop-off at different location",
+            "dropOffDate": "Drop-off date",
+            "pickUpDate": "Pick-up date",
+            "time": "Time"
+        }
+    },
+    "home": {
+        "secondsection": {
+            "head": "Popular destinations"
+        }
+    }
+}

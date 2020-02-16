@@ -1,0 +1,30 @@
+{
+    "picker": {
+        "tabs": {
+            "cars": "Авто",
+            "hotels": "Гостиницы",
+            "other": "Другое"
+        },
+        "carpicker": {
+            "ageError": "Вам должно быть 18 лет",
+            "freeFeatures": {
+                "creditCard": "Нет сборов за использование кредитных карт",
+                "amedments": "Нет сборов за внесение изменений",
+                "support": "Поддержка 24/7"
+            },
+            "driverAge": {
+                "driverAge": "Ваш возраст",
+                "error": "Только старше 18 лет"
+            },
+            "dropOffDifferentLocation": "Возврат машины в другом месте",
+            "dropOffDate": "Дата возврата",
+            "pickUpDate": "Дата получения",
+            "time": "Время"
+        }
+    },
+    "home": {
+        "secondsection": {
+            "head": "Популярные направления"
+        }
+    }
+}

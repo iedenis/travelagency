@@ -1,0 +1,30 @@
+{
+    "picker": {
+        "tabs": {
+            "cars": "רכבים",
+            "hotels": "מלונות",
+            "other": "אחר"
+        },
+        "carpicker": {
+            "ageError": "לפחות 18 שנים",
+            "freeFeatures": {
+                "creditCard": "ללא עמלת כרטיסי אשראי",
+                "amedments": "אין קנס עבור שינויים",
+                "support": "תמיכה טלפונית 24/7"
+            },
+            "driverAge": {
+                "driverAge": "גיל",
+                "error": "מעל גיל 18"
+            },
+            "dropOffDifferentLocation": "החזרת רכב במקום אחר",
+            "dropOffDate": "תאריך החזרת רכב",
+            "pickUpDate": "תאריך קבלת רכב",
+            "time": "זמן"
+        }
+    },
+    "home": {
+        "secondsection": {
+            "head": "אתרים פופולריים"
+        }
+    }
+}

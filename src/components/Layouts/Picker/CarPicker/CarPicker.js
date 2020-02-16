@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link, Redirect } from 'react-router-dom'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { SearchDetailsContext } from '../../../../App'
+import { useTranslation } from 'react-i18next'
 const today = new Date();
 const SearchButton = styled(Button)`
 width: 100%;
@@ -21,7 +22,7 @@ const Form = styled.form`
 
 
 const CarPicker = () => {
-
+    const { t } = useTranslation()
     const [searchDetails, setSearchDetails] = useContext(SearchDetailsContext)
     const [ageError, setAgeError] = useState({
         error: false,
@@ -109,7 +110,7 @@ const CarPicker = () => {
                                 color="primary"
                             />
                         }
-                        label="Drop-off at different location"
+                        label={t('picker.carpicker.dropOffDifferentLocation')}
                     />
                     {isDifferentLocation ?
                         <Grid item>
@@ -149,9 +150,9 @@ const CarPicker = () => {
                     <Grid item sm={8} lg={8} xs={7}>
 
                         <div  >
-                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No credit card fees</div>
-                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> No amendment fees</div>
-                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> 24/7 phone support</div>
+                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> {t('picker.carpicker.freeFeatures.creditCard')}</div>
+                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> {t('picker.carpicker.freeFeatures.amedments')}</div>
+                            <div><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /> {t('picker.carpicker.freeFeatures.support')}</div>
                         </div>
                     </Grid>
                     <Grid item sm={4} lg={4} xs={5}>
@@ -161,7 +162,7 @@ const CarPicker = () => {
                             {...ageError}
                             style={{ float: 'right', maxWidth: '143px' }}
                             id="standard-textarea"
-                            label="Your age"
+                            label={t('picker.carpicker.driverAge.driverAge')}
                             type="number"
                             value={tempSearchDetails.driverAge}
                             name='driverAge'

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
 import 'typeface-roboto';
-
+import './i18n'
 
 const theme = createMuiTheme({
     palette: {
@@ -41,9 +41,12 @@ const theme = createMuiTheme({
 
 console.log(theme)
 ReactDOM.render(
-    <MuiThemeProvider theme={theme}>
-        <App />
-    </MuiThemeProvider>
+    <Suspense fallback='loading...'>
+        <MuiThemeProvider theme={theme}>
+            <App />
+        </MuiThemeProvider>
+    </Suspense>
+
     , document.getElementById('root')
 );
 

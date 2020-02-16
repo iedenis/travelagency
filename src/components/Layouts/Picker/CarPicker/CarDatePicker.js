@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { MuiPickersUtilsProvider, DatePicker, TimePicker } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { Grid } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 const CarDatePicker = ({ setDates,
   isPickupDate,
   date,
@@ -11,7 +11,7 @@ const CarDatePicker = ({ setDates,
   handleDateSelected,
   time }) => {
 
-
+  const { t } = useTranslation();
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
@@ -20,7 +20,7 @@ const CarDatePicker = ({ setDates,
           autoOk
           value={date}
           format="dd/MM/yyyy"
-          label={isPickupDate ? "Pick-up date" : "Drop-off date"}
+          label={isPickupDate ? t('picker.carpicker.pickUpDate') : t('picker.carpicker.dropOffDate')}
           onChange={date => handleDateSelected(date, isPickupDate)}
           disablePast={true}
         />
@@ -28,7 +28,7 @@ const CarDatePicker = ({ setDates,
       </Grid>
       <Grid item sm={4} xs={5}>
         <TimePicker
-          label="Time"
+          label={t('picker.carpicker.time')}
           // clearable
           ampm={false}
           value={time}
