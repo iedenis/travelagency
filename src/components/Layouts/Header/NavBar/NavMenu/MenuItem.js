@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next'
 // }
 
 const NavMenuItem = ({ navItemText, link, subMenu, type }) => {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const [open, setOpen] = useState(false);
     const currencyIcons = [{ icon: faDollarSign, sign: '$', code: 'USD' }, { icon: faEuroSign, sign: '€', code: 'EUR' }, { icon: faRubleSign, sign: '₽', code: 'RUB' }, { icon: faShekelSign, sign: '₪', code: 'ILS' }]
 

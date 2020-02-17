@@ -5,6 +5,7 @@
             "hotels": "Гостиницы",
             "other": "Другое"
         },
+        "search": "поиск",
         "carpicker": {
             "ageError": "Вам должно быть 18 лет",
             "freeFeatures": {
@@ -23,6 +24,66 @@
             "pickUpLocation": "Место получения",
             "dropOffLocation": "Место возврата"
         }
+    },
+    "carcard": {
+        "carfeatures": {
+            "smallbags2": "Маленьких сумок",
+            "smallbag": "Маленькая сумка",
+            "smallbags": "Маленькие сумки",
+            "largebag": "Большая сумка",
+            "largebags": "Большие сумки",
+            "largebags2": "Больших сумок",
+            "aircondition": "Кондиционер",
+            "manualgear": "МКПП",
+            "automaticgear": "АКПП",
+            "4doors": "Двери",
+            "doors": "Дверей",
+            "4seats": "Седенья",
+            "seats": "Седений",
+            "gearbox": "коробка передач"
+        },
+        "policies": {
+            "fuel": "Топливная политика",
+            "fulltofull": "Полный на полный",
+            "unlimitedmileage": "Нограниченный километраж",
+            "rentalconditions": "Условия аренды"
+        },
+        "cancelation": "Отмена",
+        "freecancelation": "Бесплатная отмена",
+        "amendments": "Изменения",
+        "priceperday": "в день",
+        "carcategories": "Категория автомобиля",
+        "canhold": "В этой машине помещается",
+        "damagewaiver": "Страховка от повреждений и дтп",
+        "tipfreecancelation": "Бесплатная отмена до 48 часов",
+        "orsimiliar": "или похожая",
+        "book": "Бронировать"
+    },
+    "carclasses": {
+        "class": "класс",
+        "mini": "Мини",
+        "economy": "Эконом",
+        "compact": "Компакт",
+        "medium": "Средние",
+        "stw": "Универсал ",
+        "standart": "Стандарт",
+        "premium": "Премиум",
+        "luxury": "Люкс"
+    },
+    "filters": {
+        "supplier": "Прокатчик",
+        "gearbox": "Коробка передач",
+        "typeofgearbox": "Тип коробки передач",
+        "automatic": "Автоматическая",
+        "manual": "Ручная",
+        "mileage": "Политика по топливу",
+        "unlimited": "Безлимитный",
+        "limited": "Ограниченный"
+    },
+    "stepper":{
+        "chooseyourcar":"Выбор автомобиля",
+        "addinsurance": "Страховка",
+        "ordersummary": "Итог заказа"
     },
     "home": {
         "secondsection": {

@@ -7,6 +7,7 @@ import Doors from './featureIcons/car-door.svg'
 import { Grid, Tooltip, Typography, useTheme, useMediaQuery, Box, Divider } from '@material-ui/core'
 import styled from 'styled-components'
 import { CurrencyContext } from '../../SharedState/SharedState'
+import { useTranslation } from 'react-i18next'
 import Policies from './Policies'
 
 const FeatureIcon = styled.img`
@@ -27,7 +28,7 @@ const ListItem = styled.li`
 
 
 const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLargeBags, numberOfSmallBags, numberOfDoors }) => {
-
+    const { t } = useTranslation()
     const currency = useContext(CurrencyContext)
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
 
@@ -39,25 +40,25 @@ const CarFeatures = ({ pricePerDay, transmissionType, numberOfSeats, numberOfLar
                 // border: '1px solid'
             }}
             container direction={isMobile ? 'column-reverse' : 'row'}   >
-            <Grid item xs={12} md style={{padding:'8px', display: isMobile ? 'flex' : '', justifyContent: 'center' }} >
-                <ul style={{paddingLeft:'0px'}}>
-                    <ListItem><FeatureIconFontAwesome icon={faSnowflake} /> <span>Aircondition</span></ListItem>
+            <Grid item xs={12} md style={{ padding: '8px', display: isMobile ? 'flex' : '', justifyContent: 'center' }} >
+                <ul style={{ paddingLeft: '0px' }}>
+                    <ListItem><FeatureIconFontAwesome icon={faSnowflake} /> <span>{t('carcard.carfeatures.aircondition')}</span></ListItem>
                     <ListItem iszero={numberOfSmallBags}>
-                        <Tooltip disableHoverListener={isMobile} title={'This car can hold ' + (numberOfSmallBags === 1 ? '1 Small bag' : `${numberOfSmallBags} Small bags`)} arrow>
+                        <Tooltip disableHoverListener={isMobile} title={t('carcard.canhold') + (numberOfSmallBags === 1 ? `1 ${t('carcard.carfeatures.smallbag')}` : `${numberOfSmallBags} ${t('carcard.carfeatures.smallbag')}`)} arrow>
                             <div>
-                                <FeatureIconFontAwesome icon={faSuitcaseRolling} /> {numberOfSmallBags === 1 ? <span>1 Small bag</span> : numberOfSmallBags === 0 ? <span>small bags</span> : <span>{numberOfSmallBags}  Small bags</span>}
+                                <FeatureIconFontAwesome icon={faSuitcaseRolling} /> {numberOfSmallBags === 1 ? <span>1 {t('carcard.carfeatures.smallbag')}</span> : numberOfSmallBags === 0 ? <span>{t('carcard.carfeatures.smallbag')}</span> : <span>{numberOfSmallBags}  {t('carcard.carfeatures.smallbags')}</span>}
                             </div>
                         </Tooltip>
 
                     </ListItem>
-                    <Tooltip disableHoverListener={isMobile} title={'This car can hold ' + (numberOfLargeBags === 1 ? '1 Large bag' : `${numberOfLargeBags} Large bags`)} arrow>
+                    <Tooltip disableHoverListener={isMobile} title={t('carcard.canhold') + (numberOfLargeBags === 1 ? ` 1 ${t('carcard.carfeatures.largebag')}` :  `${numberOfLargeBags}  ${t('carcard.carfeatures.largebags')}`)} arrow>
 
-                        <ListItem iszero={numberOfLargeBags}><FeatureIconFontAwesome icon={faSuitcase} />{numberOfLargeBags === 1 ? <span>1 Large bag</span> : numberOfLargeBags === 0 ? <span>Large bags</span> : <span>{numberOfLargeBags} Large bags</span>}
+                        <ListItem iszero={numberOfLargeBags}><FeatureIconFontAwesome icon={faSuitcase} />{numberOfLargeBags === 1 ? <span>1 {t('carcard.carfeatures.largebag')}</span> : numberOfLargeBags === 0 ? <span>{t('carcard.carfeatures.largebags')}</span> : <span>{numberOfLargeBags} {t('carcard.carfeatures.largebags')}</span>}
                         </ListItem>
                     </Tooltip>
-                    <ListItem ><FeatureIcon src={Gearbox} alt={Gearbox} /> <span>{transmissionType} Gearbox</span></ListItem>
-                    <ListItem><FeatureIcon src={Doors} /> <span>{numberOfDoors} Doors</span></ListItem>
-                    <ListItem><FeatureIcon src={Seats} /><span>{numberOfSeats} Seats</span> </ListItem>
+                    <ListItem ><FeatureIcon src={Gearbox} alt={Gearbox} /> <span>{transmissionType} </span></ListItem>
+                    <ListItem><FeatureIcon src={Doors} /> <span>{numberOfDoors} {numberOfDoors < 5 ? t('carcard.carfeatures.4doors') : t('carcard.carfeatures.doors')}</span></ListItem>
+                    <ListItem><FeatureIcon src={Seats} /><span>{numberOfSeats} {numberOfDoors < 5 ? t('carcard.carfeatures.4seats') : t('carcard.carfeatures.seats')}</span> </ListItem>
 
                 </ul>
             </Grid>

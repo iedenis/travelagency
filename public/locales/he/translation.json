@@ -5,6 +5,7 @@
             "hotels": "מלונות",
             "other": "אחר"
         },
+        "search": "חפש",
         "carpicker": {
             "ageError": "לפחות 18 שנים",
             "freeFeatures": {
@@ -21,9 +22,68 @@
             "pickUpDate": "תאריך קבלת רכב",
             "time": "זמן",
             "pickUpLocation": "מיקום איסוף",
-            "dropOffLocation":"מיקום החזרה"
-
+            "dropOffLocation": "מיקום החזרה"
         }
+    },
+    "carcard": {
+        "carfeatures": {
+            "smallbags2": "מזוודות קטנות",
+            "smallbag": "מזוודה קטנה",
+            "smallbags": "מזוודות קטנות",
+            "largebag": "מזוודה גדולה",
+            "largebags": "מזוודות גדולות",
+            "largebags2": "מזוודות גדולות",
+            "aircondition": "מזגן",
+            "manualgear": "ידני",
+            "automaticgear": "אוטומט",
+            "gearbox": "תיבת הילוכים",
+            "4doors": "דלתות",
+            "doors": "דלתות",
+            "4seats": "מושבים",
+            "seats": "מושבים"
+        },
+        "policies": {
+            "fuel": "מדיניות החזרת דלק",
+            "fulltofull": "דלק מלא למלא",
+            "unlimitedmileage": "ללא הגבלת ק''מ",
+            "rentalconditions": "תנאי שכירות"
+        },
+        "cancelation": "ביטול",
+        "freecancelation": "ביטול חינם",
+        "amendments": "שינויים",
+        "priceperday": "ליום",
+        "carcategories": "קבוצת רכב",
+        "canhold": "לרכב הזה יכול להיכנס עד ",
+        "damagewaiver": "כיסוי נזקי פח",
+        "tipfreecancelation": "ביטול חינם עד 48 שעות",
+        "orsimiliar": "או דומה",
+        "book": "הזמן עכשיו"
+    },
+    "carclasses": {
+        "class": "קבוצת רכב",
+        "mini": "מיני",
+        "economy": "אקונומי",
+        "compact": "קומפקט",
+        "medium": "בינוני",
+        "stw": "סטיישן ",
+        "standart": "סטנדרט",
+        "premium": "פרימיום",
+        "luxury": "יוקרהד"
+    },
+    "filters": {
+        "supplier": "חברת השכרה",
+        "gearbox": "תיבת הילוכים",
+        "typeofgearbox": "סוג תיבת הילוכים",
+        "automatic": "אוטומט",
+        "manual": "ידני",
+        "mileage": "מדיניות החזרת דלק",
+        "unlimited": "ללא הגבלה",
+        "limited": "מוגבל"
+    },
+    "stepper":{
+        "chooseyourcar":"בחירת רכב",
+        "addinsurance": "כיסויים",
+        "ordersummary": "סיכום הזמנה"
     },
     "home": {
         "secondsection": {

@@ -8,7 +8,7 @@ import suppliers from '../../../images/suppliers/suppliers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { CurrencyContext } from '../../SharedState/SharedState';
-
+import { useTranslation } from 'react-i18next'
 const StyledCard = styled(Card)`
 max-width: 800px;
 margin-bottom: 32px;
@@ -67,7 +67,7 @@ const CarCard = ({
     const [anchorEl, setAnchorEl] = useState(null);
     const [open, setOpen] = useState(Boolean(anchorEl));
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
-
+    const { t } = useTranslation();
 
 
     const handleClick = event => {
@@ -81,15 +81,15 @@ const CarCard = ({
     const PriceSection = () => {
 
         return <PriceGridItem container wrap='nowrap'>
-            <ul style={{ paddingLeft: '0px' , margin:'0px'}}>
-                    {/* <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
+            <ul style={{ paddingLeft: '0px', margin: '0px' }}>
+                {/* <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
                         <span style={{ fontWeight: 'lighter', fontSize: '1rem' }}>per day</span>
                     </Box> */}
                 <ListItem>
                     <Box fontWeight='normal' style={{ marginTop: '8px' }}>
-                        <Tooltip title="FREE cancellation up to 48 hours " arrow>
+                        <Tooltip title={t('carcard.tipfreecancelation')} arrow>
 
-                            <Typography variant='body1'> <FontAwesomeIcon style={{ color: 'green', marginRight: '8px' }} icon={faCheck} />Free Cancellation</Typography>
+                            <Typography variant='body1'> <FontAwesomeIcon style={{ color: 'green', marginRight: '8px' }} icon={faCheck} />{t('carcard.freecancelation')}</Typography>
                         </Tooltip>
                     </Box>
                 </ListItem>
@@ -97,16 +97,16 @@ const CarCard = ({
                 {/* <Divider style={{ marginBottom: '8px' }}  /> */}
                 <ListItem ><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> AmendmentsTheft </ListItem>
                 <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> ProtectionCollision </ListItem>
-                <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> Damage Waiver </ListItem>
+                <ListItem><FontAwesomeIcon style={{ color: 'green' }} icon={faCheck} /> {t('carcard.damagewaiver')} </ListItem>
             </ul>
 
         </PriceGridItem>
 
     }
     const Title = ({ carModel }) => {
-        return <div style={{display:'flex',justifyContent:'space-between'}}><span>{carModel}</span>
+        return <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>{carModel}</span>
             <Box fontSize='21px' style={{ fontWeight: 'bolder' }}>{pricePerDay} {currency[0]}
-                <span style={{ fontWeight: 'initial', fontSize: '1rem', marginLeft: '8px' }}>per day</span>
+                <span style={{ fontWeight: 'initial', fontSize: '1rem', marginLeft: '8px' }}>{t('carcard.priceperday')}</span>
             </Box>
         </div>
     }
@@ -114,7 +114,7 @@ const CarCard = ({
         <StyledCard>
             <StyledTitle
                 avatar={
-                    <Tooltip title={carClass + ' Class'} arrow>
+                    <Tooltip title={carClass + ` ${t('carclasses.class')}`} arrow>
                         <Avatar
                             aria-label="car-model"
                             onClick={handleClick}
@@ -127,7 +127,7 @@ const CarCard = ({
                 }
 
                 title={<Title carModel={carModel} />}
-                subheader="or similiar"
+                subheader={t('carcard.orsimiliar')}
             />
             <Grid container style={{
                 display: 'flex',
@@ -174,8 +174,8 @@ const CarCard = ({
                         onClick={() => handleBookButtonClicked(carId)}
                         style={{ width: '200px' }}
                         variant='contained'
-                        color='secondary'>Book
-                   </Button>
+                        color='secondary'>{t('carcard.book')}
+                    </Button>
                 </div>
             </CardContent>
 

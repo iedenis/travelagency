@@ -2,6 +2,7 @@ import React from 'react'
 import { Paper, ExpansionPanel, ExpansionPanelSummary, Typography, ExpansionPanelDetails, FormControlLabel, Checkbox, useMediaQuery, useTheme, Grid } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next'
 
 const CheckboxArea = styled(ExpansionPanelDetails)`
     display: flex;
@@ -13,7 +14,7 @@ const Filters = ({ cars,
     suppliers: { suppliersList, setSuppliersList },
     mileage: { MileageChecked, setMileageChecked }
 }) => {
-
+    const { t } = useTranslation();
     const isPC = useMediaQuery(useTheme().breakpoints.up('md'));
 
     const removeSupplier = (supplier) => {
@@ -63,12 +64,12 @@ const Filters = ({ cars,
                 aria-controls="panel2a-content"
                 id="panel2a-header"
             >
-                <Typography >{isPC ? 'Mileage/Kilometres' : 'Mileage'}</Typography>
+                <Typography >{t('filters.mileage')}</Typography>
             </ExpansionPanelSummary>
             <CheckboxArea>
 
-                <CheckBoxFilter label='Unlimited' type='mileage' checked={MileageChecked.Unlimited} />
-                <CheckBoxFilter label='Limited' type='mileage' checked={MileageChecked.Limited} />
+                <CheckBoxFilter label={t('filters.unlimited')} type='mileage' checked={MileageChecked.Unlimited} />
+                <CheckBoxFilter label={t('filters.limited')} type='mileage' checked={MileageChecked.Limited} />
             </CheckboxArea>
         </ExpansionPanel>
 
@@ -81,11 +82,11 @@ const Filters = ({ cars,
                 aria-controls="panel2a-content"
                 id="panel2a-header"
             >
-                <Typography  >{isPC ? 'Type of gearbox' : 'Gearbox'}</Typography>
+                <Typography  >{isPC ? t('filters.typeofgearbox') : t('filters.gearbox')}</Typography>
             </ExpansionPanelSummary>
             <CheckboxArea>
-                <CheckBoxFilter label='Automatic' type='typeOfGearBox' checked={gearBoxChecked.Automatic} />
-                <CheckBoxFilter label='Manual' type='typeOfGearBox' checked={gearBoxChecked.Manual} />
+                <CheckBoxFilter label={t('filters.automatic')} type='typeOfGearBox' checked={gearBoxChecked.Automatic} />
+                <CheckBoxFilter label={t('filters.manual')} type='typeOfGearBox' checked={gearBoxChecked.Manual} />
 
             </CheckboxArea>
         </ExpansionPanel>
@@ -99,7 +100,7 @@ const Filters = ({ cars,
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography > {isPC ? 'Filter by supplier' : 'Supplier'}</Typography>
+                <Typography > {t('filters.supplier')}</Typography>
             </ExpansionPanelSummary>
             <CheckboxArea style={{ display: 'flex', flexDirection: 'column' }}>
 

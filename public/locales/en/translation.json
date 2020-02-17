@@ -5,6 +5,7 @@
             "hotels": "hotels",
             "other": "other"
         },
+        "search": "search",
         "carpicker": {
             "ageError": "At least 18 years old",
             "freeFeatures": {
@@ -21,8 +22,68 @@
             "pickUpDate": "Pick-up date",
             "time": "Time",
             "pickUpLocation": "Pick-up location",
-            "dropOffLocation":"Drop-off location"
+            "dropOffLocation": "Drop-off location"
         }
+    },
+    "carcard": {
+        "carfeatures": {
+            "smallbags2": "Small bags",
+            "smallbag": "Small bag",
+            "smallbags": "Small bags",
+            "largebag": "Large bag",
+            "largebags": "Large bags",
+            "largebags2": "Large bags",
+            "aircondition": "Aircondition",
+            "manualgear": "Manual gear",
+            "automaticgear": "Automatic gear",
+            "gearbox": "Gearbox",
+            "4doors": "Doors",
+            "doors": "Doors",
+            "4seats": "Seats",
+            "seats": "Seats"
+        },
+        "policies": {
+            "fuel": "Fuel",
+            "fulltofull": "full to full",
+            "unlimitedmileage": "Unlimited mileage",
+            "rentalconditions": "Rental conditions"
+        },
+        "cancelation": "cancelation",
+        "freecancelation": "Free canelation",
+        "amendments": "Amedments",
+        "priceperday": "per day",
+        "carcategories": "Car categories",
+        "canhold": "This car can hold",
+        "damagewaiver": "Damage waiver",
+        "tipfreecancelation": "Free cancelation up to 48 hours",
+        "orsimiliar": "or similiar",
+        "book": "book"
+    },
+    "carclasses": {
+        "class": "class",
+        "mini": "Mini",
+        "economy": "Economy",
+        "compact": "Compact",
+        "medium": "Medium",
+        "stw": "STW ",
+        "standart": "Standart",
+        "premium": "Premium",
+        "luxury": "Luxury"
+    },
+    "filters": {
+        "supplier": "Supplier",
+        "gearbox": "Gearbox",
+        "typeofgearbox": "Type of gearbox",
+        "automatic": "Automatic",
+        "manual": "Manual",
+        "mileage": "Mileage/Kilometres",
+        "unlimited": "Unlimited",
+        "limited": "Limited"
+    },
+    "stepper": {
+        "chooseyourcar": "Choose your car",
+        "addinsurance": "Add insurance",
+        "ordersummary": "Order summary"
     },
     "home": {
         "secondsection": {
